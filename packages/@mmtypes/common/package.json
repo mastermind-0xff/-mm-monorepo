@@ -1,5 +1,5 @@
 {
-  "name": "@mmtypes/common",
+  "name": "@mmtypes/common-test",
   "version": "0.0.1",
   "description": "Common reusable types for TypeScript.",
   "keywords": [
