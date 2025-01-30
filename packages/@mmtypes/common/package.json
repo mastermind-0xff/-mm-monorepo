@@ -36,17 +36,12 @@
     "/** [ Test commands ]======================================= */": "exit 0",
     "test": "vitest --typecheck"
   },
-  "main": "./dist/esm/index.js",
-  "module": "./dist/esm/index.js",
   "files": [
-    "dist"
+    "./dist"
   ],
   "type": "module",
   "types": "./dist/types/index.d.ts",
   "exports": {
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.cjs",
-    "default": "./dist/esm/index.js",
     "types": "./dist/types/index.d.ts"
   },
   "devDependencies": {
