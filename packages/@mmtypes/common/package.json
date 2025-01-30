@@ -7,7 +7,7 @@
   ],
   "author": "Tihomir Trifonov",
   "license": "MIT",
-  "repository": "https://github.com/mastermind-0xff/-mm-monorepo/tree/main/packages/%40mmtypes/common",
+  "repository": "https://github.com/mastermind-0xff/-mm-monorepo/tree/28096a9795171b6ecf02d3313ff657cc7afd7500/packages/%40mmtypes/common",
   "scripts": {
     "/** [ GIT commands ]====================================== */": "exit 0",
     "git:commit-ok": "git status | grep -q 'nothing to commit'",
