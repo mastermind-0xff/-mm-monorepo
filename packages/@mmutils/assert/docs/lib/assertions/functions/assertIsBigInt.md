@@ -1,14 +1,14 @@
-[**@mmutils/assert-primitive**](../../../README.md)
+[**@mmutils/assert**](../../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../../modules.md) / [lib/assertions](../README.md) / assertIsBigInt
+[@mmutils/assert](../../../modules.md) / [lib/assertions](../README.md) / assertIsBigInt
 
 # Function: assertIsBigInt()
 
 > **assertIsBigInt**(`value`, `error`): `asserts value is bigint`
 
-Defined in: packages/@mmutils/assert/src/lib/assertions.ts:154
+Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:154](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/lib/assertions.ts#L154)
 
 Asserts that the given value is a bigint. Throws an Error instance if it's
 not.

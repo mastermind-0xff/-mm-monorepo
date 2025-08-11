@@ -27,5 +27,10 @@
     // "allowImportingTsExtensions": true
   },
   "include": ["./src/"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.spec-d.ts",
+    "src/util/unit-test.ts"
+  ]
 }

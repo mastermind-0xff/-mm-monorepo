@@ -1,4 +1,4 @@
-**@mmutils/assert-primitive**
+**@mmutils/assert**
 
 ***
 
@@ -8,6 +8,8 @@ Assert and type guard functions that utilize TypeScript's type predicates and as
 clean and light.
 
 ## Highlights
+
+Comes in two flavours. assertIs[Type] utilizing asserts and is[Type] utilizing type guards. Under the hood assertIs[Type] uses is[Type].
 
 Assert flavour:
 

@@ -1,14 +1,14 @@
-[**@mmutils/assert-primitive**](../../../README.md)
+[**@mmutils/assert**](../../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../../modules.md) / [lib/assertions](../README.md) / assert
+[@mmutils/assert](../../../modules.md) / [lib/assertions](../README.md) / assert
 
 # Function: assert()
 
 > **assert**(`condition`, `error`): `asserts condition`
 
-Defined in: packages/@mmutils/assert/src/lib/assertions.ts:55
+Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:55](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/lib/assertions.ts#L55)
 
 Asserts a condition. Throws an Error instance if the condition is not met.
 ___

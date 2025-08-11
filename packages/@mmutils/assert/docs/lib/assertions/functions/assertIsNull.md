@@ -1,14 +1,14 @@
-[**@mmutils/assert-primitive**](../../../README.md)
+[**@mmutils/assert**](../../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../../modules.md) / [lib/assertions](../README.md) / assertIsNull
+[@mmutils/assert](../../../modules.md) / [lib/assertions](../README.md) / assertIsNull
 
 # Function: assertIsNull()
 
 > **assertIsNull**(`value`, `error`): `asserts value is null`
 
-Defined in: packages/@mmutils/assert/src/lib/assertions.ts:99
+Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:99](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/lib/assertions.ts#L99)
 
 Asserts that the given value is null. Throws an Error instance if it's not.
 

@@ -1,12 +1,12 @@
-[**@mmutils/assert-primitive**](../../../../../README.md)
+[**@mmutils/assert**](../../../../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../../../../modules.md) / [config/environment](../../../README.md) / [NodeJS](../README.md) / ProcessEnv
+[@mmutils/assert](../../../../../modules.md) / [config/environment](../../../README.md) / [NodeJS](../README.md) / ProcessEnv
 
 # Interface: ProcessEnv
 
-Defined in: packages/@mmutils/assert/src/config/environment.ts:3
+Defined in: [packages/@mmutils/assert/src/config/environment.ts:3](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/config/environment.ts#L3)
 
 ## Extends
 
@@ -22,7 +22,7 @@ Defined in: packages/@mmutils/assert/src/config/environment.ts:3
 
 > `optional` **AP\_NUMBER\_EXCLUDE\_NAN**: `string`
 
-Defined in: packages/@mmutils/assert/src/config/environment.ts:5
+Defined in: [packages/@mmutils/assert/src/config/environment.ts:5](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/config/environment.ts#L5)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: packages/@mmutils/assert/src/config/environment.ts:5
 
 > `optional` **AP\_OBJECT\_EXCLUDE\_NULL**: `string`
 
-Defined in: packages/@mmutils/assert/src/config/environment.ts:4
+Defined in: [packages/@mmutils/assert/src/config/environment.ts:4](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/config/environment.ts#L4)
 
 ***
 

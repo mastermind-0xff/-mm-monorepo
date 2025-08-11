@@ -1,14 +1,14 @@
-[**@mmutils/assert-primitive**](../../../README.md)
+[**@mmutils/assert**](../../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../../modules.md) / [util/actions](../README.md) / generateError
+[@mmutils/assert](../../../modules.md) / [util/actions](../README.md) / generateError
 
 # Function: generateError()
 
 > **generateError**(`messagePrefix`, `value`, `ErrorClass`): `Error`
 
-Defined in: packages/@mmutils/assert/src/util/actions.ts:35
+Defined in: [packages/@mmutils/assert/src/util/actions.ts:35](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/util/actions.ts#L35)
 
 Generate error object based on prefix string and value. Value is converted to
 string representation.
@@ -29,7 +29,7 @@ Value leading to the error.
 
 ### ErrorClass
 
-(`message`?) => `Error`
+(`message`?, `options`?) => `Error`
 
 Type of the error. Defaults to TypeError.
 

@@ -1,14 +1,14 @@
-[**@mmutils/assert-primitive**](../../../README.md)
+[**@mmutils/assert**](../../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../../modules.md) / [util/actions](../README.md) / envToBoolean
+[@mmutils/assert](../../../modules.md) / [util/actions](../README.md) / envToBoolean
 
 # Function: envToBoolean()
 
 > **envToBoolean**(`value`?): value is "true" \| "1"
 
-Defined in: packages/@mmutils/assert/src/util/actions.ts:67
+Defined in: [packages/@mmutils/assert/src/util/actions.ts:72](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/util/actions.ts#L72)
 
 Convert environment variable value '1' and 'true' to true (boolean) and
 everything else to false.

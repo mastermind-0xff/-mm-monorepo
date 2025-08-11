@@ -1,14 +1,14 @@
-[**@mmutils/assert-primitive**](../../../README.md)
+[**@mmutils/assert**](../../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../../modules.md) / [lib/assertions](../README.md) / assertIsSymbol
+[@mmutils/assert](../../../modules.md) / [lib/assertions](../README.md) / assertIsSymbol
 
 # Function: assertIsSymbol()
 
 > **assertIsSymbol**(`value`, `error`): `asserts value is symbol`
 
-Defined in: packages/@mmutils/assert/src/lib/assertions.ts:182
+Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:182](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/lib/assertions.ts#L182)
 
 Asserts that the given value is a symbol. Throws an Error instance if it's
 not.

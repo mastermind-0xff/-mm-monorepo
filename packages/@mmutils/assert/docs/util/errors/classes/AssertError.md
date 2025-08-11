@@ -1,12 +1,12 @@
-[**@mmutils/assert-primitive**](../../../README.md)
+[**@mmutils/assert**](../../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../../modules.md) / [util/errors](../README.md) / AssertError
+[@mmutils/assert](../../../modules.md) / [util/errors](../README.md) / AssertError
 
 # Class: AssertError
 
-Defined in: packages/@mmutils/assert/src/util/errors.ts:1
+Defined in: [packages/@mmutils/assert/src/util/errors.ts:1](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/util/errors.ts#L1)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: packages/@mmutils/assert/src/util/errors.ts:1
 
 > **new AssertError**(`message`?, `options`?): [`AssertError`](AssertError.md)
 
-Defined in: packages/@mmutils/assert/src/util/errors.ts:2
+Defined in: [packages/@mmutils/assert/src/util/errors.ts:2](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/util/errors.ts#L2)
 
 #### Parameters
 

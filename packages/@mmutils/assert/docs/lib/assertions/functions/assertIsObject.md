@@ -1,14 +1,14 @@
-[**@mmutils/assert-primitive**](../../../README.md)
+[**@mmutils/assert**](../../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../../modules.md) / [lib/assertions](../README.md) / assertIsObject
+[@mmutils/assert](../../../modules.md) / [lib/assertions](../README.md) / assertIsObject
 
 # Function: assertIsObject()
 
 > **assertIsObject**(`value`, `error`): `asserts value is object`
 
-Defined in: packages/@mmutils/assert/src/lib/assertions.ts:197
+Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:197](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/lib/assertions.ts#L197)
 
 Asserts that the given value is an object. Throws an Error instance if it's
 not.

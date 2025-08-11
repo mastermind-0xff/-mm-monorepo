@@ -35,7 +35,12 @@ export const toConsoleString = (value: unknown): string => {
 export const generateError = (
   messagePrefix: string,
   value: unknown,
-  ErrorClass: new (message?: string) => Error = TypeError
+  ErrorClass: new (
+    message?: string,
+    options?: {
+      cause?: unknown;
+    }
+  ) => Error = TypeError
 ) =>
   new ErrorClass(
     `${messagePrefix} [typeof value]: ${typeof value}; [value]: ${toConsoleString(value)}`

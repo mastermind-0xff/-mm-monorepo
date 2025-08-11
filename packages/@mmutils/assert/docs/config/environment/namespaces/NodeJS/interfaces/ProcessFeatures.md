@@ -1,8 +1,8 @@
-[**@mmutils/assert-primitive**](../../../../../README.md)
+[**@mmutils/assert**](../../../../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../../../../modules.md) / [config/environment](../../../README.md) / [NodeJS](../README.md) / ProcessFeatures
+[@mmutils/assert](../../../../../modules.md) / [config/environment](../../../README.md) / [NodeJS](../README.md) / ProcessFeatures
 
 # Interface: ProcessFeatures
 

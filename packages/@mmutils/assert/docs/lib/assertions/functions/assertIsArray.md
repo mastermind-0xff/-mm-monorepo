@@ -1,14 +1,14 @@
-[**@mmutils/assert-primitive**](../../../README.md)
+[**@mmutils/assert**](../../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../../modules.md) / [lib/assertions](../README.md) / assertIsArray
+[@mmutils/assert](../../../modules.md) / [lib/assertions](../README.md) / assertIsArray
 
 # Function: assertIsArray()
 
 > **assertIsArray**(`value`, `error`): `asserts value is unknown[]`
 
-Defined in: packages/@mmutils/assert/src/lib/assertions.ts:229
+Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:229](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/lib/assertions.ts#L229)
 
 Asserts that the given value is an array. Throws an Error instance if it's
 not.

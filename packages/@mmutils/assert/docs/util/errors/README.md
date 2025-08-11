@@ -1,8 +1,8 @@
-[**@mmutils/assert-primitive**](../../README.md)
+[**@mmutils/assert**](../../README.md)
 
 ***
 
-[@mmutils/assert-primitive](../../modules.md) / util/errors
+[@mmutils/assert](../../modules.md) / util/errors
 
 # util/errors
 
