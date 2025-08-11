@@ -8,7 +8,7 @@
 
 > **assertNever**(`value`, `error`): `asserts value is never`
 
-Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:258](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/lib/assertions.ts#L258)
+Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:258](https://github.com/mastermind-0xff/-mm-monorepo/blob/ae77bebbedeaf68ca437dc22abf389b1b28fc898/packages/@mmutils/assert/src/lib/assertions.ts#L258)
 
 Asserts that exhaustive checks were preformed in control flow and this action
 won't execute when new code gets added.

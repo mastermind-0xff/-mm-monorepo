@@ -8,7 +8,7 @@
 
 > **generateError**(`messagePrefix`, `value`, `ErrorClass`): `Error`
 
-Defined in: [packages/@mmutils/assert/src/util/actions.ts:35](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/util/actions.ts#L35)
+Defined in: [packages/@mmutils/assert/src/util/actions.ts:35](https://github.com/mastermind-0xff/-mm-monorepo/blob/ae77bebbedeaf68ca437dc22abf389b1b28fc898/packages/@mmutils/assert/src/util/actions.ts#L35)
 
 Generate error object based on prefix string and value. Value is converted to
 string representation.

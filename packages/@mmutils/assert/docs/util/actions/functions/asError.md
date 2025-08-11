@@ -8,7 +8,7 @@
 
 > **asError**\<`T`\>(`error`): `Error` \| `T`
 
-Defined in: [packages/@mmutils/assert/src/util/actions.ts:56](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/util/actions.ts#L56)
+Defined in: [packages/@mmutils/assert/src/util/actions.ts:56](https://github.com/mastermind-0xff/-mm-monorepo/blob/ae77bebbedeaf68ca437dc22abf389b1b28fc898/packages/@mmutils/assert/src/util/actions.ts#L56)
 
 Convert string to an Error or use the provided error object and return the
 result.

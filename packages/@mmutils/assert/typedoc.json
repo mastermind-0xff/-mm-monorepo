@@ -1,7 +1,12 @@
 {
   "entryPointStrategy": "expand",
   "entryPoints": ["./src"],
-  "exclude": ["**/*.test.ts*", "**/*.spec.ts*"],
+  "exclude": [
+    "**/*.test.ts*",
+    "**/*.spec.ts*",
+    "**/*.spec-d.ts*",
+    "src/util/unit-test.ts"
+  ],
   "out": "docs",
   "plugin": ["typedoc-plugin-markdown"]
 }

@@ -8,7 +8,7 @@
 
 > **isNullableObject**(`value`): value is null \| object
 
-Defined in: [packages/@mmutils/assert/src/lib/primitives.ts:86](https://github.com/mastermind-0xff/-mm-monorepo/blob/ca3710bd8bb8c2ee105ac4cbba3822a7d96ba98d/packages/@mmutils/assert/src/lib/primitives.ts#L86)
+Defined in: [packages/@mmutils/assert/src/lib/primitives.ts:86](https://github.com/mastermind-0xff/-mm-monorepo/blob/ae77bebbedeaf68ca437dc22abf389b1b28fc898/packages/@mmutils/assert/src/lib/primitives.ts#L86)
 
 Checks the provided value is an object. Includes null, reflecting
 JavaScript’s typeof null === 'object' behavior.
