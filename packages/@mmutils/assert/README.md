@@ -140,6 +140,14 @@ const {
 
 ## Changelog
 
+### v0.0.3
+
+Removed redundant files.
+
+### v0.0.2
+
+Documentation changes.
+
 ### v0.0.1
 
 Initial release.
