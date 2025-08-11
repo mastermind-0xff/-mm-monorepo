@@ -1,6 +1,6 @@
 {
   "name": "@mmutils/assert",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Assert and type guard functions that utilize TypeScript's type predicates and asserts to narrow down types in Control Flow Analysis at compile time and add fail safe at runtime. Makes refactoring easy and keeps the code clean, no clutter conditions. Supports all primitive types and just a few more to keep the package clean and light.",
   "keywords": [
     "assert, TypeScript assert, typed assert, type safe assert, type guard"
