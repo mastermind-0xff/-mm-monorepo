@@ -1,6 +1,6 @@
 {
   "name": "@mmutils/assert",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Assert and type guard functions that utilize TypeScript's type predicates and asserts to narrow down types in Control Flow Analysis at compile time and add fail safe at runtime. Makes refactoring easy and keeps the code clean, no clutter conditions. Supports all primitive types and just a few more to keep the package clean and light.",
   "keywords": [
     "assert, TypeScript assert, typed assert, type safe assert, type guard"
@@ -12,6 +12,7 @@
     "url": "https://github.com/mastermind-0xff/-mm-monorepo.git",
     "directory": "packages/@mmutils/assert"
   },
+  "homepage": "https://github.com/mastermind-0xff/-mm-monorepo/tree/main/packages/@mmutils/assert#readme",
   "scripts": {
     "/** [ GIT commands ]====================================== */": "exit 0",
     "git:commit-ok": "git status | grep -q 'nothing to commit'",

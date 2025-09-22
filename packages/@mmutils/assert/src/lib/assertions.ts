@@ -262,6 +262,6 @@ export function assertNever(
     value,
     AssertError
   )
-): asserts value is never {
+): never {
   throw asError(error);
 }
