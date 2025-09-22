@@ -7,7 +7,11 @@
   ],
   "author": "Tihomir Trifonov",
   "license": "MIT",
-  "repository": "https://github.com/mastermind-0xff/-mm-monorepo/tree/eb92ec5805b2c941041fbb96e5e1dc43b1f96d4b/packages/@mmutils/assert",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mastermind-0xff/-mm-monorepo.git",
+    "directory": "packages/@mmutils/assert"
+  },
   "scripts": {
     "/** [ GIT commands ]====================================== */": "exit 0",
     "git:commit-ok": "git status | grep -q 'nothing to commit'",
@@ -33,12 +37,12 @@
     "build:clean-bundle": "npm run clean:bundle && npm run build:bundle",
     "build": "npm run format && npm run build:clean-bundle",
     "/** [ Publish commands ]======================================= */": "exit 0",
-    "publish:patch": "npm version patch && npm publish",
+    "publish:patch": "npm version patch && npm publish --access public",
     "/** [ Test commands ]======================================= */": "exit 0",
     "test:coverage": "vitest --coverage ",
-    "test:e2e": "vitest __tests__",
-    "test:specs": "vitest src",
-    "test": "vitest --typecheck"
+    "test:e2e": "vitest --dir __tests__",
+    "test:specs": "vitest --typecheck",
+    "test": "npm run test:specs -- --run && ((node -e \"if (!require('fs').existsSync('./__tests__')) process.exit(1)\" && npm run test:e2e -- --run) || echo '__tests__' missing or e2e failed.)"
   },
   "main": "./dist/esm/index.js",
   "module": "./dist/esm/index.js",

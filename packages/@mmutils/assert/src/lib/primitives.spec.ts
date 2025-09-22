@@ -131,3 +131,5 @@ describe('isFunction', () => {
     expect(isFunction).toBeTrueFor(['function'], DEBUG_MODE);
   });
 });
+
+

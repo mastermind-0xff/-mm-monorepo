@@ -17,13 +17,12 @@ import {
   assertNever,
 } from './assertions.ts';
 import {
-  testAgainst,
   primitiveTestData,
   AllowedCategories,
   assertAgainst,
   DebugMode,
 } from '../util/unit-test';
-import { describe, test, expect, afterEach, expectTypeOf } from 'vitest';
+import { describe, test, expect, afterEach } from 'vitest';
 
 expect.extend({
   toNotThrowFor(
