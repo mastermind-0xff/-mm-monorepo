@@ -270,6 +270,8 @@ const funcZ = (type: 'a' | 'b', x?: number) => {
 
 ## Changelog
 
+### v0.0.5
+
 - assertNever fixed return type.
 
 ### v0.0.4
