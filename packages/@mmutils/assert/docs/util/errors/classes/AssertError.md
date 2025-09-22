@@ -6,7 +6,7 @@
 
 # Class: AssertError
 
-Defined in: [packages/@mmutils/assert/src/util/errors.ts:1](https://github.com/mastermind-0xff/-mm-monorepo/blob/ae77bebbedeaf68ca437dc22abf389b1b28fc898/packages/@mmutils/assert/src/util/errors.ts#L1)
+Defined in: [packages/@mmutils/assert/src/util/errors.ts:1](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/util/errors.ts#L1)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [packages/@mmutils/assert/src/util/errors.ts:1](https://github.com/m
 
 > **new AssertError**(`message`?, `options`?): [`AssertError`](AssertError.md)
 
-Defined in: [packages/@mmutils/assert/src/util/errors.ts:2](https://github.com/mastermind-0xff/-mm-monorepo/blob/ae77bebbedeaf68ca437dc22abf389b1b28fc898/packages/@mmutils/assert/src/util/errors.ts#L2)
+Defined in: [packages/@mmutils/assert/src/util/errors.ts:2](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/util/errors.ts#L2)
 
 #### Parameters
 

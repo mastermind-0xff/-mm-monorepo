@@ -56,19 +56,27 @@ import {
   assertIsBoolean,
   assertIsFunction,
   assertIsNonNullish,
+  assertIsNull,
+  assertIsNullableObject,
+  assertIsNullish,
   assertIsNumber,
   assertIsObject,
   assertIsString,
   assertIsSymbol,
+  assertIsUndefined,
+  assertNever,
   isArray,
   isBigInt,
   isBoolean,
   isFunction,
-  isNonNullish,
+  isNull,
+  isNullableObject,
+  isNullish,
   isNumber,
   isObject,
   isString,
   isSymbol,
+  isUndefined,
 } from '@mmutils/assert';
 // or
 import {
@@ -78,19 +86,27 @@ import {
   assertIsBoolean,
   assertIsFunction,
   assertIsNonNullish,
+  assertIsNull,
+  assertIsNullableObject,
+  assertIsNullish,
   assertIsNumber,
   assertIsObject,
   assertIsString,
   assertIsSymbol,
+  assertIsUndefined,
+  assertNever,
   isArray,
   isBigInt,
   isBoolean,
   isFunction,
-  isNonNullish,
+  isNull,
+  isNullableObject,
+  isNullish,
   isNumber,
   isObject,
   isString,
   isSymbol,
+  isUndefined,
 } from '@mmutils/assert/esm/';
 ```
 
@@ -104,19 +120,27 @@ const {
   assertIsBoolean,
   assertIsFunction,
   assertIsNonNullish,
+  assertIsNull,
+  assertIsNullableObject,
+  assertIsNullish,
   assertIsNumber,
   assertIsObject,
   assertIsString,
   assertIsSymbol,
+  assertIsUndefined,
+  assertNever,
   isArray,
   isBigInt,
   isBoolean,
   isFunction,
-  isNonNullish,
+  isNull,
+  isNullableObject,
+  isNullish,
   isNumber,
   isObject,
   isString,
   isSymbol,
+  isUndefined,
 } = require('@mmutils/assert');
 // or
 const {
@@ -126,27 +150,153 @@ const {
   assertIsBoolean,
   assertIsFunction,
   assertIsNonNullish,
+  assertIsNull,
+  assertIsNullableObject,
+  assertIsNullish,
   assertIsNumber,
   assertIsObject,
   assertIsString,
   assertIsSymbol,
+  assertIsUndefined,
+  assertNever,
   isArray,
   isBigInt,
   isBoolean,
   isFunction,
-  isNonNullish,
+  isNull,
+  isNullableObject,
+  isNullish,
   isNumber,
   isObject,
   isString,
   isSymbol,
+  isUndefined,
 } = require('@mmutils/assert/cjs/');
+```
+
+## API
+
+### Usage:
+
+#### is`Type`(`<value>`)
+
+**Type** is one of `<Array | BigInt | Boolean | Function | Null | NullableObject | Nullish | Number | Object | String | Symbol | Undefined>`.  
+**value** is of unknown type.
+
+_**examples:**_
+
+```typescript
+const math = (x?: number | bigint) => {
+  if (isNullish(x)) {
+    x; // undefined, notice argument x can't be null
+    console.log('Please, provide x. x is undefined or null.');
+  } else if (isNumber(x)) {
+    x; // number
+    console.log('Performing math. x is number.');
+    return x * x;
+  } else if (isBigInt(x)) {
+    x; // bigint
+    console.log('Performing big math. x is bigint.');
+    return x * x * x;
+  }
+};
+```
+
+#### assert(`<condition>`);
+
+**condition** is a condition to assert or to narrow a type.
+
+_**examples:**_
+
+```typescript
+// assert usage
+
+const funcX = (x: unknown) => {
+  x; // unknown
+  assert(typeof x === 'number'); // throws if x is not number
+  x; // number
+};
+
+const
+```
+
+#### assertNever(`<never-value>`);
+
+**never-value** must be of never type
+
+```typescript
+// assertNever usage
+
+const funcY = (x: 'a' | 'b' | 'c') => {
+  switch (x) {
+    case 'a':
+    case 'b':
+      // case 'c' not handled
+      return x;
+    default:
+      assertNever(x); // ts error, Argument of type '"c"' is not assignable to parameter of type 'never'.
+  }
+};
+
+const funcY_fixed = (x: 'a' | 'b' | 'c') => {
+  switch (x) {
+    case 'a':
+    case 'b':
+    case 'c':
+      return x; // all cases handled
+    default:
+      assertNever(x); // unreachable default
+  }
+};
+```
+
+#### assertIs`Type`(`value`)
+
+**Type** is one of `<Array | BigInt | Boolean | Function | NonNullish | Null | NullableObject | Nullish | Number | Object | String | Symbol | Undefined>`
+
+**value** is of unknown type.
+
+```typescript
+// assert[IsType]
+
+const funcZ = (type: 'a' | 'b', x?: number) => {
+  switch (type) {
+    case 'a':
+      return 1;
+    case 'b':
+      const math = x * 2; // ts error, x is possibly undefined
+      assertIsNumber(x); // throws if x is not number
+      const math_safe = x * 2; // x is number
+      return math_safe;
+  }
+};
 ```
 
 ## Changelog
 
+### v0.0.6
+
+- assertNever fixed return type.
+
+### v0.0.5
+
+- Documentation changes.
+
+### v0.0.4
+
+- Documentation changes.
+
+### v0.0.3
+
+- Removed redundant files.
+
+### v0.0.2
+
+- Documentation changes.
+
 ### v0.0.1
 
-Initial release.
+- Initial release.
 
 ## Usage
 

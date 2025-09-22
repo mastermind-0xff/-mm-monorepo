@@ -8,7 +8,7 @@
 
 > `const` **AssertPrimitiveOptions**: `object`
 
-Defined in: [packages/@mmutils/assert/src/config/options.ts:7](https://github.com/mastermind-0xff/-mm-monorepo/blob/ae77bebbedeaf68ca437dc22abf389b1b28fc898/packages/@mmutils/assert/src/config/options.ts#L7)
+Defined in: [packages/@mmutils/assert/src/config/options.ts:7](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/config/options.ts#L7)
 
 Configurable settings object. Sets the default behavior of some of the
 basic methods.

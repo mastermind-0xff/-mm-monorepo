@@ -6,7 +6,7 @@
 
 # Interface: ProcessEnv
 
-Defined in: [packages/@mmutils/assert/src/config/environment.ts:3](https://github.com/mastermind-0xff/-mm-monorepo/blob/ae77bebbedeaf68ca437dc22abf389b1b28fc898/packages/@mmutils/assert/src/config/environment.ts#L3)
+Defined in: [packages/@mmutils/assert/src/config/environment.ts:3](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/config/environment.ts#L3)
 
 ## Extends
 
@@ -22,7 +22,7 @@ Defined in: [packages/@mmutils/assert/src/config/environment.ts:3](https://githu
 
 > `optional` **AP\_NUMBER\_EXCLUDE\_NAN**: `string`
 
-Defined in: [packages/@mmutils/assert/src/config/environment.ts:5](https://github.com/mastermind-0xff/-mm-monorepo/blob/ae77bebbedeaf68ca437dc22abf389b1b28fc898/packages/@mmutils/assert/src/config/environment.ts#L5)
+Defined in: [packages/@mmutils/assert/src/config/environment.ts:5](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/config/environment.ts#L5)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [packages/@mmutils/assert/src/config/environment.ts:5](https://githu
 
 > `optional` **AP\_OBJECT\_EXCLUDE\_NULL**: `string`
 
-Defined in: [packages/@mmutils/assert/src/config/environment.ts:4](https://github.com/mastermind-0xff/-mm-monorepo/blob/ae77bebbedeaf68ca437dc22abf389b1b28fc898/packages/@mmutils/assert/src/config/environment.ts#L4)
+Defined in: [packages/@mmutils/assert/src/config/environment.ts:4](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/config/environment.ts#L4)
 
 ***
 
