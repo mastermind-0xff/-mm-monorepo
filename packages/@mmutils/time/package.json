@@ -1,6 +1,6 @@
 {
   "name": "@mmutils/time",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Common reusable, typed, JavasScript time related utility functions built with TypeScript.",
   "keywords": [
     "time",

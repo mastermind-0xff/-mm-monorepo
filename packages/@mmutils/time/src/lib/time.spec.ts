@@ -67,9 +67,24 @@ describe('formatHighResTime', () => {
     expect(formatHighResTime(1_100_000, -1)).toStrictEqual('1ms');
     expect(formatHighResTime(1_100_000, 100)).toStrictEqual('1ms 100µs');
   });
+  test('cap capabilities with time unit', () => {
+    expect(formatHighResTime(2_500, 2, 'ms')).toStrictEqual('2s 500ms');
+    expect(formatHighResTime(2_500, 0, 'ms')).toStrictEqual('3s');
+    expect(formatHighResTime(1.5, 1, 'ms')).toStrictEqual('1ms 500µs');
+    expect(formatHighResTime(90, 1, 's')).toStrictEqual('1m 30s');
+  });
   test('negative input', () => {
     expect(formatHighResTime(-1_000_000)).toStrictEqual('-1ms');
     expect(formatHighResTime(-1_100_100)).toStrictEqual('-1ms 100µs 100ns');
+    expect(formatHighResTime(-2_500, 2, 'ms')).toStrictEqual('-2s 500ms');
+  });
+  test('fractional nanoseconds are floored', () => {
+    expect(formatHighResTime(1.9)).toStrictEqual('1ns');
+    expect(formatHighResTime(1_000.999)).toStrictEqual('1µs');
+    expect(formatHighResTime(59_999_999_999.5)).toStrictEqual(
+      '59s 999ms 999µs 999ns'
+    );
+    expect(formatHighResTime(3600e9 + 0.5)).toStrictEqual('1h');
   });
   test('overflow', () => {
     expect(formatHighResTime(Number.MAX_SAFE_INTEGER)).toStrictEqual(
@@ -89,5 +104,25 @@ describe('formatHighResTime', () => {
     expect(formatHighResTime(0.5, 'ms', 'ms')).toStrictEqual('1ms');
 
     expect(formatHighResTime(1_000, 'h')).toStrictEqual('0h');
+  });
+  test('zero with numeric cap uses time unit', () => {
+    expect(formatHighResTime(0, 2)).toStrictEqual('0ns');
+    expect(formatHighResTime(0, 2, 'ms')).toStrictEqual('0ms');
+    expect(formatHighResTime(0, 0, 's')).toStrictEqual('0s');
+    expect(formatHighResTime(-0, 2, 'ms')).toStrictEqual('0ms');
+  });
+  test('values rounding to zero', () => {
+    // numeric cap, below half a nanosecond
+    expect(formatHighResTime(1e-7, 2, 'ms')).toStrictEqual('0ms');
+    expect(formatHighResTime(0.1 + 0.2 - 0.3, 2, 's')).toStrictEqual('0s');
+    // unit cap keeps the cap unit
+    expect(formatHighResTime(1e-7, 'µs', 'ms')).toStrictEqual('0µs');
+    expect(formatHighResTime(0.0004, 'ms', 'ms')).toStrictEqual('0ms');
+  });
+  test('negative values rounding to zero are not signed', () => {
+    expect(formatHighResTime(-0.4)).toStrictEqual('0ns');
+    expect(formatHighResTime(-1e-7, 2, 'ms')).toStrictEqual('0ms');
+    expect(formatHighResTime(-0.0004, 'ms', 'ms')).toStrictEqual('0ms');
+    expect(formatHighResTime(-1_000, 'h')).toStrictEqual('0h');
   });
 });

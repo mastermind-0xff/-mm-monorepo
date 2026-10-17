@@ -17,6 +17,9 @@ export const TimeUnitInNs = {
   __proto__: null,
 } as const satisfies Record<TimeUnit, number>;
 
+/** Nanoseconds in each unit, in `timeUnits` order. */
+const timeUnitsNs = timeUnits.map((unit) => TimeUnitInNs[unit]);
+
 /**
  * Shift given time unit N positions up or down.
  *
@@ -87,12 +90,15 @@ export const timeUnitFromNs = (timeNs: number): TimeUnit => {
  * Number.MAX_SAFE_INTEGER. Processing values above that might work, might not,
  * might produce unknown results.
  * - time is floored after converting to nanoseconds (0.5ns = 0ns)
- * - if all units have zero value, `'0[capTo || timeUnit]'` is displayed.
+ * - if all units have zero value, `'0[capTo]'` is displayed when `capTo` is a
+ * unit, otherwise `'0[timeUnit]'`. Zero is never signed.
  *
  * **examples:**
  * ```
  * formatHighResTime(0, 'ms') // '0ms'
  * formatHighResTime(0, undefined, 's') // '0s'
+ * formatHighResTime(0, 2, 'ms') // '0ms'
+ * formatHighResTime(-0.4) // '0ns'
  * formatHighResTime(0.5, 'ns') // '0ns'
  * formatHighResTime(0.5, undefined, 'ms') // '500µs'
  * formatHighResTime(0.5, 'ms', 'ms') // '1ms'
@@ -124,6 +130,7 @@ export const timeUnitFromNs = (timeNs: number): TimeUnit => {
  *   4,
  *   2
  * ); // '1s 2ms 3µs'
+ * formatHighResTime(2_500, 2, 'ms'); // '2s 500ms'
  * formatHighResTime(1 * 1_000_000 + 2 * 1_000 + 3); // '1ms 2µs 3ns'
  * formatHighResTime(1 * 1_000_000 + 0 * 1_000 + 3); // '1ms 3ns'
  * formatHighResTime(1 * 1_000, undefined, 'ms'); // '1s'
@@ -143,8 +150,9 @@ export const timeUnitFromNs = (timeNs: number): TimeUnit => {
  * @param timeUnit Time value's unit. Specify in what unit `time` is expressed.
  * Defaults to `'ns'`.
  * @returns Formatted string with units of time. If a unit's value is
- * zero, it's omitted. If all units are omitted - `'0[capTo || timeUnit]'`
- * is displayed. If time is negative value, leading '-' is added.
+ * zero, it's omitted. If all units are omitted - `'0[capTo]'` is displayed
+ * when `capTo` is a unit, otherwise `'0[timeUnit]'`. If time is a negative
+ * value that doesn't round to zero, leading '-' is added.
  */
 export const formatHighResTime = (
   time: number,
@@ -155,23 +163,27 @@ export const formatHighResTime = (
   // convert to ns
   time = Math.abs(time) * TimeUnitInNs[timeUnit];
   // shift the time unit if cap is number
-  if (typeof capTo === 'number')
-    capTo = shiftTimeUnit(timeUnitFromNs(time), Math.max(0, capTo));
-
-  if (capTo)
-    time = Math.round(time / TimeUnitInNs[capTo]) * TimeUnitInNs[capTo];
-  return (
-    sign +
-      Object.entries({
-        h: Math.floor(time / TimeUnitInNs['h']),
-        m: Math.floor((time % TimeUnitInNs['h']) / TimeUnitInNs['m']),
-        s: Math.floor((time % TimeUnitInNs['m']) / TimeUnitInNs['s']),
-        ms: Math.floor((time % TimeUnitInNs['s']) / TimeUnitInNs['ms']),
-        µs: Math.floor((time % TimeUnitInNs['ms']) / TimeUnitInNs['µs']),
-        ns: Math.floor(time) % TimeUnitInNs['µs'],
-      })
-        .map(([n, v]) => (v ? ` ${v}${n}` : ''))
-        .join('')
-        .substring(1) || `0${capTo || timeUnit}`
-  );
+  const capUnit =
+    typeof capTo === 'number' ?
+      shiftTimeUnit(timeUnitFromNs(time), Math.max(0, capTo))
+    : capTo;
+  if (capUnit) {
+    const capNs = TimeUnitInNs[capUnit];
+    time = Math.round(time / capNs) * capNs;
+  }
+  // floor once, floor(x / n) equals floor(floor(x) / n) for integer n
+  time = Math.floor(time);
+  let result = '';
+  for (let i = 0; i < timeUnits.length; i++) {
+    const unitNs = timeUnitsNs[i]!;
+    const value = Math.floor(time / unitNs);
+    if (value) {
+      result += (result ? ' ' : '') + value + timeUnits[i];
+      time %= unitNs;
+    }
+  }
+  // a numeric cap is not a unit, zero is shown in the value's own unit
+  return result ?
+      sign + result
+    : `0${typeof capTo === 'string' ? capTo : timeUnit}`;
 };
