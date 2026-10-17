@@ -8,7 +8,7 @@
 
 > **formatHighResTime**(`time`, `capTo?`, `timeUnit?`): `string`
 
-Defined in: [lib/time.ts:157](https://github.com/mastermind-0xff/-mm-monorepo/blob/5282b86b29e2dc355219a4e0d5a60caf7ee710b3/packages/@mmutils/time/src/lib/time.ts#L157)
+Defined in: [lib/time.ts:161](https://github.com/mastermind-0xff/-mm-monorepo/blob/9423122f075886eeeb38fbba39b66e0904725ef6/packages/@mmutils/time/src/lib/time.ts#L161)
 
 Format time value from nanoseconds, microseconds, milliseconds, seconds,
 minutes or hours to a more readable string. Provide a duration value and
@@ -25,7 +25,8 @@ the built-in hardware (FPU) to speed up math operations.
 the value is always converted to nanoseconds (2^53-1 in nanoseconds). Consult
 Number.MAX_SAFE_INTEGER. Processing values above that might work, might not,
 might produce unknown results.
-- time is floored after converting to nanoseconds (0.5ns = 0ns)
+- time is rounded to the nearest nanosecond after converting, or to the
+`capTo` unit when set (0.4ns = 0ns, 0.5ns = 1ns)
 - if all units have zero value, `'0[capTo]'` is displayed when `capTo` is a
 unit, otherwise `'0[timeUnit]'`. Zero is never signed.
 
@@ -35,9 +36,12 @@ formatHighResTime(0, 'ms') // '0ms'
 formatHighResTime(0, undefined, 's') // '0s'
 formatHighResTime(0, 2, 'ms') // '0ms'
 formatHighResTime(-0.4) // '0ns'
-formatHighResTime(0.5, 'ns') // '0ns'
+formatHighResTime(0.4) // '0ns'
+formatHighResTime(0.5) // '1ns'
+formatHighResTime(0.5, 'ns') // '1ns'
 formatHighResTime(0.5, undefined, 'ms') // '500µs'
 formatHighResTime(0.5, 'ms', 'ms') // '1ms'
+formatHighResTime(1.005, undefined, 'ms') // '1ms 5µs'
 formatHighResTime(1 * 60 * 60 * 1_000_000_000) // '1h' default timeUnit: 'ns'
 formatHighResTime(2 * 60 * 1_000_000_000) // '2m'
 formatHighResTime(3 * 1_000_000_000) // '3s'
@@ -82,7 +86,7 @@ formatHighResTime(-1_100_100); // '-1ms 100µs 100ns'
 
 `number`
 
-Time value. Value is converted to nanoseconds, floored and then
+Time value. Value is converted to nanoseconds, rounded and then
 formatted.
 
 ### capTo?
@@ -91,7 +95,7 @@ formatted.
 
 If set, caps the output to a specific unit or positions down
 from the highest whole unit of the current time value. It effectively
-'floors' the output to a specific unit. Negative values are not allowed as
+rounds the output to a specific unit. Negative values are not allowed as
 they would always produce `'0[unit]'` output.
 `formatHighResTime(1 * 1_000 + 1, 'µs'); // '1µs'`
 

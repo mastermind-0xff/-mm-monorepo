@@ -46,6 +46,7 @@ const {
 
 - `formatHighResTime` with a numeric `capTo` shows zero in the value's own unit: `formatHighResTime(0, 2, 'ms')` returns `'0ms'` instead of `'0ns'`. Values that round to zero behave the same.
 - `formatHighResTime` returns `'0[unit]'` instead of `'-'` for negative values that round to zero.
+- `formatHighResTime` without `capTo` rounds to the nearest nanosecond instead of flooring, the same as `capTo: 'ns'`. Float noise no longer shows up: `formatHighResTime(1.005, undefined, 'ms')` returns `'1ms 5µs'` instead of `'1ms 4µs 999ns'`. Half a nanosecond or more rounds up: `formatHighResTime(0.6)` returns `'1ns'` instead of `'0ns'`.
 - `formatHighResTime` is about 5x faster.
 
 ### v0.0.1
@@ -140,6 +141,7 @@ nanoseconds. Fractions will leak down to lower order units. You can cap the
 output to a specific unit type or to a unit that is N positions lower than
 the current highest whole unit.
 
+Time is rounded to the nearest nanosecond, or to the `capTo` unit when set.
 If all units have zero value, `'0[capTo]'` is displayed when `capTo` is a
 unit, otherwise `'0[timeUnit]'`. Zero is never signed.
 
@@ -150,9 +152,12 @@ formatHighResTime(0, 'ms'); // '0ms'
 formatHighResTime(0, undefined, 's'); // '0s'
 formatHighResTime(0, 2, 'ms'); // '0ms'
 formatHighResTime(-0.4); // '0ns'
-formatHighResTime(0.5, 'ns'); // '0ns'
+formatHighResTime(0.4); // '0ns'
+formatHighResTime(0.5); // '1ns'
+formatHighResTime(0.5, 'ns'); // '1ns'
 formatHighResTime(0.5, undefined, 'ms'); // '500µs'
 formatHighResTime(0.5, 'ms', 'ms'); // '1ms'
+formatHighResTime(1.005, undefined, 'ms'); // '1ms 5µs'
 formatHighResTime(1 * 60 * 60 * 1_000_000_000); // '1h' default timeUnit: 'ns'
 formatHighResTime(2 * 60 * 1_000_000_000); // '2m'
 formatHighResTime(3 * 1_000_000_000); // '3s'
