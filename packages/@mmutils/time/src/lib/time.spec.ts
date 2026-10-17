@@ -77,14 +77,36 @@ describe('formatHighResTime', () => {
     expect(formatHighResTime(-1_000_000)).toStrictEqual('-1ms');
     expect(formatHighResTime(-1_100_100)).toStrictEqual('-1ms 100µs 100ns');
     expect(formatHighResTime(-2_500, 2, 'ms')).toStrictEqual('-2s 500ms');
+    expect(formatHighResTime(-0.6)).toStrictEqual('-1ns');
   });
-  test('fractional nanoseconds are floored', () => {
-    expect(formatHighResTime(1.9)).toStrictEqual('1ns');
-    expect(formatHighResTime(1_000.999)).toStrictEqual('1µs');
-    expect(formatHighResTime(59_999_999_999.5)).toStrictEqual(
+  test('fractional nanoseconds are rounded', () => {
+    expect(formatHighResTime(1.4)).toStrictEqual('1ns');
+    expect(formatHighResTime(1.9)).toStrictEqual('2ns');
+    expect(formatHighResTime(1_000.999)).toStrictEqual('1µs 1ns');
+    expect(formatHighResTime(59_999_999_999.4)).toStrictEqual(
       '59s 999ms 999µs 999ns'
     );
-    expect(formatHighResTime(3600e9 + 0.5)).toStrictEqual('1h');
+    expect(formatHighResTime(59_999_999_999.5)).toStrictEqual('1m');
+    expect(formatHighResTime(3600e9 + 0.5)).toStrictEqual('1h 1ns');
+  });
+  test('ns cap is the same as no cap', () => {
+    for (const time of [0.4, 0.5, 0.6, 1.6, 1_000.999, -0.6])
+      expect(formatHighResTime(time, 'ns')).toStrictEqual(
+        formatHighResTime(time)
+      );
+  });
+  test('decimal input is not shifted by float noise', () => {
+    // 1.005 * 1e6 = 1004999.9999999999
+    expect(formatHighResTime(1.005, undefined, 'ms')).toStrictEqual('1ms 5µs');
+    // whole µs in ms and whole ms in s never print a lower unit
+    const noisy: string[] = [];
+    for (let i = 0; i < 100_000; i++) {
+      const ms = formatHighResTime(i / 1_000, undefined, 'ms');
+      const s = formatHighResTime(i / 1_000, undefined, 's');
+      if (ms.includes('ns')) noisy.push(ms);
+      if (s.includes('µs') || s.includes('ns')) noisy.push(s);
+    }
+    expect(noisy).toStrictEqual([]);
   });
   test('overflow', () => {
     expect(formatHighResTime(Number.MAX_SAFE_INTEGER)).toStrictEqual(
@@ -99,7 +121,9 @@ describe('formatHighResTime', () => {
     expect(formatHighResTime(0, 's')).toStrictEqual('0s');
     expect(formatHighResTime(0, undefined, 'm')).toStrictEqual('0m');
 
-    expect(formatHighResTime(0.5)).toStrictEqual('0ns');
+    expect(formatHighResTime(0.4)).toStrictEqual('0ns');
+    expect(formatHighResTime(0.5)).toStrictEqual('1ns');
+    expect(formatHighResTime(0.5, 'ns')).toStrictEqual('1ns');
     expect(formatHighResTime(0.5, undefined, 'ms')).toStrictEqual('500µs');
     expect(formatHighResTime(0.5, 'ms', 'ms')).toStrictEqual('1ms');
 
@@ -112,7 +136,8 @@ describe('formatHighResTime', () => {
     expect(formatHighResTime(-0, 2, 'ms')).toStrictEqual('0ms');
   });
   test('values rounding to zero', () => {
-    // numeric cap, below half a nanosecond
+    // no cap or numeric cap, below half a nanosecond
+    expect(formatHighResTime(1e-7, undefined, 'ms')).toStrictEqual('0ms');
     expect(formatHighResTime(1e-7, 2, 'ms')).toStrictEqual('0ms');
     expect(formatHighResTime(0.1 + 0.2 - 0.3, 2, 's')).toStrictEqual('0s');
     // unit cap keeps the cap unit

@@ -89,7 +89,8 @@ export const timeUnitFromNs = (timeNs: number): TimeUnit => {
  * the value is always converted to nanoseconds (2^53-1 in nanoseconds). Consult
  * Number.MAX_SAFE_INTEGER. Processing values above that might work, might not,
  * might produce unknown results.
- * - time is floored after converting to nanoseconds (0.5ns = 0ns)
+ * - time is rounded to the nearest nanosecond after converting, or to the
+ * `capTo` unit when set (0.4ns = 0ns, 0.5ns = 1ns)
  * - if all units have zero value, `'0[capTo]'` is displayed when `capTo` is a
  * unit, otherwise `'0[timeUnit]'`. Zero is never signed.
  *
@@ -99,9 +100,12 @@ export const timeUnitFromNs = (timeNs: number): TimeUnit => {
  * formatHighResTime(0, undefined, 's') // '0s'
  * formatHighResTime(0, 2, 'ms') // '0ms'
  * formatHighResTime(-0.4) // '0ns'
- * formatHighResTime(0.5, 'ns') // '0ns'
+ * formatHighResTime(0.4) // '0ns'
+ * formatHighResTime(0.5) // '1ns'
+ * formatHighResTime(0.5, 'ns') // '1ns'
  * formatHighResTime(0.5, undefined, 'ms') // '500µs'
  * formatHighResTime(0.5, 'ms', 'ms') // '1ms'
+ * formatHighResTime(1.005, undefined, 'ms') // '1ms 5µs'
  * formatHighResTime(1 * 60 * 60 * 1_000_000_000) // '1h' default timeUnit: 'ns'
  * formatHighResTime(2 * 60 * 1_000_000_000) // '2m'
  * formatHighResTime(3 * 1_000_000_000) // '3s'
@@ -140,11 +144,11 @@ export const timeUnitFromNs = (timeNs: number): TimeUnit => {
  * formatHighResTime(-1_100_100); // '-1ms 100µs 100ns'
  * ```
  *
- * @param time Time value. Value is converted to nanoseconds, floored and then
+ * @param time Time value. Value is converted to nanoseconds, rounded and then
  * formatted.
  * @param capTo If set, caps the output to a specific unit or positions down
  * from the highest whole unit of the current time value. It effectively
- * 'floors' the output to a specific unit. Negative values are not allowed as
+ * rounds the output to a specific unit. Negative values are not allowed as
  * they would always produce `'0[unit]'` output.
  * `formatHighResTime(1 * 1_000 + 1, 'µs'); // '1µs'`
  * @param timeUnit Time value's unit. Specify in what unit `time` is expressed.
@@ -162,17 +166,15 @@ export const formatHighResTime = (
   const sign = time < 0 ? '-' : '';
   // convert to ns
   time = Math.abs(time) * TimeUnitInNs[timeUnit];
-  // shift the time unit if cap is number
+  // shift the time unit if cap is number, no cap is the same as 'ns'
   const capUnit =
     typeof capTo === 'number' ?
       shiftTimeUnit(timeUnitFromNs(time), Math.max(0, capTo))
-    : capTo;
-  if (capUnit) {
-    const capNs = TimeUnitInNs[capUnit];
-    time = Math.round(time / capNs) * capNs;
-  }
-  // floor once, floor(x / n) equals floor(floor(x) / n) for integer n
-  time = Math.floor(time);
+    : capTo || 'ns';
+  // round, flooring would turn float noise like 1.005ms = 1004999.9999999999ns
+  // into '1ms 4µs 999ns'
+  const capNs = TimeUnitInNs[capUnit];
+  time = Math.round(time / capNs) * capNs;
   let result = '';
   for (let i = 0; i < timeUnits.length; i++) {
     const unitNs = timeUnitsNs[i]!;
