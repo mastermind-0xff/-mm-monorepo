@@ -184,6 +184,10 @@ formatHighResTime(1 * 1_000 + 1, 'ns'); // '1µs 1ns'
 formatHighResTime(-1_100_100); // '-1ms 100µs 100ns'
 ```
 
+## AI assistance
+
+Since v0.0.2, parts of this package were written with the help of AI. All changes are reviewed and tested by the maintainer.
+
 ## License
 
 This project is licensed under the MIT License.
