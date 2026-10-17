@@ -8,7 +8,7 @@
 
 > **timeUnitFromNs**(`timeNs`): `"h"` \| `"m"` \| `"s"` \| `"ms"` \| `"µs"` \| `"ns"`
 
-Defined in: lib/time.ts:66
+Defined in: [lib/time.ts:69](https://github.com/mastermind-0xff/-mm-monorepo/blob/5282b86b29e2dc355219a4e0d5a60caf7ee710b3/packages/@mmutils/time/src/lib/time.ts#L69)
 
 Get the highest full time unit available for the current nanoseconds input.
 Works with positive and negative values.

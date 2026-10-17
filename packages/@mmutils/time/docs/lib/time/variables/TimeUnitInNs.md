@@ -8,7 +8,7 @@
 
 > `const` **TimeUnitInNs**: `object`
 
-Defined in: lib/time.ts:9
+Defined in: [lib/time.ts:9](https://github.com/mastermind-0xff/-mm-monorepo/blob/5282b86b29e2dc355219a4e0d5a60caf7ee710b3/packages/@mmutils/time/src/lib/time.ts#L9)
 
 Time units ENUM.
 How many nanoseconds in a specific unit of time.

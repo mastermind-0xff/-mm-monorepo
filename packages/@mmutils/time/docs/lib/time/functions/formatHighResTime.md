@@ -8,7 +8,7 @@
 
 > **formatHighResTime**(`time`, `capTo?`, `timeUnit?`): `string`
 
-Defined in: lib/time.ts:149
+Defined in: [lib/time.ts:157](https://github.com/mastermind-0xff/-mm-monorepo/blob/5282b86b29e2dc355219a4e0d5a60caf7ee710b3/packages/@mmutils/time/src/lib/time.ts#L157)
 
 Format time value from nanoseconds, microseconds, milliseconds, seconds,
 minutes or hours to a more readable string. Provide a duration value and
@@ -26,12 +26,15 @@ the value is always converted to nanoseconds (2^53-1 in nanoseconds). Consult
 Number.MAX_SAFE_INTEGER. Processing values above that might work, might not,
 might produce unknown results.
 - time is floored after converting to nanoseconds (0.5ns = 0ns)
-- if all units have zero value, `'0[capTo || timeUnit]'` is displayed.
+- if all units have zero value, `'0[capTo]'` is displayed when `capTo` is a
+unit, otherwise `'0[timeUnit]'`. Zero is never signed.
 
 **examples:**
 ```
 formatHighResTime(0, 'ms') // '0ms'
 formatHighResTime(0, undefined, 's') // '0s'
+formatHighResTime(0, 2, 'ms') // '0ms'
+formatHighResTime(-0.4) // '0ns'
 formatHighResTime(0.5, 'ns') // '0ns'
 formatHighResTime(0.5, undefined, 'ms') // '500µs'
 formatHighResTime(0.5, 'ms', 'ms') // '1ms'
@@ -63,6 +66,7 @@ formatHighResTime(
   4,
   2
 ); // '1s 2ms 3µs'
+formatHighResTime(2_500, 2, 'ms'); // '2s 500ms'
 formatHighResTime(1 * 1_000_000 + 2 * 1_000 + 3); // '1ms 2µs 3ns'
 formatHighResTime(1 * 1_000_000 + 0 * 1_000 + 3); // '1ms 3ns'
 formatHighResTime(1 * 1_000, undefined, 'ms'); // '1s'
@@ -103,5 +107,6 @@ Defaults to `'ns'`.
 `string`
 
 Formatted string with units of time. If a unit's value is
-zero, it's omitted. If all units are omitted - `'0[capTo || timeUnit]'`
-is displayed. If time is negative value, leading '-' is added.
+zero, it's omitted. If all units are omitted - `'0[capTo]'` is displayed
+when `capTo` is a unit, otherwise `'0[timeUnit]'`. If time is a negative
+value that doesn't round to zero, leading '-' is added.

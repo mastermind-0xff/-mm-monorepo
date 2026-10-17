@@ -42,6 +42,12 @@ const {
 
 ## Changelog
 
+### v0.0.2
+
+- `formatHighResTime` with a numeric `capTo` shows zero in the value's own unit: `formatHighResTime(0, 2, 'ms')` returns `'0ms'` instead of `'0ns'`. Values that round to zero behave the same.
+- `formatHighResTime` returns `'0[unit]'` instead of `'-'` for negative values that round to zero.
+- `formatHighResTime` is about 5x faster.
+
 ### v0.0.1
 
 Initial release.
@@ -134,11 +140,16 @@ nanoseconds. Fractions will leak down to lower order units. You can cap the
 output to a specific unit type or to a unit that is N positions lower than
 the current highest whole unit.
 
+If all units have zero value, `'0[capTo]'` is displayed when `capTo` is a
+unit, otherwise `'0[timeUnit]'`. Zero is never signed.
+
 **examples:**
 
 ```typescript
 formatHighResTime(0, 'ms'); // '0ms'
 formatHighResTime(0, undefined, 's'); // '0s'
+formatHighResTime(0, 2, 'ms'); // '0ms'
+formatHighResTime(-0.4); // '0ns'
 formatHighResTime(0.5, 'ns'); // '0ns'
 formatHighResTime(0.5, undefined, 'ms'); // '500µs'
 formatHighResTime(0.5, 'ms', 'ms'); // '1ms'
@@ -158,6 +169,7 @@ formatHighResTime(
 ); // '1h 2m 3s 4ms 5µs 6ns'
 formatHighResTime(1 * 1_000_000_000 + 2 * 1_000_000 + 3 * 1_000 + 4, 'µs'); // '1s 2ms 3µs'
 formatHighResTime(1 * 1_000_000_000 + 2 * 1_000_000 + 3 * 1_000 + 4, 2); // '1s 2ms 3µs'
+formatHighResTime(2_500, 2, 'ms'); // '2s 500ms'
 formatHighResTime(1 * 1_000_000 + 2 * 1_000 + 3); // '1ms 2µs 3ns'
 formatHighResTime(1 * 1_000_000 + 0 * 1_000 + 3); // '1ms 3ns'
 formatHighResTime(1 * 1_000, undefined, 'ms'); // '1s'
