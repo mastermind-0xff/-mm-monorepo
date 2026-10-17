@@ -17,4 +17,11 @@ export default [
   { languageOptions: { globals: globals.node } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
+  // typescript-eslint is hoisted and shared by all packages; set the root
+  // explicitly, inference is ambiguous when several configs share a process.
+  {
+    languageOptions: {
+      parserOptions: { tsconfigRootDir: import.meta.dirname },
+    },
+  },
 ];
