@@ -33,6 +33,10 @@ import type {
 
 ## Changelog
 
+### v0.0.2
+
+- Types resolve under `moduleResolution: node16` / `nodenext`. The type declarations are bundled into a single file, with a `.d.cts` copy for `require`. Before, these setups saw no exports.
+
 ### v0.0.1
 
 Initial release.

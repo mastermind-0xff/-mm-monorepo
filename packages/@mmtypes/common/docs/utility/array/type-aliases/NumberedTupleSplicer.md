@@ -6,9 +6,9 @@
 
 # Type Alias: NumberedTupleSplicer\<ValuesTuple, NumsTuple, R\>
 
-> **NumberedTupleSplicer**\<`ValuesTuple`, `NumsTuple`, `R`\>: `R`\[keyof `R`\][]
+> **NumberedTupleSplicer**\<`ValuesTuple`, `NumsTuple`, `R`\> = `R`\[keyof `R`\][]
 
-Defined in: utility/array.ts:43
+Defined in: [utility/array.ts:43](https://github.com/mastermind-0xff/-mm-monorepo/blob/9183ce548bcc4fccff7ed80ba5a34f5f37094be0/packages/@mmtypes/common/src/utility/array.ts#L43)
 
 Creates tuple of type [NumsTuple[n], ValuesTuple[NumsTuple[n]]] the
 intersecting keys from ValuesTuple and NumsTuple values. The resulting 0
@@ -24,8 +24,14 @@ type T3 = NumberedTupleSplicer<['a', 'b', 'c', 'd'], ['1', '3', '5']>; // (["1",
 
 ## Type Parameters
 
-• **ValuesTuple** *extends* `ArrayLike`\<`unknown`\>
+### ValuesTuple
 
-• **NumsTuple** *extends* `ArrayLike`\<`string` \| `number`\> = [`TupleOfNElements`](TupleOfNElements.md)\<`ValuesTuple`\[`"length"`\]\>
+`ValuesTuple` *extends* `ArrayLike`\<`unknown`\>
 
-• **R** = `{ [K in Extract<NumsTuple[number], keyof ValuesTuple>]: [K, ValuesTuple[K]] }`
+### NumsTuple
+
+`NumsTuple` *extends* `ArrayLike`\<`string` \| `number`\> = [`TupleOfNElements`](TupleOfNElements.md)\<`ValuesTuple`\[`"length"`\]\>
+
+### R
+
+`R` = `{ [K in Extract<NumsTuple[number], keyof ValuesTuple>]: [K, ValuesTuple[K]] }`
