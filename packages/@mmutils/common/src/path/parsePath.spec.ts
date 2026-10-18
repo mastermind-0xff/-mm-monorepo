@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { parsePath } from './parsePath'; // replace wtesth your actual module path
 import path from 'path';
 
