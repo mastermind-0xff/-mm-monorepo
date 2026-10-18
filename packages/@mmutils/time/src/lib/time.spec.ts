@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { formatHighResTime, shiftTimeUnit, timeUnitFromNs } from './time';
 
 describe('shiftTimeUnit', () => {

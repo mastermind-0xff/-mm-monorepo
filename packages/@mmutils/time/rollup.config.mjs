@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import ts from 'typescript';
 import typescript from 'rollup-plugin-typescript2';
 import json from '@rollup/plugin-json';
 import { dts } from 'rollup-plugin-dts';
@@ -31,7 +32,10 @@ export default [
       json(),
       resolve(),
       commonjs(),
+      // Compile with this package's TypeScript, not whichever version the
+      // plugin resolves from the hoisted root node_modules.
       typescript({
+        typescript: ts,
         tsconfig: './tsconfig.build.json',
       }),
     ],
@@ -46,6 +50,7 @@ export default [
       { file: './dist/types/index.d.ts', format: 'esm' },
       { file: './dist/types/index.d.cts', format: 'esm' },
     ],
+    external: [/^node:/],
     plugins: [dts({ tsconfig: './tsconfig.build.json' })],
   },
 ];
