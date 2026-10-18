@@ -8,7 +8,7 @@
 
 > **parsedPathAsDir**(`data`): `ParsedPath`
 
-Defined in: [path/parsePath.ts:77](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L77)
+Defined in: [path/parsePath.ts:77](https://github.com/mastermind-0xff/-mm-monorepo/blob/567572b2839aec9480e5804f4858ca2604ba8b9d/packages/@mmutils/common/src/path/parsePath.ts#L77)
 
 Convert node parsed path object file to base dir.
 

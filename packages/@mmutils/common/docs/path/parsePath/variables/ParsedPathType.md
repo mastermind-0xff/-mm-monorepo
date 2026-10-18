@@ -8,7 +8,7 @@
 
 > `const` **ParsedPathType**: `object`
 
-Defined in: [path/parsePath.ts:19](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L19)
+Defined in: [path/parsePath.ts:19](https://github.com/mastermind-0xff/-mm-monorepo/blob/567572b2839aec9480e5804f4858ca2604ba8b9d/packages/@mmutils/common/src/path/parsePath.ts#L19)
 
 Parsed path type constant.
 

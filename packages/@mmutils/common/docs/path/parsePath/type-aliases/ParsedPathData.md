@@ -8,7 +8,7 @@
 
 > **ParsedPathData** = `object`
 
-Defined in: [path/parsePath.ts:27](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L27)
+Defined in: [path/parsePath.ts:27](https://github.com/mastermind-0xff/-mm-monorepo/blob/567572b2839aec9480e5804f4858ca2604ba8b9d/packages/@mmutils/common/src/path/parsePath.ts#L27)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [path/parsePath.ts:27](https://github.com/mastermind-0xff/-mm-monore
 
 > **baseName**: `string`
 
-Defined in: [path/parsePath.ts:42](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L42)
+Defined in: [path/parsePath.ts:42](https://github.com/mastermind-0xff/-mm-monorepo/blob/567572b2839aec9480e5804f4858ca2604ba8b9d/packages/@mmutils/common/src/path/parsePath.ts#L42)
 
 Name portion of the last element. No extension in case of file.
 
@@ -34,7 +34,7 @@ console.log(parsePath('abc.jpg/').baseName); // abc.jpg (type is 'dir')
 
 > **basePath**: `string`
 
-Defined in: [path/parsePath.ts:30](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L30)
+Defined in: [path/parsePath.ts:30](https://github.com/mastermind-0xff/-mm-monorepo/blob/567572b2839aec9480e5804f4858ca2604ba8b9d/packages/@mmutils/common/src/path/parsePath.ts#L30)
 
 Path string from the parent to the first branch or empty string.
 
@@ -44,7 +44,7 @@ Path string from the parent to the first branch or empty string.
 
 > **extension**: `string`
 
-Defined in: [path/parsePath.ts:54](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L54)
+Defined in: [path/parsePath.ts:54](https://github.com/mastermind-0xff/-mm-monorepo/blob/567572b2839aec9480e5804f4858ca2604ba8b9d/packages/@mmutils/common/src/path/parsePath.ts#L54)
 
 Extension in case of file or empty string.
 
@@ -62,7 +62,7 @@ console.log(parsePath('abc.jpg/').extension); //
 
 > **name**: `string`
 
-Defined in: [path/parsePath.ts:65](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L65)
+Defined in: [path/parsePath.ts:65](https://github.com/mastermind-0xff/-mm-monorepo/blob/567572b2839aec9480e5804f4858ca2604ba8b9d/packages/@mmutils/common/src/path/parsePath.ts#L65)
 
 Full name. Includes extension in case of file.
 
@@ -80,7 +80,7 @@ console.log(parsePath('abc.jpg/').name); // abc.jpg (type is 'dir')
 
 > **parent**: `ParsedPathData` \| `undefined`
 
-Defined in: [path/parsePath.ts:67](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L67)
+Defined in: [path/parsePath.ts:67](https://github.com/mastermind-0xff/-mm-monorepo/blob/567572b2839aec9480e5804f4858ca2604ba8b9d/packages/@mmutils/common/src/path/parsePath.ts#L67)
 
 Returns parsed base path or undefined if no base.
 
@@ -90,7 +90,7 @@ Returns parsed base path or undefined if no base.
 
 > **toString**: () => `string`
 
-Defined in: [path/parsePath.ts:69](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L69)
+Defined in: [path/parsePath.ts:69](https://github.com/mastermind-0xff/-mm-monorepo/blob/567572b2839aec9480e5804f4858ca2604ba8b9d/packages/@mmutils/common/src/path/parsePath.ts#L69)
 
 Returns complete path string.
 
@@ -104,4 +104,4 @@ Returns complete path string.
 
 > **type**: [`ParsedPathType`](ParsedPathType.md)
 
-Defined in: [path/parsePath.ts:28](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L28)
+Defined in: [path/parsePath.ts:28](https://github.com/mastermind-0xff/-mm-monorepo/blob/567572b2839aec9480e5804f4858ca2604ba8b9d/packages/@mmutils/common/src/path/parsePath.ts#L28)
