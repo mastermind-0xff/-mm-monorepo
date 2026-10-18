@@ -1,17 +1,9 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import typescript from '@rollup/plugin-typescript';
+import ts from 'typescript';
+import typescript from 'rollup-plugin-typescript2';
 import json from '@rollup/plugin-json';
-
-// import packageJson from './package.json' assert { type: 'json' };
-
-// const entryFileNameNodeModules = (chunkInfo) => {
-//   if (chunkInfo.name.includes('node_modules')) {
-//     return chunkInfo.name.replace('node_modules', 'external') + '.js';
-//   }
-
-//   return '[name].js';
-// };
+import { dts } from 'rollup-plugin-dts';
 
 export default [
   {
@@ -34,24 +26,31 @@ export default [
         preserveModules: true,
         exports: 'auto',
         preserveModulesRoot: 'src',
-        // entryFileNames: entryFileNameNodeModules,
       },
     ],
     plugins: [
       json(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json' }),
+      // Compile with this package's TypeScript, not whichever version the
+      // plugin resolves from the hoisted root node_modules.
+      typescript({
+        typescript: ts,
+        tsconfig: './tsconfig.build.json',
+      }),
     ],
-    // external: (id) => {
-    //   if (String(id).indexOf('node_modules') !== -1) return true;
-    //   return false;
-    // },
   },
 
-  // {
-  //   input: './dist/esm/types/index.d.ts',
-  //   output: [{ file: './dist/index.d.ts', format: 'esm' }],
-  //   plugins: [dts()],
-  // },
+  // Bundle the declarations into a single file, so there are no relative
+  // imports left to resolve. The same content is emitted as .d.cts so that
+  // `require` consumers get CJS-flavoured types under node16/nodenext.
+  {
+    input: './src/index.ts',
+    output: [
+      { file: './dist/types/index.d.ts', format: 'esm' },
+      { file: './dist/types/index.d.cts', format: 'esm' },
+    ],
+    external: [/^node:/],
+    plugins: [dts({ tsconfig: './tsconfig.build.json' })],
+  },
 ];
