@@ -6,7 +6,8 @@
     "**/*.spec-d.ts*",
     "**/*.test.ts*",
     "**/*.test-d.ts*",
-    "src/util/unit-test.ts"
+    "src/util/unit-test.ts",
+    "src/config/environment.ts"
   ],
   "tsconfig": "tsconfig.build.json",
   "out": "docs",
