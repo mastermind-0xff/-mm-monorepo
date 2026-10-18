@@ -3,15 +3,28 @@
   "version": "0.0.2",
   "description": "Common reusable types for TypeScript.",
   "keywords": [
-    "common typescript types, utility types, types library, object entries, Object.entries, ObjectEntries"
+    "common typescript types",
+    "utility types",
+    "types library",
+    "object entries",
+    "Object.entries",
+    "ObjectEntries"
   ],
   "author": "Tihomir Trifonov",
   "license": "MIT",
-  "repository": "https://github.com/mastermind-0xff/-mm-monorepo/tree/28096a9795171b6ecf02d3313ff657cc7afd7500/packages/%40mmtypes/common",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mastermind-0xff/-mm-monorepo.git",
+    "directory": "packages/@mmtypes/common"
+  },
+  "bugs": {
+    "url": "https://github.com/mastermind-0xff/-mm-monorepo/issues"
+  },
+  "homepage": "https://github.com/mastermind-0xff/-mm-monorepo/tree/main/packages/@mmtypes/common#readme",
   "scripts": {
     "/** [ GIT commands ]====================================== */": "exit 0",
     "git:commit-ok": "git status | grep -q 'nothing to commit'",
-    "git:add:commit": "git add . && node ./scripts/commit.js",
+    "git:add:commit": "git add -A && node ./scripts/commit.js",
     "git:confirm-add-commit": "node ./scripts/confirm.js \"Uncommitted changes found. Executing 'git add -A && git commit' before debug.\" && npm run git:add:commit",
     "git:stash:drop": "git stash && git stash drop",
     "/** [ Cleanup commands ]==================================== */": "exit 0",
@@ -27,17 +40,19 @@
     "lint:debug:write:diff:stash:drop": "npm run lint:debug:prettier && npm run git:stash:drop || echo 'No differences or debug failed.'",
     "lint:debug": "(npm run git:commit-ok || npm run git:confirm-add-commit) && npm run lint:debug:write:diff:stash:drop || echo 'Debug failed'",
     "build:docs": "typedoc",
-    "build:types": "rollup -c",
-    "build:bundle": " npm run build:types && npm run build:docs",
+    "build:rollup": "rollup -c",
+    "build:bundle": "npm run build:rollup && npm run build:docs",
     "build:clean-bundle": "npm run clean:bundle && npm run build:bundle",
     "build": "npm run format && npm run build:clean-bundle",
     "/** [ Publish commands ]======================================= */": "exit 0",
-    "publish:patch": "npm version patch && npm publish",
+    "publish:patch": "npm version patch && npm publish --access public",
     "/** [ Test commands ]======================================= */": "exit 0",
-    "test": "vitest --typecheck"
+    "test:e2e": "vitest run --dir __tests__",
+    "test:specs": "vitest run --dir src",
+    "test": "vitest run"
   },
   "files": [
-    "./dist"
+    "dist"
   ],
   "type": "module",
   "types": "./dist/types/index.d.ts",
@@ -53,18 +68,19 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@eslint/js": "^9.17.0",
-    "eslint": "^9.17.0",
-    "globals": "^15.14.0",
-    "prettier": "^3.4.2",
-    "rimraf": "^6.0.1",
-    "rollup": "^4.30.1",
-    "rollup-plugin-dts": "^6.1.1",
-    "tsx": "^4.19.2",
-    "typedoc": "^0.27.6",
-    "typedoc-plugin-markdown": "^4.4.1",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.19.1",
-    "vitest": "^3.0.4"
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.6.0",
+    "eslint": "^10.2.0",
+    "globals": "^17.4.0",
+    "prettier": "^3.8.2",
+    "rimraf": "^6.1.3",
+    "rollup": "^4.60.1",
+    "rollup-plugin-dts": "^6.4.1",
+    "tsx": "^4.21.0",
+    "typedoc": "^0.28.18",
+    "typedoc-plugin-markdown": "^4.11.0",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.1",
+    "vitest": "^3.2.4"
   }
 }

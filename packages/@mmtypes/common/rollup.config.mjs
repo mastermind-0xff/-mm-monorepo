@@ -10,6 +10,7 @@ export default [
       { file: './dist/types/index.d.ts', format: 'esm' },
       { file: './dist/types/index.d.cts', format: 'esm' },
     ],
-    plugins: [dts({ tsconfig: './tsconfig.json' })],
+    external: [/^node:/],
+    plugins: [dts({ tsconfig: './tsconfig.build.json' })],
   },
 ];

@@ -49,17 +49,14 @@ describe('ObjectEntries', () => {
   });
 
   test('number primitive input', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expectTypeOf(asOE(1)).toMatchTypeOf<[string, any][]>();
   });
 
   test('boolean primitive input', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expectTypeOf(asOE(false)).toMatchTypeOf<[string, any][]>();
   });
 
   test('bigint primitive input', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expectTypeOf(asOE(1n)).toMatchTypeOf<[string, any][]>();
   });
 });
