@@ -8,7 +8,7 @@
 
 > **AtLeastOneItem**\<`T`\> = \[`T`\[`number`\], `...T[number][]`\]
 
-Defined in: [utility/array.ts:82](https://github.com/mastermind-0xff/-mm-monorepo/blob/9183ce548bcc4fccff7ed80ba5a34f5f37094be0/packages/@mmtypes/common/src/utility/array.ts#L82)
+Defined in: [utility/array.ts:82](https://github.com/mastermind-0xff/-mm-monorepo/blob/97c91ccdcd3ee1794a45f999994fea3df2caa9de/packages/@mmtypes/common/src/utility/array.ts#L82)
 
 At least one item from a tuple or an array T is required.
 

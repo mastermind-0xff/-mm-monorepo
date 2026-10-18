@@ -8,7 +8,7 @@
 
 > **NumberedTupleSplicer**\<`ValuesTuple`, `NumsTuple`, `R`\> = `R`\[keyof `R`\][]
 
-Defined in: [utility/array.ts:43](https://github.com/mastermind-0xff/-mm-monorepo/blob/9183ce548bcc4fccff7ed80ba5a34f5f37094be0/packages/@mmtypes/common/src/utility/array.ts#L43)
+Defined in: [utility/array.ts:43](https://github.com/mastermind-0xff/-mm-monorepo/blob/97c91ccdcd3ee1794a45f999994fea3df2caa9de/packages/@mmtypes/common/src/utility/array.ts#L43)
 
 Creates tuple of type [NumsTuple[n], ValuesTuple[NumsTuple[n]]] the
 intersecting keys from ValuesTuple and NumsTuple values. The resulting 0

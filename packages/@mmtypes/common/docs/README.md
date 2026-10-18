@@ -135,6 +135,10 @@ type T2 = TupleOfNElements<3, true>; // ['0','1','2']
 type T3 = TupleOfNElements<3, false>; // [0,1,2]
 ```
 
+## AI assistance
+
+Since v0.0.2, parts of this package were written with the help of AI. All changes are reviewed and tested by the maintainer.
+
 ## License
 
 This project is licensed under the MIT License.
