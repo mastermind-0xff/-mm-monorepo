@@ -6,9 +6,9 @@
 
 # Type Alias: IfNumberLiteral\<T, Y, N\>
 
-> **IfNumberLiteral**\<`T`, `Y`, `N`\>: `number` *extends* `T` ? `N` : \[`T`\] *extends* \[`never`\] ? `N` : \[`T`\] *extends* \[`number`\] ? `Y` : `N`
+> **IfNumberLiteral**\<`T`, `Y`, `N`\> = `number` *extends* `T` ? `N` : \[`T`\] *extends* \[`never`\] ? `N` : \[`T`\] *extends* \[`number`\] ? `Y` : `N`
 
-Defined in: utility/comparison.ts:13
+Defined in: [utility/comparison.ts:13](https://github.com/mastermind-0xff/-mm-monorepo/blob/97c91ccdcd3ee1794a45f999994fea3df2caa9de/packages/@mmtypes/common/src/utility/comparison.ts#L13)
 
 Returns Y type if T is number literal and N type if it's not.
 
@@ -22,8 +22,14 @@ type T3 = IfNumberLiteral<1, { a: 1 }, { b: 2 }>; // { a: 1 }
 
 ## Type Parameters
 
-• **T**
+### T
 
-• **Y** = `true`
+`T`
 
-• **N** = `false`
+### Y
+
+`Y` = `true`
+
+### N
+
+`N` = `false`

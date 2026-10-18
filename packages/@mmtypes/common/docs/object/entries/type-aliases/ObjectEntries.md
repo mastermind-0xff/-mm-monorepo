@@ -6,9 +6,9 @@
 
 # Type Alias: ObjectEntries\<T\>
 
-> **ObjectEntries**\<`T`\>: `T` *extends* `undefined` \| `null` ? `never` : `T` *extends* \[\] ? \[`string`, `never`\][] : `T` *extends* [`EmptyObject`](../../../utility/object/type-aliases/EmptyObject.md) ? `ReturnType`\<*typeof* `Object.entries`\> : `T` *extends* `` `${infer Chars}` `` ? [`NumberedTupleSplicer`](../../../utility/array/type-aliases/NumberedTupleSplicer.md)\<[`StringLiteralToCharTuple`](../../../utility/array/type-aliases/StringLiteralToCharTuple.md)\<`Chars`\>\> : `T` *extends* `string` ? \[`string`, `string`\][] : `T` *extends* `ReadonlyArray`\<infer KeysType\> ? [`IfNumberLiteral`](../../../utility/comparison/type-aliases/IfNumberLiteral.md)\<`T`\[`"length"`\], [`NumberedTupleSplicer`](../../../utility/array/type-aliases/NumberedTupleSplicer.md)\<`T`\>, \[`string`, `KeysType`\][]\> : `T` *extends* `object` ? `Exclude`\<`{ [K in (...)]: (...) }`\[... & ...\], `undefined`\>[] : `ReturnType`\<*typeof* `Object.entries`\>
+> **ObjectEntries**\<`T`\> = `T` *extends* `undefined` \| `null` ? `never` : `T` *extends* \[\] ? \[`string`, `never`\][] : `T` *extends* [`EmptyObject`](../../../utility/object/type-aliases/EmptyObject.md) ? `ReturnType`\<*typeof* `Object.entries`\> : `T` *extends* `` `${infer Chars}` `` ? [`NumberedTupleSplicer`](../../../utility/array/type-aliases/NumberedTupleSplicer.md)\<[`StringLiteralToCharTuple`](../../../utility/array/type-aliases/StringLiteralToCharTuple.md)\<`Chars`\>\> : `T` *extends* `string` ? \[`string`, `string`\][] : `T` *extends* `ReadonlyArray`\<infer KeysType\> ? [`IfNumberLiteral`](../../../utility/comparison/type-aliases/IfNumberLiteral.md)\<`T`\[`"length"`\], [`NumberedTupleSplicer`](../../../utility/array/type-aliases/NumberedTupleSplicer.md)\<`T`\>, \[`string`, `KeysType`\][]\> : `T` *extends* `object` ? `Exclude`\<`{ [K in (...)]: (...) }`\[... & ...\], `undefined`\>[] : `ReturnType`\<*typeof* `Object.entries`\>
 
-Defined in: object/entries.ts:29
+Defined in: [object/entries.ts:29](https://github.com/mastermind-0xff/-mm-monorepo/blob/97c91ccdcd3ee1794a45f999994fea3df2caa9de/packages/@mmtypes/common/src/object/entries.ts#L29)
 
 Narrower return type for Object.entries based on the input type, what JS
 returns and what are the build in types from TypeScript.
@@ -32,4 +32,6 @@ type T9 = ObjectEntries<number | boolean | bigint>; // [string, any][]
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`

@@ -33,6 +33,10 @@ import type {
 
 ## Changelog
 
+### v0.0.2
+
+- Types resolve under `moduleResolution: node16` / `nodenext`. The type declarations are bundled into a single file, with a `.d.cts` copy for `require`. Before, these setups saw no exports.
+
 ### v0.0.1
 
 Initial release.
@@ -130,6 +134,10 @@ type T1 = TupleOfNElements<3>; // ['0','1','2']
 type T2 = TupleOfNElements<3, true>; // ['0','1','2']
 type T3 = TupleOfNElements<3, false>; // [0,1,2]
 ```
+
+## AI assistance
+
+Since v0.0.2, parts of this package were written with the help of AI. All changes are reviewed and tested by the maintainer.
 
 ## License
 
