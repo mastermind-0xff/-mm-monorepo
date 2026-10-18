@@ -8,7 +8,7 @@
 
 > **assertIsFunction**\<`T`\>(`value`, `error?`): asserts value is Extract\<T, Callable \| Newable \| Callable & Newable\>
 
-Defined in: [src/lib/assertions.ts:243](https://github.com/mastermind-0xff/-mm-monorepo/blob/15c53393182e77c18f7ab63c27f8a96727021afe/packages/@mmutils/assert/src/lib/assertions.ts#L243)
+Defined in: [src/lib/assertions.ts:243](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/assertions.ts#L243)
 
 Asserts that the given value is a function. Throws an Error instance if it's
 not.

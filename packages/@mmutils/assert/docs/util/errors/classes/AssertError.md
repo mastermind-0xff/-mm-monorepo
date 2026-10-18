@@ -6,7 +6,7 @@
 
 # Class: AssertError
 
-Defined in: [src/util/errors.ts:1](https://github.com/mastermind-0xff/-mm-monorepo/blob/15c53393182e77c18f7ab63c27f8a96727021afe/packages/@mmutils/assert/src/util/errors.ts#L1)
+Defined in: [src/util/errors.ts:1](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/util/errors.ts#L1)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [src/util/errors.ts:1](https://github.com/mastermind-0xff/-mm-monore
 
 > **new AssertError**(`message?`, `options?`): `AssertError`
 
-Defined in: [src/util/errors.ts:2](https://github.com/mastermind-0xff/-mm-monorepo/blob/15c53393182e77c18f7ab63c27f8a96727021afe/packages/@mmutils/assert/src/util/errors.ts#L2)
+Defined in: [src/util/errors.ts:2](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/util/errors.ts#L2)
 
 #### Parameters
 
@@ -196,7 +196,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:55
 
 ##### stackTraces
 
-[`CallSite`](../../../config/environment/namespaces/NodeJS/interfaces/CallSite.md)[]
+`CallSite`[]
 
 #### Returns
 

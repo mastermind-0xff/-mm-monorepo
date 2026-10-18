@@ -8,7 +8,7 @@
 
 > **isString**(`value`): `value is string`
 
-Defined in: [src/lib/primitives.ts:60](https://github.com/mastermind-0xff/-mm-monorepo/blob/15c53393182e77c18f7ab63c27f8a96727021afe/packages/@mmutils/assert/src/lib/primitives.ts#L60)
+Defined in: [src/lib/primitives.ts:60](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/primitives.ts#L60)
 
 Checks the provided value is a string.
 

@@ -78,36 +78,6 @@ import {
   isSymbol,
   isUndefined,
 } from '@mmutils/assert';
-// or
-import {
-  assert,
-  assertIsArray,
-  assertIsBigInt,
-  assertIsBoolean,
-  assertIsFunction,
-  assertIsNonNullish,
-  assertIsNull,
-  assertIsNullableObject,
-  assertIsNullish,
-  assertIsNumber,
-  assertIsObject,
-  assertIsString,
-  assertIsSymbol,
-  assertIsUndefined,
-  assertNever,
-  isArray,
-  isBigInt,
-  isBoolean,
-  isFunction,
-  isNull,
-  isNullableObject,
-  isNullish,
-  isNumber,
-  isObject,
-  isString,
-  isSymbol,
-  isUndefined,
-} from '@mmutils/assert/esm/';
 ```
 
 ### Load as commonjs
@@ -142,36 +112,6 @@ const {
   isSymbol,
   isUndefined,
 } = require('@mmutils/assert');
-// or
-const {
-  assert,
-  assertIsArray,
-  assertIsBigInt,
-  assertIsBoolean,
-  assertIsFunction,
-  assertIsNonNullish,
-  assertIsNull,
-  assertIsNullableObject,
-  assertIsNullish,
-  assertIsNumber,
-  assertIsObject,
-  assertIsString,
-  assertIsSymbol,
-  assertIsUndefined,
-  assertNever,
-  isArray,
-  isBigInt,
-  isBoolean,
-  isFunction,
-  isNull,
-  isNullableObject,
-  isNullish,
-  isNumber,
-  isObject,
-  isString,
-  isSymbol,
-  isUndefined,
-} = require('@mmutils/assert/cjs/');
 ```
 
 ## API
@@ -278,6 +218,7 @@ const funcZ = (type: 'a' | 'b', x?: number) => {
 
 - Types resolve under `moduleResolution: node16` / `nodenext`. The type declarations are bundled into a single file, and `require` gets its own `.d.cts`. Before, these setups saw no exports, and `require` was typed as ESM.
 - `main` points to the CommonJS build instead of the ES module one.
+- README: removed the `@mmutils/assert/esm/` and `@mmutils/assert/cjs/` import examples. Those paths were never exported; import from `@mmutils/assert`.
 
 ### v0.0.6
 
@@ -306,6 +247,10 @@ const funcZ = (type: 'a' | 'b', x?: number) => {
 ## Usage
 
 Check the corresponding [docs](docs/modules.md) for reference guide.
+
+## AI assistance
+
+Since v0.0.7, parts of this package were written with the help of AI. All changes are reviewed and tested by the maintainer.
 
 ## License
 

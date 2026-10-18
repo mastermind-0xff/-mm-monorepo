@@ -6,7 +6,6 @@
 
 ## Modules
 
-- [config/environment](config/environment/README.md)
 - [config/options](config/options/README.md)
 - [index](index/README.md)
 - [lib/assertions](lib/assertions/README.md)
