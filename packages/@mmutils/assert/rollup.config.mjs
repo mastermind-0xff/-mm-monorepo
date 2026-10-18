@@ -2,6 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
+import { dts } from 'rollup-plugin-dts';
 
 export default [
   {
@@ -30,7 +31,25 @@ export default [
       json(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json' }),
+      // With allowJs and no outDir, @rollup/plugin-typescript >= 12.3 emits to
+      // a temp outDir outside `dir` and then fails its own path check. There
+      // are no JS sources, so turn it off for the bundle.
+      typescript({
+        tsconfig: './tsconfig.json',
+        compilerOptions: { allowJs: false },
+      }),
     ],
+  },
+
+  // Bundle the declarations into a single file, so there are no relative
+  // imports left to resolve. The same content is emitted as .d.cts so that
+  // `require` consumers get CJS-flavoured types under node16/nodenext.
+  {
+    input: './src/index.ts',
+    output: [
+      { file: './dist/types/index.d.ts', format: 'esm' },
+      { file: './dist/types/index.d.cts', format: 'esm' },
+    ],
+    plugins: [dts({ tsconfig: './tsconfig.json' })],
   },
 ];
