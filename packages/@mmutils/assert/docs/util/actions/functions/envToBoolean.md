@@ -6,9 +6,9 @@
 
 # Function: envToBoolean()
 
-> **envToBoolean**(`value`?): value is "true" \| "1"
+> **envToBoolean**(`value?`): value is "true" \| "1"
 
-Defined in: [packages/@mmutils/assert/src/util/actions.ts:72](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/util/actions.ts#L72)
+Defined in: [src/util/actions.ts:72](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/util/actions.ts#L72)
 
 Convert environment variable value '1' and 'true' to true (boolean) and
 everything else to false.

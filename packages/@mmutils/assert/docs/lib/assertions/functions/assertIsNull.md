@@ -6,9 +6,9 @@
 
 # Function: assertIsNull()
 
-> **assertIsNull**(`value`, `error`): `asserts value is null`
+> **assertIsNull**(`value`, `error?`): `asserts value is null`
 
-Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:99](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/lib/assertions.ts#L99)
+Defined in: [src/lib/assertions.ts:99](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/assertions.ts#L99)
 
 Asserts that the given value is null. Throws an Error instance if it's not.
 
@@ -20,11 +20,11 @@ Asserts that the given value is null. Throws an Error instance if it's not.
 
 The value to be checked. Throws an error if not null.
 
-### error
+### error?
+
+`string` \| `Error` = `...`
 
 Optional error message or Error instance. Defaults to TypeError.
-
-`string` | `Error`
 
 ## Returns
 

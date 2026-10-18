@@ -6,9 +6,9 @@
 
 # Function: assert()
 
-> **assert**(`condition`, `error`): `asserts condition`
+> **assert**(`condition`, `error?`): `asserts condition`
 
-Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:55](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/lib/assertions.ts#L55)
+Defined in: [src/lib/assertions.ts:55](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/assertions.ts#L55)
 
 Asserts a condition. Throws an Error instance if the condition is not met.
 ___
@@ -21,12 +21,12 @@ ___
 
 The condition to be checked. Throws an error if false.
 
-### error
+### error?
+
+`string` \| `Error` = `...`
 
 Optional error message or Error instance to be thrown. Defaults
 to AssertError.
-
-`string` | `Error`
 
 ## Returns
 

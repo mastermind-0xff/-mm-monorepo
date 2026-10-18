@@ -6,9 +6,9 @@
 
 # Function: generateError()
 
-> **generateError**(`messagePrefix`, `value`, `ErrorClass`): `Error`
+> **generateError**(`messagePrefix`, `value`, `ErrorClass?`): `Error`
 
-Defined in: [packages/@mmutils/assert/src/util/actions.ts:35](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/util/actions.ts#L35)
+Defined in: [src/util/actions.ts:35](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/util/actions.ts#L35)
 
 Generate error object based on prefix string and value. Value is converted to
 string representation.
@@ -27,9 +27,9 @@ String to attach debug data to.
 
 Value leading to the error.
 
-### ErrorClass
+### ErrorClass?
 
-(`message`?, `options`?) => `Error`
+(`message?`, `options?`) => `Error`
 
 Type of the error. Defaults to TypeError.
 

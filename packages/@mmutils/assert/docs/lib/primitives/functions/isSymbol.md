@@ -8,7 +8,7 @@
 
 > **isSymbol**(`value`): `value is symbol`
 
-Defined in: [packages/@mmutils/assert/src/lib/primitives.ts:68](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/lib/primitives.ts#L68)
+Defined in: [src/lib/primitives.ts:68](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/primitives.ts#L68)
 
 Checks the provided value is a symbol.
 

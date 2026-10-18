@@ -9,7 +9,7 @@ import {
   VoidType,
   UnknownType,
 } from '../util/unit-test';
-import { expectTypeOf } from 'vitest';
+import { describe, test, expectTypeOf } from 'vitest';
 import {
   assert,
   assertIsArray,

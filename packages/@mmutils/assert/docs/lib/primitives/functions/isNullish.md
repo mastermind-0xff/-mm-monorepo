@@ -6,9 +6,9 @@
 
 # Function: isNullish()
 
-> **isNullish**(`value`): value is undefined \| null
+> **isNullish**(`value`): value is null \| undefined
 
-Defined in: [packages/@mmutils/assert/src/lib/primitives.ts:9](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/lib/primitives.ts#L9)
+Defined in: [src/lib/primitives.ts:9](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/primitives.ts#L9)
 
 Checks the provided value is nullish.
 
@@ -22,6 +22,6 @@ Value to be checked.
 
 ## Returns
 
-value is undefined \| null
+value is null \| undefined
 
 True if value is nullish, false otherwise.

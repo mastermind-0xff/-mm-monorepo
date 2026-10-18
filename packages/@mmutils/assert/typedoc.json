@@ -2,11 +2,14 @@
   "entryPointStrategy": "expand",
   "entryPoints": ["./src"],
   "exclude": [
-    "**/*.test.ts*",
     "**/*.spec.ts*",
     "**/*.spec-d.ts*",
-    "src/util/unit-test.ts"
+    "**/*.test.ts*",
+    "**/*.test-d.ts*",
+    "src/util/unit-test.ts",
+    "src/config/environment.ts"
   ],
+  "tsconfig": "tsconfig.build.json",
   "out": "docs",
   "plugin": ["typedoc-plugin-markdown"]
 }

@@ -6,9 +6,9 @@
 
 # Function: isNumber()
 
-> **isNumber**(`value`, `excludeNaN`): `value is number`
+> **isNumber**(`value`, `excludeNaN?`): `value is number`
 
-Defined in: [packages/@mmutils/assert/src/lib/primitives.ts:42](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/lib/primitives.ts#L42)
+Defined in: [src/lib/primitives.ts:42](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/primitives.ts#L42)
 
 Checks the provided value is a number. Excludes NaN by default.
 
@@ -20,7 +20,7 @@ Checks the provided value is a number. Excludes NaN by default.
 
 Value to be checked.
 
-### excludeNaN
+### excludeNaN?
 
 `boolean` = `AssertPrimitiveOptions.numberExcludeNaN`
 

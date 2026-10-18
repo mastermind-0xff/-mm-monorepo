@@ -4,11 +4,11 @@
 
 [@mmutils/assert](../../../modules.md) / [util/types](../README.md) / Newable
 
-# Type Alias: Newable()
+# Type Alias: Newable
 
-> **Newable**: (...`args`) => `unknown`
+> **Newable** = (...`args`) => `unknown`
 
-Defined in: [packages/@mmutils/assert/src/util/types.ts:3](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/util/types.ts#L3)
+Defined in: [src/util/types.ts:3](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/util/types.ts#L3)
 
 ## Parameters
 

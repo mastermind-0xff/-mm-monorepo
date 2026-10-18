@@ -7,30 +7,15 @@
     "allowJs": true,
     "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
-
-    // "declarationDir": "./dist/types",
     "sourceMap": true,
     "rootDir": "./src",
-    // "outDir": "./dist/types/",
-    // "declaration": true,
-    // "declarationMap": false,
-    // "emitDeclarationOnly": true,
-
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    // "resolvePackageJsonExports": true,
+    "target": "es2020",
+    "lib": ["es2022", "dom"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
-
-    // "noEmit": true,
-    // "allowImportingTsExtensions": true
+    "allowSyntheticDefaultImports": true,
+    "types": ["node"]
   },
-  "include": ["./src/"],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts",
-    "**/*.spec-d.ts",
-    "src/util/unit-test.ts"
-  ]
+  "include": ["./src/"]
 }

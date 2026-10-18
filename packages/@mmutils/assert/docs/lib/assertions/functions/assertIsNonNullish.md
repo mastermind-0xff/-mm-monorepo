@@ -6,16 +6,18 @@
 
 # Function: assertIsNonNullish()
 
-> **assertIsNonNullish**\<`T`\>(`value`, `error`): `asserts value is NonNullable<T>`
+> **assertIsNonNullish**\<`T`\>(`value`, `error?`): `asserts value is NonNullable<T>`
 
-Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:86](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/lib/assertions.ts#L86)
+Defined in: [src/lib/assertions.ts:86](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/assertions.ts#L86)
 
 Asserts that the given value is non-nullish. Throws an Error instance if it's
 not.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Parameters
 
@@ -25,11 +27,11 @@ not.
 
 The value to be checked. Throws an error if null or undefined.
 
-### error
+### error?
+
+`string` \| `Error` = `...`
 
 Optional error message or Error instance. Defaults to TypeError.
-
-`string` | `Error`
 
 ## Returns
 

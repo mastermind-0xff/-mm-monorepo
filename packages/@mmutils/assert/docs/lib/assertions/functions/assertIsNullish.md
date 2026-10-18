@@ -6,9 +6,9 @@
 
 # Function: assertIsNullish()
 
-> **assertIsNullish**(`value`, `error`): asserts value is undefined \| null
+> **assertIsNullish**(`value`, `error?`): asserts value is null \| undefined
 
-Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:69](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/lib/assertions.ts#L69)
+Defined in: [src/lib/assertions.ts:69](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/assertions.ts#L69)
 
 Asserts that the given value is nullish. Throws an Error instance if it's not.
 
@@ -21,15 +21,15 @@ Asserts that the given value is nullish. Throws an Error instance if it's not.
 The value to be checked. Throws an error if not null or
 undefined.
 
-### error
+### error?
+
+`string` \| `Error` = `...`
 
 Optional error message or Error instance. Defaults to TypeError.
 
-`string` | `Error`
-
 ## Returns
 
-asserts value is undefined \| null
+asserts value is null \| undefined
 
 ## Throws
 

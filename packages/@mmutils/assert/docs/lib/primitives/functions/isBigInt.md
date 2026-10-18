@@ -8,7 +8,7 @@
 
 > **isBigInt**(`value`): `value is bigint`
 
-Defined in: [packages/@mmutils/assert/src/lib/primitives.ts:52](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/lib/primitives.ts#L52)
+Defined in: [src/lib/primitives.ts:52](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/primitives.ts#L52)
 
 Checks the provided value is a bigint.
 
