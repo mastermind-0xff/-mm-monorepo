@@ -8,7 +8,7 @@
 
 > **parsePath**(`path`): [`ParsedPathData`](../type-aliases/ParsedPathData.md)
 
-Defined in: path/parsePath.ts:128
+Defined in: [path/parsePath.ts:128](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L128)
 
 Parse path elements and make logical assumptions if it's dir, file or
 identifier. If it's not a dir nor a file it must be an identifier.

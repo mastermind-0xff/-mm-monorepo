@@ -6,6 +6,8 @@
 
 # Type Alias: ParsedPathType
 
-> **ParsedPathType**: keyof *typeof* [`ParsedPathType`](../variables/ParsedPathType.md)
+> **ParsedPathType** = keyof *typeof* [`ParsedPathType`](../variables/ParsedPathType.md)
 
-Defined in: path/parsePath.ts:19
+Defined in: [path/parsePath.ts:19](https://github.com/mastermind-0xff/-mm-monorepo/blob/abf39c3d2b4eece4b2edc613fdf3efd77232dc0a/packages/@mmutils/common/src/path/parsePath.ts#L19)
+
+Parsed path type constant.
