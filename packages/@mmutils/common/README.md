@@ -16,16 +16,12 @@ yarn add @mmutils/common
 
 ```javascript
 import { parsePath, parsedPathAsDir } from '@mmutils/common';
-// or
-import { parsePath, parsedPathAsDir } from '@mmutils/common/esm/';
 ```
 
 ### Load as commonjs
 
 ```javascript
 const { parsePath, parsedPathAsDir } = require('@mmutils/common');
-// or
-const { parsePath, parsedPathAsDir } = require('@mmutils/common/cjs/');
 ```
 
 ## Changelog
@@ -34,6 +30,7 @@ const { parsePath, parsedPathAsDir } = require('@mmutils/common/cjs/');
 
 - Types resolve under `moduleResolution: node16` / `nodenext`. The type declarations are bundled into a single file, and `require` gets its own `.d.cts`. Before, these setups saw no exports, and `require` was typed as ESM.
 - `main` points to the CommonJS build instead of the ES module one.
+- README: removed the `@mmutils/common/esm/` and `@mmutils/common/cjs/` import examples. Those paths were never exported; import from `@mmutils/common`.
 
 ### v0.0.1
 
@@ -85,6 +82,10 @@ console.log(parsePath('./some.relative.dir/with/identifier'));
 ### `parsedPathAsDir`
 
 Convert node parsed path object file to base dir.
+
+## AI assistance
+
+Since v0.0.2, parts of this package were written with the help of AI. All changes are reviewed and tested by the maintainer.
 
 ## License
 
