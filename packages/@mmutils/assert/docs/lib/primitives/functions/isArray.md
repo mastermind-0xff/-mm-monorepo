@@ -8,7 +8,7 @@
 
 > **isArray**(`value`): `value is unknown[]`
 
-Defined in: [src/lib/primitives.ts:94](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/primitives.ts#L94)
+Defined in: [packages/@mmutils/assert/src/lib/primitives.ts:94](https://github.com/mastermind-0xff/-mm-monorepo/blob/0c1e0a87a311ce2ea91722e4fbc94791a49b0cbb/packages/@mmutils/assert/src/lib/primitives.ts#L94)
 
 Checks the provided value is an array.
 

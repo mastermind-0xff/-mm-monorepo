@@ -8,7 +8,7 @@
 
 > **assert**(`condition`, `error?`): `asserts condition`
 
-Defined in: [src/lib/assertions.ts:55](https://github.com/mastermind-0xff/-mm-monorepo/blob/78834c21b24a02741ae7a3119678886e216545e6/packages/@mmutils/assert/src/lib/assertions.ts#L55)
+Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:55](https://github.com/mastermind-0xff/-mm-monorepo/blob/0c1e0a87a311ce2ea91722e4fbc94791a49b0cbb/packages/@mmutils/assert/src/lib/assertions.ts#L55)
 
 Asserts a condition. Throws an Error instance if the condition is not met.
 ___
