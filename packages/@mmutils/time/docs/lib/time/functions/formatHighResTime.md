@@ -8,7 +8,7 @@
 
 > **formatHighResTime**(`time`, `capTo?`, `timeUnit?`): `string`
 
-Defined in: [lib/time.ts:161](https://github.com/mastermind-0xff/-mm-monorepo/blob/764679d6d450a0f8d6e6d0cdfa45b73a36b1e5f7/packages/@mmutils/time/src/lib/time.ts#L161)
+Defined in: [lib/time.ts:161](https://github.com/mastermind-0xff/-mm-monorepo/blob/0c1e0a87a311ce2ea91722e4fbc94791a49b0cbb/packages/@mmutils/time/src/lib/time.ts#L161)
 
 Format time value from nanoseconds, microseconds, milliseconds, seconds,
 minutes or hours to a more readable string. Provide a duration value and
@@ -101,7 +101,7 @@ they would always produce `'0[unit]'` output.
 
 ### timeUnit?
 
-`"h"` \| `"m"` \| `"s"` \| `"ms"` \| `"µs"` \| `"ns"`
+`"h"` \| `"m"` \| `"s"` \| `"ms"` \| `"µs"` \| `"ns"` = `'ns'`
 
 Time value's unit. Specify in what unit `time` is expressed.
 Defaults to `'ns'`.

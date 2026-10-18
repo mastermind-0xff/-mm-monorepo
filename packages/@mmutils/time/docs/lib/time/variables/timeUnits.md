@@ -8,6 +8,6 @@
 
 > `const` **timeUnits**: readonly \[`"h"`, `"m"`, `"s"`, `"ms"`, `"µs"`, `"ns"`\]
 
-Defined in: [lib/time.ts:2](https://github.com/mastermind-0xff/-mm-monorepo/blob/764679d6d450a0f8d6e6d0cdfa45b73a36b1e5f7/packages/@mmutils/time/src/lib/time.ts#L2)
+Defined in: [lib/time.ts:2](https://github.com/mastermind-0xff/-mm-monorepo/blob/0c1e0a87a311ce2ea91722e4fbc94791a49b0cbb/packages/@mmutils/time/src/lib/time.ts#L2)
 
 Descending order.
