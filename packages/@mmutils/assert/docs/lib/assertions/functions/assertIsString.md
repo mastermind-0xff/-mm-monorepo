@@ -6,9 +6,9 @@
 
 # Function: assertIsString()
 
-> **assertIsString**(`value`, `error`): `asserts value is string`
+> **assertIsString**(`value`, `error?`): `asserts value is string`
 
-Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:168](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/lib/assertions.ts#L168)
+Defined in: [src/lib/assertions.ts:168](https://github.com/mastermind-0xff/-mm-monorepo/blob/15c53393182e77c18f7ab63c27f8a96727021afe/packages/@mmutils/assert/src/lib/assertions.ts#L168)
 
 Asserts that the given value is a string. Throws an Error instance if it's
 not.
@@ -21,11 +21,11 @@ not.
 
 The value to be checked. Throws an error if not a string.
 
-### error
+### error?
+
+`string` \| `Error` = `...`
 
 Optional error message or Error instance. Defaults to TypeError.
-
-`string` | `Error`
 
 ## Returns
 

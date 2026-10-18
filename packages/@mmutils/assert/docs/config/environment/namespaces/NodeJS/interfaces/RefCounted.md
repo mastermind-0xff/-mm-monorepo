@@ -6,11 +6,13 @@
 
 # Interface: RefCounted
 
-Defined in: node\_modules/@types/node/globals.d.ts:424
+Defined in: node\_modules/@types/node/globals.d.ts:107
 
 ## Extended by
 
+- [`Immediate`](Immediate.md)
 - [`Timer`](Timer.md)
+- [`Timeout`](Timeout.md)
 
 ## Methods
 
@@ -18,7 +20,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:424
 
 > **ref**(): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:425
+Defined in: node\_modules/@types/node/globals.d.ts:108
 
 #### Returns
 
@@ -30,7 +32,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:425
 
 > **unref**(): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:426
+Defined in: node\_modules/@types/node/globals.d.ts:109
 
 #### Returns
 

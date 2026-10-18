@@ -6,15 +6,15 @@
 
 # Interface: ProcessPermission
 
-Defined in: node\_modules/@types/node/process.d.ts:408
+Defined in: node\_modules/@types/node/process.d.ts:527
 
 ## Methods
 
 ### has()
 
-> **has**(`scope`, `reference`?): `boolean`
+> **has**(`scope`, `reference?`): `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:432
+Defined in: node\_modules/@types/node/process.d.ts:551
 
 Verifies that the process is able to access the given scope and reference.
 If no reference is provided, a global scope is assumed, for instance, `process.permission.has('fs.read')`

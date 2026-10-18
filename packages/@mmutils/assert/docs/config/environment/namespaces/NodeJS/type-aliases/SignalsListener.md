@@ -4,11 +4,11 @@
 
 [@mmutils/assert](../../../../../modules.md) / [config/environment](../../../README.md) / [NodeJS](../README.md) / SignalsListener
 
-# Type Alias: SignalsListener()
+# ~~Type Alias: SignalsListener~~
 
-> **SignalsListener**: (`signal`) => `void`
+> **SignalsListener** = (`signal`) => `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:335
+Defined in: node\_modules/@types/node/process.d.ts:413
 
 ## Parameters
 
@@ -19,3 +19,9 @@ Defined in: node\_modules/@types/node/process.d.ts:335
 ## Returns
 
 `void`
+
+## Deprecated
+
+Global listener types will be removed in a future version.
+Callbacks passed directly to `process`'s EventEmitter methods
+have their parameter types inferred automatically.

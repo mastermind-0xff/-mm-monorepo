@@ -4,9 +4,9 @@
 
 [@mmutils/assert](../../../../../modules.md) / [config/environment](../../../README.md) / [NodeJS](../README.md) / RequireExtensions
 
-# Interface: ~~RequireExtensions~~
+# ~~Interface: RequireExtensions~~
 
-Defined in: node\_modules/@types/node/module.d.ts:612
+Defined in: node\_modules/@types/node/module.d.ts:672
 
 ## Deprecated
 
@@ -16,37 +16,15 @@ Defined in: node\_modules/@types/node/module.d.ts:612
 
 ## Indexable
 
-\[`key`: `string`\]: `undefined` \| (`module`, `filename`) => `any`
+> \[`key`: `string`\]: ((`module`, `filename`) => `any`) \| `undefined`
 
 ## Properties
 
-### ~~.js()~~
+### ~~.js~~
 
-> **js**: (`module`, `filename`) => `any`
+> **.js**: (`module`, `filename`) => `any`
 
-Defined in: node\_modules/@types/node/module.d.ts:613
-
-#### Parameters
-
-##### module
-
-[`Module`](Module.md)
-
-##### filename
-
-`string`
-
-#### Returns
-
-`any`
-
-***
-
-### ~~.json()~~
-
-> **json**: (`module`, `filename`) => `any`
-
-Defined in: node\_modules/@types/node/module.d.ts:614
+Defined in: node\_modules/@types/node/module.d.ts:673
 
 #### Parameters
 
@@ -64,11 +42,33 @@ Defined in: node\_modules/@types/node/module.d.ts:614
 
 ***
 
-### ~~.node()~~
+### ~~.json~~
 
-> **node**: (`module`, `filename`) => `any`
+> **.json**: (`module`, `filename`) => `any`
 
-Defined in: node\_modules/@types/node/module.d.ts:615
+Defined in: node\_modules/@types/node/module.d.ts:674
+
+#### Parameters
+
+##### module
+
+[`Module`](Module.md)
+
+##### filename
+
+`string`
+
+#### Returns
+
+`any`
+
+***
+
+### ~~.node~~
+
+> **.node**: (`module`, `filename`) => `any`
+
+Defined in: node\_modules/@types/node/module.d.ts:675
 
 #### Parameters
 

@@ -6,7 +6,7 @@
 
 # Interface: ResourceUsage
 
-Defined in: node\_modules/@types/node/process.d.ts:496
+Defined in: node\_modules/@types/node/process.d.ts:620
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: node\_modules/@types/node/process.d.ts:496
 
 > **fsRead**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:497
+Defined in: node\_modules/@types/node/process.d.ts:621
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: node\_modules/@types/node/process.d.ts:497
 
 > **fsWrite**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:498
+Defined in: node\_modules/@types/node/process.d.ts:622
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: node\_modules/@types/node/process.d.ts:498
 
 > **involuntaryContextSwitches**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:499
+Defined in: node\_modules/@types/node/process.d.ts:623
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: node\_modules/@types/node/process.d.ts:499
 
 > **ipcReceived**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:500
+Defined in: node\_modules/@types/node/process.d.ts:624
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: node\_modules/@types/node/process.d.ts:500
 
 > **ipcSent**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:501
+Defined in: node\_modules/@types/node/process.d.ts:625
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: node\_modules/@types/node/process.d.ts:501
 
 > **majorPageFault**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:502
+Defined in: node\_modules/@types/node/process.d.ts:626
 
 ***
 
@@ -62,7 +62,7 @@ Defined in: node\_modules/@types/node/process.d.ts:502
 
 > **maxRSS**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:503
+Defined in: node\_modules/@types/node/process.d.ts:627
 
 ***
 
@@ -70,7 +70,7 @@ Defined in: node\_modules/@types/node/process.d.ts:503
 
 > **minorPageFault**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:504
+Defined in: node\_modules/@types/node/process.d.ts:628
 
 ***
 
@@ -78,7 +78,7 @@ Defined in: node\_modules/@types/node/process.d.ts:504
 
 > **sharedMemorySize**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:505
+Defined in: node\_modules/@types/node/process.d.ts:629
 
 ***
 
@@ -86,7 +86,7 @@ Defined in: node\_modules/@types/node/process.d.ts:505
 
 > **signalsCount**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:506
+Defined in: node\_modules/@types/node/process.d.ts:630
 
 ***
 
@@ -94,7 +94,7 @@ Defined in: node\_modules/@types/node/process.d.ts:506
 
 > **swappedOut**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:507
+Defined in: node\_modules/@types/node/process.d.ts:631
 
 ***
 
@@ -102,7 +102,7 @@ Defined in: node\_modules/@types/node/process.d.ts:507
 
 > **systemCPUTime**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:508
+Defined in: node\_modules/@types/node/process.d.ts:632
 
 ***
 
@@ -110,7 +110,7 @@ Defined in: node\_modules/@types/node/process.d.ts:508
 
 > **unsharedDataSize**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:509
+Defined in: node\_modules/@types/node/process.d.ts:633
 
 ***
 
@@ -118,7 +118,7 @@ Defined in: node\_modules/@types/node/process.d.ts:509
 
 > **unsharedStackSize**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:510
+Defined in: node\_modules/@types/node/process.d.ts:634
 
 ***
 
@@ -126,7 +126,7 @@ Defined in: node\_modules/@types/node/process.d.ts:510
 
 > **userCPUTime**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:511
+Defined in: node\_modules/@types/node/process.d.ts:635
 
 ***
 
@@ -134,4 +134,4 @@ Defined in: node\_modules/@types/node/process.d.ts:511
 
 > **voluntaryContextSwitches**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:512
+Defined in: node\_modules/@types/node/process.d.ts:636

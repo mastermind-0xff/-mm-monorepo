@@ -4,47 +4,49 @@
 
 [@mmutils/assert](../../../../../modules.md) / [config/environment](../../../README.md) / [NodeJS](../README.md) / Immediate
 
-# Class: Immediate
+# Interface: Immediate
 
-Defined in: node\_modules/@types/node/timers.d.ts:49
+Defined in: node\_modules/@types/node/timers.d.ts:24
 
 This object is created internally and is returned from `setImmediate()`. It
 can be passed to `clearImmediate()` in order to cancel the scheduled
 actions.
 
 By default, when an immediate is scheduled, the Node.js event loop will continue
-running as long as the immediate is active. The `Immediate` object returned by `setImmediate()` exports both `immediate.ref()` and `immediate.unref()` functions that can be used to
-control this default behavior.
+running as long as the immediate is active. The `Immediate` object returned by
+`setImmediate()` exports both `immediate.ref()` and `immediate.unref()`
+functions that can be used to control this default behavior.
 
-## Implements
+## Extends
 
-- [`RefCounted`](../interfaces/RefCounted.md)
+- [`RefCounted`](RefCounted.md)
+- `Disposable`
 
-## Constructors
+## Methods
 
-### new Immediate()
+### \_onImmediate()
 
-> **new Immediate**(): [`Immediate`](Immediate.md)
+> **\_onImmediate**(...`args`): `void`
+
+Defined in: node\_modules/@types/node/timers.d.ts:55
+
+#### Parameters
+
+##### args
+
+...`any`[]
 
 #### Returns
 
-[`Immediate`](Immediate.md)
+`void`
 
-## Properties
-
-### \_onImmediate
-
-> **\_onImmediate**: `Function`
-
-Defined in: node\_modules/@types/node/timers.d.ts:74
-
-## Methods
+***
 
 ### \[dispose\]()
 
 > **\[dispose\]**(): `void`
 
-Defined in: node\_modules/@types/node/timers.d.ts:79
+Defined in: node\_modules/@types/node/timers.d.ts:54
 
 Cancels the immediate. This is similar to calling `clearImmediate()`.
 
@@ -54,7 +56,11 @@ Cancels the immediate. This is similar to calling `clearImmediate()`.
 
 #### Since
 
-v20.5.0
+v20.5.0, v18.18.0
+
+#### Overrides
+
+`Disposable.[dispose]`
 
 ***
 
@@ -62,7 +68,7 @@ v20.5.0
 
 > **hasRef**(): `boolean`
 
-Defined in: node\_modules/@types/node/timers.d.ts:73
+Defined in: node\_modules/@types/node/timers.d.ts:29
 
 If true, the `Immediate` object will keep the Node.js event loop active.
 
@@ -80,9 +86,10 @@ v11.0.0
 
 > **ref**(): `this`
 
-Defined in: node\_modules/@types/node/timers.d.ts:59
+Defined in: node\_modules/@types/node/timers.d.ts:40
 
-When called, requests that the Node.js event loop _not_ exit so long as the `Immediate` is active. Calling `immediate.ref()` multiple times will have no
+When called, requests that the Node.js event loop _not_ exit so long as the
+`Immediate` is active. Calling `immediate.ref()` multiple times will have no
 effect.
 
 By default, all `Immediate` objects are "ref'ed", making it normally unnecessary
@@ -98,9 +105,9 @@ a reference to `immediate`
 
 v9.7.0
 
-#### Implementation of
+#### Overrides
 
-[`RefCounted`](../interfaces/RefCounted.md).[`ref`](../interfaces/RefCounted.md#ref)
+[`RefCounted`](RefCounted.md).[`ref`](RefCounted.md#ref)
 
 ***
 
@@ -108,7 +115,7 @@ v9.7.0
 
 > **unref**(): `this`
 
-Defined in: node\_modules/@types/node/timers.d.ts:68
+Defined in: node\_modules/@types/node/timers.d.ts:49
 
 When called, the active `Immediate` object will not require the Node.js event
 loop to remain active. If there is no other activity keeping the event loop
@@ -125,6 +132,6 @@ a reference to `immediate`
 
 v9.7.0
 
-#### Implementation of
+#### Overrides
 
-[`RefCounted`](../interfaces/RefCounted.md).[`unref`](../interfaces/RefCounted.md#unref)
+[`RefCounted`](RefCounted.md).[`unref`](RefCounted.md#unref)

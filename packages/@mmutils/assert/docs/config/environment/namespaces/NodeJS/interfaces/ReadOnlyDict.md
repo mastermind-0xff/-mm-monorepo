@@ -6,12 +6,14 @@
 
 # Interface: ReadOnlyDict\<T\>
 
-Defined in: node\_modules/@types/node/globals.d.ts:433
+Defined in: node\_modules/@types/node/globals.d.ts:116
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Indexable
 
-\[`key`: `string`\]: `undefined` \| `T`
+> \[`key`: `string`\]: `T` \| `undefined`

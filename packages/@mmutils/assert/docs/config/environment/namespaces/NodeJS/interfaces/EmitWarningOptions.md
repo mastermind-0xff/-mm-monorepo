@@ -6,15 +6,15 @@
 
 # Interface: EmitWarningOptions
 
-Defined in: node\_modules/@types/node/process.d.ts:514
+Defined in: node\_modules/@types/node/process.d.ts:638
 
 ## Properties
 
 ### code?
 
-> `optional` **code**: `string`
+> `optional` **code?**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:524
+Defined in: node\_modules/@types/node/process.d.ts:648
 
 A unique identifier for the warning instance being emitted.
 
@@ -22,9 +22,9 @@ A unique identifier for the warning instance being emitted.
 
 ### ctor?
 
-> `optional` **ctor**: `Function`
+> `optional` **ctor?**: `Function`
 
-Defined in: node\_modules/@types/node/process.d.ts:530
+Defined in: node\_modules/@types/node/process.d.ts:654
 
 When `warning` is a `string`, `ctor` is an optional function used to limit the generated stack trace.
 
@@ -38,9 +38,9 @@ process.emitWarning
 
 ### detail?
 
-> `optional` **detail**: `string`
+> `optional` **detail?**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:534
+Defined in: node\_modules/@types/node/process.d.ts:658
 
 Additional text to include with the error.
 
@@ -48,9 +48,9 @@ Additional text to include with the error.
 
 ### type?
 
-> `optional` **type**: `string`
+> `optional` **type?**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:520
+Defined in: node\_modules/@types/node/process.d.ts:644
 
 When `warning` is a `string`, `type` is the name to use for the _type_ of warning being emitted.
 

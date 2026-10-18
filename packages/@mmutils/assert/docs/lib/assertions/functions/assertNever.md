@@ -6,9 +6,9 @@
 
 # Function: assertNever()
 
-> **assertNever**(`value`, `error`): `never`
+> **assertNever**(`value`, `error?`): `never`
 
-Defined in: [packages/@mmutils/assert/src/lib/assertions.ts:258](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/lib/assertions.ts#L258)
+Defined in: [src/lib/assertions.ts:258](https://github.com/mastermind-0xff/-mm-monorepo/blob/15c53393182e77c18f7ab63c27f8a96727021afe/packages/@mmutils/assert/src/lib/assertions.ts#L258)
 
 Asserts that exhaustive checks were preformed in control flow and this action
 won't execute when new code gets added.
@@ -21,12 +21,12 @@ won't execute when new code gets added.
 
 The value to be checked.
 
-### error
+### error?
+
+`string` \| `Error` = `...`
 
 Optional error message or Error instance. Defaults to
 AssertError.
-
-`string` | `Error`
 
 ## Returns
 

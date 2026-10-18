@@ -6,11 +6,12 @@
 
 # Interface: ReadWriteStream
 
-Defined in: node\_modules/@types/node/globals.d.ts:422
+Defined in: node\_modules/@types/node/stream.d.ts:1766
 
 ## Extends
 
-- [`ReadableStream`](ReadableStream.md).[`WritableStream`](WritableStream.md)
+- [`ReadableStream`](ReadableStream.md)
+- [`WritableStream`](WritableStream.md)
 
 ## Extended by
 
@@ -22,7 +23,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:422
 
 > **readable**: `boolean`
 
-Defined in: node\_modules/@types/node/globals.d.ts:400
+Defined in: node\_modules/@types/node/stream.d.ts:1746
 
 #### Inherited from
 
@@ -34,7 +35,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:400
 
 > **writable**: `boolean`
 
-Defined in: node\_modules/@types/node/globals.d.ts:414
+Defined in: node\_modules/@types/node/stream.d.ts:1759
 
 #### Inherited from
 
@@ -44,13 +45,13 @@ Defined in: node\_modules/@types/node/globals.d.ts:414
 
 ### \[asyncIterator\]()
 
-> **\[asyncIterator\]**(): [`AsyncIterator`](AsyncIterator.md)\<`string` \| `Buffer`\>
+> **\[asyncIterator\]**(): `AsyncIterableIterator`\<`string` \| `Buffer`\<`ArrayBufferLike`\>\>
 
-Defined in: node\_modules/@types/node/globals.d.ts:410
+Defined in: node\_modules/@types/node/stream.d.ts:1756
 
 #### Returns
 
-[`AsyncIterator`](AsyncIterator.md)\<`string` \| `Buffer`\>
+`AsyncIterableIterator`\<`string` \| `Buffer`\<`ArrayBufferLike`\>\>
 
 #### Inherited from
 
@@ -60,13 +61,34 @@ Defined in: node\_modules/@types/node/globals.d.ts:410
 
 ### \[captureRejectionSymbol\]()?
 
-> `optional` **\[captureRejectionSymbol\]**\<`K`\>(`error`, `event`, ...`args`): `void`
+> `optional` **\[captureRejectionSymbol\]**(`error`, `event`, ...`args`): `void`
 
-Defined in: node\_modules/@types/node/events.d.ts:592
+Defined in: node\_modules/@types/node/events.d.ts:87
 
-#### Type Parameters
+The `Symbol.for('nodejs.rejection')` method is called in case a
+promise rejection happens when emitting an event and
+`captureRejections` is enabled on the emitter.
+It is possible to use `events.captureRejectionSymbol` in
+place of `Symbol.for('nodejs.rejection')`.
 
-• **K**
+```js
+import { EventEmitter, captureRejectionSymbol } from 'node:events';
+
+class MyClass extends EventEmitter {
+  constructor() {
+    super({ captureRejections: true });
+  }
+
+  [captureRejectionSymbol](err, event, ...args) {
+    console.log('rejection happened for', event, 'with', err, ...args);
+    this.destroy(err);
+  }
+
+  destroy(err) {
+    // Tear the resource down here.
+  }
+}
+```
 
 #### Parameters
 
@@ -76,39 +98,45 @@ Defined in: node\_modules/@types/node/events.d.ts:592
 
 ##### event
 
-`string` | `symbol`
+`string` \| `symbol`
 
 ##### args
 
-...`AnyRest`
+...`any`[]
 
 #### Returns
 
 `void`
 
+#### Since
+
+v13.4.0, v12.16.0
+
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`[captureRejectionSymbol]`](WritableStream.md#capturerejectionsymbol)
+[`ReadableStream`](ReadableStream.md).[`[captureRejectionSymbol]`](ReadableStream.md#capturerejectionsymbol)
 
 ***
 
 ### addListener()
 
-> **addListener**\<`K`\>(`eventName`, `listener`): `this`
+> **addListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:597
+Defined in: node\_modules/@types/node/events.d.ts:92
 
 Alias for `emitter.on(eventName, listener)`.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`string` | `symbol`
+`string` \| `symbol`
 
 ##### listener
 
@@ -124,17 +152,18 @@ v0.1.26
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`addListener`](WritableStream.md#addlistener)
+[`ReadableStream`](ReadableStream.md).[`addListener`](ReadableStream.md#addlistener)
 
 ***
 
 ### emit()
 
-> **emit**\<`K`\>(`eventName`, ...`args`): `boolean`
+> **emit**\<`E`\>(`eventName`, ...`args`): `boolean`
 
-Defined in: node\_modules/@types/node/events.d.ts:859
+Defined in: node\_modules/@types/node/events.d.ts:134
 
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
+Synchronously calls each of the listeners registered for the event named
+`eventName`, in the order they were registered, passing the supplied arguments
 to each.
 
 Returns `true` if the event had listeners, `false` otherwise.
@@ -174,17 +203,19 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`string` | `symbol`
+`string` \| `symbol`
 
 ##### args
 
-...`AnyRest`
+...`any`[]
 
 #### Returns
 
@@ -196,7 +227,7 @@ v0.1.26
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`emit`](WritableStream.md#emit)
+[`ReadableStream`](ReadableStream.md).[`emit`](ReadableStream.md#emit)
 
 ***
 
@@ -204,9 +235,9 @@ v0.1.26
 
 #### Call Signature
 
-> **end**(`cb`?): `this`
+> **end**(`cb?`): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:417
+Defined in: node\_modules/@types/node/stream.d.ts:1762
 
 ##### Parameters
 
@@ -224,15 +255,15 @@ Defined in: node\_modules/@types/node/globals.d.ts:417
 
 #### Call Signature
 
-> **end**(`data`, `cb`?): `this`
+> **end**(`data`, `cb?`): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:418
+Defined in: node\_modules/@types/node/stream.d.ts:1763
 
 ##### Parameters
 
 ###### data
 
-`string` | `Uint8Array`
+`string` \| `Uint8Array`\<`ArrayBufferLike`\>
 
 ###### cb?
 
@@ -248,9 +279,9 @@ Defined in: node\_modules/@types/node/globals.d.ts:418
 
 #### Call Signature
 
-> **end**(`str`, `encoding`?, `cb`?): `this`
+> **end**(`str`, `encoding?`, `cb?`): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:419
+Defined in: node\_modules/@types/node/stream.d.ts:1764
 
 ##### Parameters
 
@@ -280,10 +311,10 @@ Defined in: node\_modules/@types/node/globals.d.ts:419
 
 > **eventNames**(): (`string` \| `symbol`)[]
 
-Defined in: node\_modules/@types/node/events.d.ts:922
+Defined in: node\_modules/@types/node/events.d.ts:154
 
 Returns an array listing the events for which the emitter has registered
-listeners. The values in the array are strings or `Symbol`s.
+listeners.
 
 ```js
 import { EventEmitter } from 'node:events';
@@ -309,7 +340,7 @@ v6.0.0
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`eventNames`](WritableStream.md#eventnames)
+[`ReadableStream`](ReadableStream.md).[`eventNames`](ReadableStream.md#eventnames)
 
 ***
 
@@ -317,10 +348,11 @@ v6.0.0
 
 > **getMaxListeners**(): `number`
 
-Defined in: node\_modules/@types/node/events.d.ts:774
+Defined in: node\_modules/@types/node/events.d.ts:161
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to EventEmitter.defaultMaxListeners.
+set by `emitter.setMaxListeners(n)` or defaults to
+`events.defaultMaxListeners`.
 
 #### Returns
 
@@ -332,7 +364,7 @@ v1.0.0
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`getMaxListeners`](WritableStream.md#getmaxlisteners)
+[`ReadableStream`](ReadableStream.md).[`getMaxListeners`](ReadableStream.md#getmaxlisteners)
 
 ***
 
@@ -340,7 +372,7 @@ v1.0.0
 
 > **isPaused**(): `boolean`
 
-Defined in: node\_modules/@types/node/globals.d.ts:405
+Defined in: node\_modules/@types/node/stream.d.ts:1751
 
 #### Returns
 
@@ -354,9 +386,9 @@ Defined in: node\_modules/@types/node/globals.d.ts:405
 
 ### listenerCount()
 
-> **listenerCount**\<`K`\>(`eventName`, `listener`?): `number`
+> **listenerCount**\<`E`\>(`eventName`, `listener?`): `number`
 
-Defined in: node\_modules/@types/node/events.d.ts:868
+Defined in: node\_modules/@types/node/events.d.ts:170
 
 Returns the number of listeners listening for the event named `eventName`.
 If `listener` is provided, it will return how many times the listener is found
@@ -364,19 +396,21 @@ in the list of the listeners of the event.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-The name of the event being listened for
+`string` \| `symbol`
 
-`string` | `symbol`
+The name of the event being listened for
 
 ##### listener?
 
-`Function`
+(...`args`) => `void`
 
 The event handler function
 
@@ -390,15 +424,15 @@ v3.2.0
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`listenerCount`](WritableStream.md#listenercount)
+[`ReadableStream`](ReadableStream.md).[`listenerCount`](ReadableStream.md#listenercount)
 
 ***
 
 ### listeners()
 
-> **listeners**\<`K`\>(`eventName`): `Function`[]
+> **listeners**\<`E`\>(`eventName`): ((...`args`) => `void`)[]
 
-Defined in: node\_modules/@types/node/events.d.ts:787
+Defined in: node\_modules/@types/node/events.d.ts:186
 
 Returns a copy of the array of listeners for the event named `eventName`.
 
@@ -412,17 +446,19 @@ console.log(util.inspect(server.listeners('connection')));
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`string` | `symbol`
+`string` \| `symbol`
 
 #### Returns
 
-`Function`[]
+((...`args`) => `void`)[]
 
 #### Since
 
@@ -430,27 +466,29 @@ v0.1.26
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`listeners`](WritableStream.md#listeners)
+[`ReadableStream`](ReadableStream.md).[`listeners`](ReadableStream.md#listeners)
 
 ***
 
 ### off()
 
-> **off**\<`K`\>(`eventName`, `listener`): `this`
+> **off**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:747
+Defined in: node\_modules/@types/node/events.d.ts:191
 
 Alias for `emitter.removeListener()`.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`string` | `symbol`
+`string` \| `symbol`
 
 ##### listener
 
@@ -466,20 +504,21 @@ v10.0.0
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`off`](WritableStream.md#off)
+[`ReadableStream`](ReadableStream.md).[`off`](ReadableStream.md#off)
 
 ***
 
 ### on()
 
-> **on**\<`K`\>(`eventName`, `listener`): `this`
+> **on**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:629
+Defined in: node\_modules/@types/node/events.d.ts:225
 
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
+Adds the `listener` function to the end of the listeners array for the
+event named `eventName`. No checks are made to see if the `listener` has
+already been added. Multiple calls passing the same combination of `eventName`
+and `listener` will result in the `listener` being added, and called, multiple
+times.
 
 ```js
 server.on('connection', (stream) => {
@@ -489,7 +528,8 @@ server.on('connection', (stream) => {
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
+By default, event listeners are invoked in the order they are added. The
+`emitter.prependListener()` method can be used as an alternative to add the
 event listener to the beginning of the listeners array.
 
 ```js
@@ -505,15 +545,17 @@ myEE.emit('foo');
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-The name of the event.
+`string` \| `symbol`
 
-`string` | `symbol`
+The name of the event.
 
 ##### listener
 
@@ -531,15 +573,15 @@ v0.1.101
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`on`](WritableStream.md#on)
+[`ReadableStream`](ReadableStream.md).[`on`](ReadableStream.md#on)
 
 ***
 
 ### once()
 
-> **once**\<`K`\>(`eventName`, `listener`): `this`
+> **once**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:659
+Defined in: node\_modules/@types/node/events.d.ts:256
 
 Adds a **one-time** `listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -552,7 +594,8 @@ server.once('connection', (stream) => {
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
+By default, event listeners are invoked in the order they are added. The
+`emitter.prependOnceListener()` method can be used as an alternative to add the
 event listener to the beginning of the listeners array.
 
 ```js
@@ -568,15 +611,17 @@ myEE.emit('foo');
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-The name of the event.
+`string` \| `symbol`
 
-`string` | `symbol`
+The name of the event.
 
 ##### listener
 
@@ -594,7 +639,7 @@ v0.3.0
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`once`](WritableStream.md#once)
+[`ReadableStream`](ReadableStream.md).[`once`](ReadableStream.md#once)
 
 ***
 
@@ -602,7 +647,7 @@ v0.3.0
 
 > **pause**(): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:403
+Defined in: node\_modules/@types/node/stream.d.ts:1749
 
 #### Returns
 
@@ -616,13 +661,15 @@ Defined in: node\_modules/@types/node/globals.d.ts:403
 
 ### pipe()
 
-> **pipe**\<`T`\>(`destination`, `options`?): `T`
+> **pipe**\<`T`\>(`destination`, `options?`): `T`
 
-Defined in: node\_modules/@types/node/globals.d.ts:406
+Defined in: node\_modules/@types/node/stream.d.ts:1752
 
 #### Type Parameters
 
-• **T** *extends* [`WritableStream`](WritableStream.md)
+##### T
+
+`T` *extends* [`WritableStream`](WritableStream.md)
 
 #### Parameters
 
@@ -632,7 +679,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:406
 
 ##### options?
 
-###### end
+###### end?
 
 `boolean`
 
@@ -648,14 +695,15 @@ Defined in: node\_modules/@types/node/globals.d.ts:406
 
 ### prependListener()
 
-> **prependListener**\<`K`\>(`eventName`, `listener`): `this`
+> **prependListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:886
+Defined in: node\_modules/@types/node/events.d.ts:275
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
 already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
+and `listener` will result in the `listener` being added, and called, multiple
+times.
 
 ```js
 server.prependListener('connection', (stream) => {
@@ -667,15 +715,17 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-The name of the event.
+`string` \| `symbol`
 
-`string` | `symbol`
+The name of the event.
 
 ##### listener
 
@@ -693,17 +743,18 @@ v6.0.0
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`prependListener`](WritableStream.md#prependlistener)
+[`ReadableStream`](ReadableStream.md).[`prependListener`](ReadableStream.md#prependlistener)
 
 ***
 
 ### prependOnceListener()
 
-> **prependOnceListener**\<`K`\>(`eventName`, `listener`): `this`
+> **prependOnceListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:902
+Defined in: node\_modules/@types/node/events.d.ts:292
 
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
+Adds a **one-time** `listener` function for the event named `eventName` to the
+_beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
 
 ```js
@@ -716,15 +767,17 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-The name of the event.
+`string` \| `symbol`
 
-`string` | `symbol`
+The name of the event.
 
 ##### listener
 
@@ -742,15 +795,15 @@ v6.0.0
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`prependOnceListener`](WritableStream.md#prependoncelistener)
+[`ReadableStream`](ReadableStream.md).[`prependOnceListener`](ReadableStream.md#prependoncelistener)
 
 ***
 
 ### rawListeners()
 
-> **rawListeners**\<`K`\>(`eventName`): `Function`[]
+> **rawListeners**\<`E`\>(`eventName`): ((...`args`) => `void`)[]
 
-Defined in: node\_modules/@types/node/events.d.ts:818
+Defined in: node\_modules/@types/node/events.d.ts:326
 
 Returns a copy of the array of listeners for the event named `eventName`,
 including any wrappers (such as those created by `.once()`).
@@ -782,17 +835,19 @@ emitter.emit('log');
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`string` | `symbol`
+`string` \| `symbol`
 
 #### Returns
 
-`Function`[]
+((...`args`) => `void`)[]
 
 #### Since
 
@@ -800,15 +855,15 @@ v9.4.0
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`rawListeners`](WritableStream.md#rawlisteners)
+[`ReadableStream`](ReadableStream.md).[`rawListeners`](ReadableStream.md#rawlisteners)
 
 ***
 
 ### read()
 
-> **read**(`size`?): `string` \| `Buffer`
+> **read**(`size?`): `string` \| `Buffer`\<`ArrayBufferLike`\>
 
-Defined in: node\_modules/@types/node/globals.d.ts:401
+Defined in: node\_modules/@types/node/stream.d.ts:1747
 
 #### Parameters
 
@@ -818,7 +873,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:401
 
 #### Returns
 
-`string` \| `Buffer`
+`string` \| `Buffer`\<`ArrayBufferLike`\>
 
 #### Inherited from
 
@@ -828,9 +883,9 @@ Defined in: node\_modules/@types/node/globals.d.ts:401
 
 ### removeAllListeners()
 
-> **removeAllListeners**(`eventName`?): `this`
+> **removeAllListeners**\<`E`\>(`eventName?`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:758
+Defined in: node\_modules/@types/node/events.d.ts:338
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -840,11 +895,17 @@ component or module (e.g. sockets or file streams).
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
+#### Type Parameters
+
+##### E
+
+`E` *extends* `string` \| `symbol`
+
 #### Parameters
 
 ##### eventName?
 
-`string` | `symbol`
+`string` \| `symbol`
 
 #### Returns
 
@@ -856,17 +917,18 @@ v0.1.26
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`removeAllListeners`](WritableStream.md#removealllisteners)
+[`ReadableStream`](ReadableStream.md).[`removeAllListeners`](ReadableStream.md#removealllisteners)
 
 ***
 
 ### removeListener()
 
-> **removeListener**\<`K`\>(`eventName`, `listener`): `this`
+> **removeListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:742
+Defined in: node\_modules/@types/node/events.d.ts:425
 
-Removes the specified `listener` from the listener array for the event named `eventName`.
+Removes the specified `listener` from the listener array for the event named
+`eventName`.
 
 ```js
 const callback = (stream) => {
@@ -883,8 +945,10 @@ listener array for the specified `eventName`, then `removeListener()` must be
 called multiple times to remove each instance.
 
 Once an event is emitted, all listeners attached to it at the
-time of emitting are called in order. This implies that any `removeListener()` or `removeAllListeners()` calls _after_ emitting and _before_ the last listener finishes execution
-will not remove them from`emit()` in progress. Subsequent events behave as expected.
+time of emitting are called in order. This implies that any
+`removeListener()` or `removeAllListeners()` calls _after_ emitting and
+_before_ the last listener finishes execution will not remove them from
+`emit()` in progress. Subsequent events behave as expected.
 
 ```js
 import { EventEmitter } from 'node:events';
@@ -919,14 +983,15 @@ myEmitter.emit('event');
 ```
 
 Because listeners are managed using an internal array, calling this will
-change the position indices of any listener registered _after_ the listener
+change the position indexes of any listener registered _after_ the listener
 being removed. This will not impact the order in which listeners are called,
 but it means that any copies of the listener array as returned by
 the `emitter.listeners()` method will need to be recreated.
 
 When a single function has been added as a handler multiple times for a single
 event (as in the example below), `removeListener()` will remove the most
-recently added instance. In the example the `once('ping')` listener is removed:
+recently added instance. In the example the `once('ping')`
+listener is removed:
 
 ```js
 import { EventEmitter } from 'node:events';
@@ -948,13 +1013,15 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`string` | `symbol`
+`string` \| `symbol`
 
 ##### listener
 
@@ -970,7 +1037,7 @@ v0.1.26
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`removeListener`](WritableStream.md#removelistener)
+[`ReadableStream`](ReadableStream.md).[`removeListener`](ReadableStream.md#removelistener)
 
 ***
 
@@ -978,7 +1045,7 @@ v0.1.26
 
 > **resume**(): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:404
+Defined in: node\_modules/@types/node/stream.d.ts:1750
 
 #### Returns
 
@@ -994,7 +1061,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:404
 
 > **setEncoding**(`encoding`): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:402
+Defined in: node\_modules/@types/node/stream.d.ts:1748
 
 #### Parameters
 
@@ -1016,12 +1083,13 @@ Defined in: node\_modules/@types/node/globals.d.ts:402
 
 > **setMaxListeners**(`n`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:768
+Defined in: node\_modules/@types/node/events.d.ts:436
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
 memory leaks. The `emitter.setMaxListeners()` method allows the limit to be
-modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
+modified for this specific `EventEmitter` instance. The value can be set to
+`Infinity` (or `0`) to indicate an unlimited number of listeners.
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
@@ -1041,15 +1109,15 @@ v0.3.5
 
 #### Inherited from
 
-[`WritableStream`](WritableStream.md).[`setMaxListeners`](WritableStream.md#setmaxlisteners)
+[`ReadableStream`](ReadableStream.md).[`setMaxListeners`](ReadableStream.md#setmaxlisteners)
 
 ***
 
 ### unpipe()
 
-> **unpipe**(`destination`?): `this`
+> **unpipe**(`destination?`): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:407
+Defined in: node\_modules/@types/node/stream.d.ts:1753
 
 #### Parameters
 
@@ -1069,15 +1137,15 @@ Defined in: node\_modules/@types/node/globals.d.ts:407
 
 ### unshift()
 
-> **unshift**(`chunk`, `encoding`?): `void`
+> **unshift**(`chunk`, `encoding?`): `void`
 
-Defined in: node\_modules/@types/node/globals.d.ts:408
+Defined in: node\_modules/@types/node/stream.d.ts:1754
 
 #### Parameters
 
 ##### chunk
 
-`string` | `Uint8Array`
+`string` \| `Uint8Array`\<`ArrayBufferLike`\>
 
 ##### encoding?
 
@@ -1097,7 +1165,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:408
 
 > **wrap**(`oldStream`): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:409
+Defined in: node\_modules/@types/node/stream.d.ts:1755
 
 #### Parameters
 
@@ -1119,19 +1187,19 @@ Defined in: node\_modules/@types/node/globals.d.ts:409
 
 #### Call Signature
 
-> **write**(`buffer`, `cb`?): `boolean`
+> **write**(`buffer`, `cb?`): `boolean`
 
-Defined in: node\_modules/@types/node/globals.d.ts:415
+Defined in: node\_modules/@types/node/stream.d.ts:1760
 
 ##### Parameters
 
 ###### buffer
 
-`string` | `Uint8Array`
+`string` \| `Uint8Array`\<`ArrayBufferLike`\>
 
 ###### cb?
 
-(`err`?) => `void`
+(`err?`) => `void`
 
 ##### Returns
 
@@ -1143,9 +1211,9 @@ Defined in: node\_modules/@types/node/globals.d.ts:415
 
 #### Call Signature
 
-> **write**(`str`, `encoding`?, `cb`?): `boolean`
+> **write**(`str`, `encoding?`, `cb?`): `boolean`
 
-Defined in: node\_modules/@types/node/globals.d.ts:416
+Defined in: node\_modules/@types/node/stream.d.ts:1761
 
 ##### Parameters
 
@@ -1159,7 +1227,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:416
 
 ###### cb?
 
-(`err`?) => `void`
+(`err?`) => `void`
 
 ##### Returns
 

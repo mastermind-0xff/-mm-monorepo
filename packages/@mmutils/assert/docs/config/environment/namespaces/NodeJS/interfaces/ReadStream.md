@@ -6,7 +6,7 @@
 
 # Interface: ReadStream
 
-Defined in: node\_modules/@types/node/process.d.ts:125
+Defined in: node\_modules/@types/node/process.d.ts:147
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: node\_modules/@types/node/process.d.ts:125
 
 > **allowHalfOpen**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1076
+Defined in: node\_modules/@types/node/stream.d.ts:1146
 
 If `false` then the stream will automatically end the writable side when the
 readable side ends. Set initially by the `allowHalfOpen` constructor option,
@@ -41,7 +41,7 @@ v0.9.4
 
 > `readonly` **autoSelectFamilyAttemptedAddresses**: `string`[]
 
-Defined in: node\_modules/@types/node/net.d.ts:248
+Defined in: node\_modules/@types/node/net.d.ts:280
 
 This property is only present if the family autoselection algorithm is enabled in `socket.connect(options)`
 and it is an array of the addresses that have been attempted.
@@ -63,7 +63,7 @@ v19.4.0
 
 > `readonly` **bufferSize**: `number`
 
-Defined in: node\_modules/@types/node/net.d.ts:266
+Defined in: node\_modules/@types/node/net.d.ts:298
 
 This property shows the number of characters buffered for writing. The buffer
 may contain strings whose length after encoding is not yet known. So this number
@@ -97,7 +97,7 @@ Since v14.6.0 - Use `writableLength` instead.
 
 > `readonly` **bytesRead**: `number`
 
-Defined in: node\_modules/@types/node/net.d.ts:271
+Defined in: node\_modules/@types/node/net.d.ts:303
 
 The amount of received bytes.
 
@@ -115,7 +115,7 @@ v0.5.3
 
 > `readonly` **bytesWritten**: `number`
 
-Defined in: node\_modules/@types/node/net.d.ts:276
+Defined in: node\_modules/@types/node/net.d.ts:308
 
 The amount of bytes sent.
 
@@ -133,7 +133,7 @@ v0.5.3
 
 > `readonly` **closed**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1065
+Defined in: node\_modules/@types/node/stream.d.ts:167
 
 Is `true` after `'close'` has been emitted.
 
@@ -151,7 +151,7 @@ v18.0.0
 
 > `readonly` **connecting**: `boolean`
 
-Defined in: node\_modules/@types/node/net.d.ts:284
+Defined in: node\_modules/@types/node/net.d.ts:316
 
 If `true`, `socket.connect(options[, connectListener])` was
 called and has not yet finished. It will stay `true` until the socket becomes
@@ -172,7 +172,7 @@ v6.1.0
 
 > `readonly` **destroyed**: `boolean`
 
-Defined in: node\_modules/@types/node/net.d.ts:294
+Defined in: node\_modules/@types/node/net.d.ts:326
 
 See `writable.destroyed` for further details.
 
@@ -184,9 +184,9 @@ See `writable.destroyed` for further details.
 
 ### errored
 
-> `readonly` **errored**: `null` \| `Error`
+> `readonly` **errored**: `Error` \| `null`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1066
+Defined in: node\_modules/@types/node/stream.d.ts:172
 
 Returns error if the stream has been destroyed with an error.
 
@@ -196,7 +196,7 @@ v18.0.0
 
 #### Inherited from
 
-`tty.ReadStream.errored`
+[`WriteStream`](WriteStream.md).[`errored`](WriteStream.md#errored)
 
 ***
 
@@ -204,7 +204,7 @@ v18.0.0
 
 > **isRaw**: `boolean`
 
-Defined in: node\_modules/@types/node/tty.d.ts:51
+Defined in: node\_modules/@types/node/tty.d.ts:26
 
 A `boolean` that is `true` if the TTY is currently configured to operate as a
 raw device.
@@ -226,7 +226,7 @@ v0.7.7
 
 > **isTTY**: `boolean`
 
-Defined in: node\_modules/@types/node/tty.d.ts:70
+Defined in: node\_modules/@types/node/tty.d.ts:45
 
 A `boolean` that is always `true` for `tty.ReadStream` instances.
 
@@ -242,9 +242,9 @@ v0.5.8
 
 ### localAddress?
 
-> `readonly` `optional` **localAddress**: `string`
+> `readonly` `optional` **localAddress?**: `string`
 
-Defined in: node\_modules/@types/node/net.d.ts:301
+Defined in: node\_modules/@types/node/net.d.ts:333
 
 The string representation of the local IP address the remote client is
 connecting on. For example, in a server listening on `'0.0.0.0'`, if a client
@@ -262,9 +262,9 @@ v0.9.6
 
 ### localFamily?
 
-> `readonly` `optional` **localFamily**: `string`
+> `readonly` `optional` **localFamily?**: `string`
 
-Defined in: node\_modules/@types/node/net.d.ts:311
+Defined in: node\_modules/@types/node/net.d.ts:343
 
 The string representation of the local IP family. `'IPv4'` or `'IPv6'`.
 
@@ -280,9 +280,9 @@ v18.8.0, v16.18.0
 
 ### localPort?
 
-> `readonly` `optional` **localPort**: `number`
+> `readonly` `optional` **localPort?**: `number`
 
-Defined in: node\_modules/@types/node/net.d.ts:306
+Defined in: node\_modules/@types/node/net.d.ts:338
 
 The numeric representation of the local port. For example, `80` or `21`.
 
@@ -300,7 +300,7 @@ v0.9.6
 
 > `readonly` **pending**: `boolean`
 
-Defined in: node\_modules/@types/node/net.d.ts:290
+Defined in: node\_modules/@types/node/net.d.ts:322
 
 This is `true` if the socket is not connected yet, either because `.connect()`has not yet been called or because it is still in the process of connecting
 (see `socket.connecting`).
@@ -319,9 +319,9 @@ v11.2.0, v10.16.0
 
 > **readable**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:77
+Defined in: node\_modules/@types/node/stream.d.ts:119
 
-Is `true` if it is safe to call [read](ReadStream.md#read), which means
+Is `true` if it is safe to call [read](#read), which means
 the stream has not been destroyed or emitted `'error'` or `'end'`.
 
 #### Since
@@ -338,9 +338,7 @@ v11.4.0
 
 > `readonly` **readableAborted**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:71
-
-**`Experimental`**
+Defined in: node\_modules/@types/node/stream.d.ts:113
 
 Returns whether the stream was destroyed or errored before emitting `'end'`.
 
@@ -358,9 +356,7 @@ v16.8.0
 
 > `readonly` **readableDidRead**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:83
-
-**`Experimental`**
+Defined in: node\_modules/@types/node/stream.d.ts:124
 
 Returns whether `'data'` has been emitted.
 
@@ -376,11 +372,11 @@ v16.7.0, v14.18.0
 
 ### readableEncoding
 
-> `readonly` **readableEncoding**: `null` \| [`BufferEncoding`](../type-aliases/BufferEncoding.md)
+> `readonly` **readableEncoding**: [`BufferEncoding`](../type-aliases/BufferEncoding.md) \| `null`
 
-Defined in: node\_modules/@types/node/stream.d.ts:88
+Defined in: node\_modules/@types/node/stream.d.ts:129
 
-Getter for the property `encoding` of a given `Readable` stream. The `encoding` property can be set using the [setEncoding](ReadStream.md#setencoding) method.
+Getter for the property `encoding` of a given `Readable` stream. The `encoding` property can be set using the [setEncoding](#setencoding) method.
 
 #### Since
 
@@ -388,7 +384,7 @@ v12.7.0
 
 #### Inherited from
 
-`tty.ReadStream.readableEncoding`
+[`WriteStream`](WriteStream.md).[`readableEncoding`](WriteStream.md#readableencoding)
 
 ***
 
@@ -396,9 +392,9 @@ v12.7.0
 
 > `readonly` **readableEnded**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:93
+Defined in: node\_modules/@types/node/stream.d.ts:134
 
-Becomes `true` when [`'end'`](https://nodejs.org/docs/latest-v22.x/api/stream.html#event-end) event is emitted.
+Becomes `true` when [`'end'`](https://nodejs.org/docs/latest-v25.x/api/stream.html#event-end) event is emitted.
 
 #### Since
 
@@ -412,12 +408,12 @@ v12.9.0
 
 ### readableFlowing
 
-> `readonly` **readableFlowing**: `null` \| `boolean`
+> **readableFlowing**: `boolean` \| `null`
 
-Defined in: node\_modules/@types/node/stream.d.ts:99
+Defined in: node\_modules/@types/node/stream.d.ts:140
 
 This property reflects the current state of a `Readable` stream as described
-in the [Three states](https://nodejs.org/docs/latest-v22.x/api/stream.html#three-states) section.
+in the [Three states](https://nodejs.org/docs/latest-v25.x/api/stream.html#three-states) section.
 
 #### Since
 
@@ -425,7 +421,7 @@ v9.4.0
 
 #### Inherited from
 
-`tty.ReadStream.readableFlowing`
+[`WriteStream`](WriteStream.md).[`readableFlowing`](WriteStream.md#readableflowing)
 
 ***
 
@@ -433,7 +429,7 @@ v9.4.0
 
 > `readonly` **readableHighWaterMark**: `number`
 
-Defined in: node\_modules/@types/node/stream.d.ts:104
+Defined in: node\_modules/@types/node/stream.d.ts:145
 
 Returns the value of `highWaterMark` passed when creating this `Readable`.
 
@@ -451,7 +447,7 @@ v9.3.0
 
 > `readonly` **readableLength**: `number`
 
-Defined in: node\_modules/@types/node/stream.d.ts:111
+Defined in: node\_modules/@types/node/stream.d.ts:152
 
 This property contains the number of bytes (or objects) in the queue
 ready to be read. The value provides introspection data regarding
@@ -471,7 +467,7 @@ v9.4.0
 
 > `readonly` **readableObjectMode**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:116
+Defined in: node\_modules/@types/node/stream.d.ts:157
 
 Getter for the property `objectMode` of a given `Readable` stream.
 
@@ -489,7 +485,7 @@ v12.3.0
 
 > `readonly` **readyState**: `SocketReadyState`
 
-Defined in: node\_modules/@types/node/net.d.ts:321
+Defined in: node\_modules/@types/node/net.d.ts:353
 
 This property represents the state of the connection as a string.
 
@@ -508,11 +504,11 @@ v0.5.0
 
 ***
 
-### remoteAddress?
+### remoteAddress
 
-> `readonly` `optional` **remoteAddress**: `string`
+> `readonly` **remoteAddress**: `string` \| `undefined`
 
-Defined in: node\_modules/@types/node/net.d.ts:327
+Defined in: node\_modules/@types/node/net.d.ts:359
 
 The string representation of the remote IP address. For example,`'74.125.127.100'` or `'2001:4860:a005::68'`. Value may be `undefined` if
 the socket is destroyed (for example, if the client disconnected).
@@ -523,15 +519,15 @@ v0.5.10
 
 #### Inherited from
 
-`tty.ReadStream.remoteAddress`
+[`WriteStream`](WriteStream.md).[`remoteAddress`](WriteStream.md#remoteaddress)
 
 ***
 
-### remoteFamily?
+### remoteFamily
 
-> `readonly` `optional` **remoteFamily**: `string`
+> `readonly` **remoteFamily**: `string` \| `undefined`
 
-Defined in: node\_modules/@types/node/net.d.ts:333
+Defined in: node\_modules/@types/node/net.d.ts:365
 
 The string representation of the remote IP family. `'IPv4'` or `'IPv6'`. Value may be `undefined` if
 the socket is destroyed (for example, if the client disconnected).
@@ -542,15 +538,15 @@ v0.11.14
 
 #### Inherited from
 
-`tty.ReadStream.remoteFamily`
+[`WriteStream`](WriteStream.md).[`remoteFamily`](WriteStream.md#remotefamily)
 
 ***
 
-### remotePort?
+### remotePort
 
-> `readonly` `optional` **remotePort**: `number`
+> `readonly` **remotePort**: `number` \| `undefined`
 
-Defined in: node\_modules/@types/node/net.d.ts:339
+Defined in: node\_modules/@types/node/net.d.ts:371
 
 The numeric representation of the remote port. For example, `80` or `21`. Value may be `undefined` if
 the socket is destroyed (for example, if the client disconnected).
@@ -561,15 +557,15 @@ v0.5.10
 
 #### Inherited from
 
-`tty.ReadStream.remotePort`
+[`WriteStream`](WriteStream.md).[`remotePort`](WriteStream.md#remoteport)
 
 ***
 
 ### timeout?
 
-> `readonly` `optional` **timeout**: `number`
+> `readonly` `optional` **timeout?**: `number`
 
-Defined in: node\_modules/@types/node/net.d.ts:345
+Defined in: node\_modules/@types/node/net.d.ts:377
 
 The socket timeout in milliseconds as set by `socket.setTimeout()`.
 It is `undefined` if a timeout has not been set.
@@ -586,9 +582,9 @@ v10.7.0
 
 ### writable
 
-> `readonly` **writable**: `boolean`
+> **writable**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1057
+Defined in: node\_modules/@types/node/stream.d.ts:760
 
 Is `true` if it is safe to call `writable.write()`, which means
 the stream has not been destroyed, errored, or ended.
@@ -603,11 +599,29 @@ v11.4.0
 
 ***
 
+### writableAborted
+
+> `readonly` **writableAborted**: `boolean`
+
+Defined in: node\_modules/@types/node/stream.d.ts:765
+
+Returns whether the stream was destroyed or errored before emitting `'finish'`.
+
+#### Since
+
+v18.0.0, v16.17.0
+
+#### Inherited from
+
+`tty.ReadStream.writableAborted`
+
+***
+
 ### writableCorked
 
 > `readonly` **writableCorked**: `number`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1063
+Defined in: node\_modules/@types/node/stream.d.ts:799
 
 Number of times `writable.uncork()` needs to be
 called in order to fully uncork the stream.
@@ -626,7 +640,7 @@ v13.2.0, v12.16.0
 
 > `readonly` **writableEnded**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1058
+Defined in: node\_modules/@types/node/stream.d.ts:771
 
 Is `true` after `writable.end()` has been called. This property
 does not indicate whether the data has been flushed, for this use `writable.writableFinished` instead.
@@ -645,7 +659,7 @@ v12.9.0
 
 > `readonly` **writableFinished**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1059
+Defined in: node\_modules/@types/node/stream.d.ts:776
 
 Is set to `true` immediately before the `'finish'` event is emitted.
 
@@ -663,7 +677,7 @@ v12.6.0
 
 > `readonly` **writableHighWaterMark**: `number`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1060
+Defined in: node\_modules/@types/node/stream.d.ts:781
 
 Return the value of `highWaterMark` passed when creating this `Writable`.
 
@@ -681,7 +695,7 @@ v9.3.0
 
 > `readonly` **writableLength**: `number`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1061
+Defined in: node\_modules/@types/node/stream.d.ts:788
 
 This property contains the number of bytes (or objects) in the queue
 ready to be written. The value provides introspection data regarding
@@ -701,7 +715,7 @@ v9.4.0
 
 > `readonly` **writableNeedDrain**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1064
+Defined in: node\_modules/@types/node/stream.d.ts:819
 
 Is `true` if the stream's buffer has been full and stream will emit `'drain'`.
 
@@ -719,7 +733,7 @@ v15.2.0, v14.17.0
 
 > `readonly` **writableObjectMode**: `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1062
+Defined in: node\_modules/@types/node/stream.d.ts:793
 
 Getter for the property `objectMode` of a given `Writable` stream.
 
@@ -737,13 +751,13 @@ v12.3.0
 
 > `optional` **\_construct**(`callback`): `void`
 
-Defined in: node\_modules/@types/node/stream.d.ts:133
+Defined in: node\_modules/@types/node/stream.d.ts:173
 
 #### Parameters
 
 ##### callback
 
-(`error`?) => `void`
+(`error?`) => `void`
 
 #### Returns
 
@@ -759,17 +773,17 @@ Defined in: node\_modules/@types/node/stream.d.ts:133
 
 > **\_destroy**(`error`, `callback`): `void`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1119
+Defined in: node\_modules/@types/node/stream.d.ts:636
 
 #### Parameters
 
 ##### error
 
-`null` | `Error`
+`Error` \| `null`
 
 ##### callback
 
-(`error`?) => `void`
+(`error?`) => `void`
 
 #### Returns
 
@@ -785,13 +799,13 @@ Defined in: node\_modules/@types/node/stream.d.ts:1119
 
 > **\_final**(`callback`): `void`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1120
+Defined in: node\_modules/@types/node/stream.d.ts:830
 
 #### Parameters
 
 ##### callback
 
-(`error`?) => `void`
+(`error?`) => `void`
 
 #### Returns
 
@@ -807,7 +821,7 @@ Defined in: node\_modules/@types/node/stream.d.ts:1120
 
 > **\_read**(`size`): `void`
 
-Defined in: node\_modules/@types/node/stream.d.ts:134
+Defined in: node\_modules/@types/node/stream.d.ts:174
 
 #### Parameters
 
@@ -829,7 +843,7 @@ Defined in: node\_modules/@types/node/stream.d.ts:134
 
 > **\_write**(`chunk`, `encoding`, `callback`): `void`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1111
+Defined in: node\_modules/@types/node/stream.d.ts:820
 
 #### Parameters
 
@@ -843,7 +857,7 @@ Defined in: node\_modules/@types/node/stream.d.ts:1111
 
 ##### callback
 
-(`error`?) => `void`
+(`error?`) => `void`
 
 #### Returns
 
@@ -859,7 +873,7 @@ Defined in: node\_modules/@types/node/stream.d.ts:1111
 
 > `optional` **\_writev**(`chunks`, `callback`): `void`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1112
+Defined in: node\_modules/@types/node/stream.d.ts:821
 
 #### Parameters
 
@@ -869,7 +883,7 @@ Defined in: node\_modules/@types/node/stream.d.ts:1112
 
 ##### callback
 
-(`error`?) => `void`
+(`error?`) => `void`
 
 #### Returns
 
@@ -887,7 +901,8 @@ Defined in: node\_modules/@types/node/stream.d.ts:1112
 
 Defined in: node\_modules/@types/node/stream.d.ts:659
 
-Calls `readable.destroy()` with an `AbortError` and returns a promise that fulfills when the stream is finished.
+Calls `readable.destroy()` with an `AbortError` and returns
+a promise that fulfills when the stream is finished.
 
 #### Returns
 
@@ -905,13 +920,19 @@ v20.4.0
 
 ### \[asyncIterator\]()
 
-> **\[asyncIterator\]**(): [`AsyncIterator`](AsyncIterator.md)
+> **\[asyncIterator\]**(): [`AsyncIterator`](AsyncIterator.md)\<`any`\>
 
-Defined in: node\_modules/@types/node/stream.d.ts:654
+Defined in: node\_modules/@types/node/stream.d.ts:653
 
 #### Returns
 
-[`AsyncIterator`](AsyncIterator.md)
+[`AsyncIterator`](AsyncIterator.md)\<`any`\>
+
+`AsyncIterator` to fully consume the stream.
+
+#### Since
+
+v10.0.0
 
 #### Inherited from
 
@@ -921,13 +942,34 @@ Defined in: node\_modules/@types/node/stream.d.ts:654
 
 ### \[captureRejectionSymbol\]()?
 
-> `optional` **\[captureRejectionSymbol\]**\<`K`\>(`error`, `event`, ...`args`): `void`
+> `optional` **\[captureRejectionSymbol\]**(`error`, `event`, ...`args`): `void`
 
-Defined in: node\_modules/@types/node/events.d.ts:136
+Defined in: node\_modules/@types/node/events.d.ts:87
 
-#### Type Parameters
+The `Symbol.for('nodejs.rejection')` method is called in case a
+promise rejection happens when emitting an event and
+`captureRejections` is enabled on the emitter.
+It is possible to use `events.captureRejectionSymbol` in
+place of `Symbol.for('nodejs.rejection')`.
 
-• **K**
+```js
+import { EventEmitter, captureRejectionSymbol } from 'node:events';
+
+class MyClass extends EventEmitter {
+  constructor() {
+    super({ captureRejections: true });
+  }
+
+  [captureRejectionSymbol](err, event, ...args) {
+    console.log('rejection happened for', event, 'with', err, ...args);
+    this.destroy(err);
+  }
+
+  destroy(err) {
+    // Tear the resource down here.
+  }
+}
+```
 
 #### Parameters
 
@@ -937,15 +979,19 @@ Defined in: node\_modules/@types/node/events.d.ts:136
 
 ##### event
 
-`string` | `symbol`
+`string` \| `symbol`
 
 ##### args
 
-...`AnyRest`
+...`any`[]
 
 #### Returns
 
 `void`
+
+#### Since
+
+v13.4.0, v12.16.0
 
 #### Inherited from
 
@@ -957,29 +1003,21 @@ Defined in: node\_modules/@types/node/events.d.ts:136
 
 #### Call Signature
 
-> **addListener**(`event`, `listener`): `this`
+> **addListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:374
+Defined in: node\_modules/@types/node/net.d.ts:406
 
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `SocketEventMap`
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`string`
+`E`
 
 ###### listener
 
@@ -995,451 +1033,19 @@ events.EventEmitter
 
 #### Call Signature
 
-> **addListener**(`event`, `listener`): `this`
+> **addListener**(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:375
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
+Defined in: node\_modules/@types/node/net.d.ts:407
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"close"`
-
-###### listener
-
-(`hadError`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:376
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
-
-##### Parameters
-
-###### event
-
-`"connect"`
+`string` \| `symbol`
 
 ###### listener
 
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:377
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
-
-##### Parameters
-
-###### event
-
-`"connectionAttempt"`
-
-###### listener
-
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:378
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptFailed"`
-
-###### listener
-
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:382
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptTimeout"`
-
-###### listener
-
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:386
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
-
-##### Parameters
-
-###### event
-
-`"data"`
-
-###### listener
-
-(`data`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:387
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
-
-##### Parameters
-
-###### event
-
-`"drain"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:388
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
-
-##### Parameters
-
-###### event
-
-`"end"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:389
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
-
-##### Parameters
-
-###### event
-
-`"error"`
-
-###### listener
-
-(`err`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:390
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
-
-##### Parameters
-
-###### event
-
-`"lookup"`
-
-###### listener
-
-(`err`, `address`, `family`, `host`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:394
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
-
-##### Parameters
-
-###### event
-
-`"ready"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:395
-
-events.EventEmitter
-  1. close
-  2. connect
-  3. connectionAttempt
-  4. connectionAttemptFailed
-  5. connectionAttemptTimeout
-  6. data
-  7. drain
-  8. end
-  9. error
-  10. lookup
-  11. ready
-  12. timeout
-
-##### Parameters
-
-###### event
-
-`"timeout"`
-
-###### listener
-
-() => `void`
+(...`args`) => `void`
 
 ##### Returns
 
@@ -1453,16 +1059,16 @@ events.EventEmitter
 
 ### address()
 
-> **address**(): \{\} \| `AddressInfo`
+> **address**(): \{ \} \| `AddressInfo`
 
-Defined in: node\_modules/@types/node/net.d.ts:225
+Defined in: node\_modules/@types/node/net.d.ts:257
 
 Returns the bound `address`, the address `family` name and `port` of the
 socket as reported by the operating system:`{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
 #### Returns
 
-\{\} \| `AddressInfo`
+\{ \} \| `AddressInfo`
 
 #### Since
 
@@ -1474,62 +1080,57 @@ v0.1.90
 
 ***
 
-### asIndexedPairs()
-
-> **asIndexedPairs**(`options`?): `Readable`
-
-Defined in: node\_modules/@types/node/stream.d.ts:549
-
-This method returns a new stream with chunks of the underlying stream paired with a counter
-in the form `[index, chunk]`. The first index value is `0` and it increases by 1 for each chunk produced.
-
-#### Parameters
-
-##### options?
-
-`Pick`\<`ArrayOptions`, `"signal"`\>
-
-#### Returns
-
-`Readable`
-
-a stream of indexed pairs.
-
-#### Since
-
-v17.5.0
-
-#### Inherited from
-
-`tty.ReadStream.asIndexedPairs`
-
-***
-
 ### compose()
 
-> **compose**\<`T`\>(`stream`, `options`?): `T`
+> **compose**(`stream`, `options?`): `Duplex`
 
-Defined in: node\_modules/@types/node/stream.d.ts:36
+Defined in: node\_modules/@types/node/stream.d.ts:485
 
-#### Type Parameters
+```js
+import { Readable } from 'node:stream';
 
-• **T** *extends* [`ReadableStream`](ReadableStream.md)
+async function* splitToWords(source) {
+  for await (const chunk of source) {
+    const words = String(chunk).split(' ');
+
+    for (const word of words) {
+      yield word;
+    }
+  }
+}
+
+const wordsStream = Readable.from(['text passed through', 'composed stream']).compose(splitToWords);
+const words = await wordsStream.toArray();
+
+console.log(words); // prints ['text', 'passed', 'through', 'composed', 'stream']
+```
+
+`readable.compose(s)` is equivalent to `stream.compose(readable, s)`.
+
+This method also allows for an `AbortSignal` to be provided, which will destroy
+the composed stream when aborted.
+
+See [`stream.compose(...streams)`](https://nodejs.org/docs/latest-v25.x/api/stream.html#streamcomposestreams) for more information.
 
 #### Parameters
 
 ##### stream
 
-`T` | `ComposeFnParam` | `Iterable`\<`T`\> | `AsyncIterable`\<`T`\>
+[`WritableStream`](WritableStream.md) \| `WritableStream`\<`any`\> \| `TransformStream`\<`any`, `any`\> \| ((`source`) => `void`)
 
 ##### options?
 
-###### signal
-
-`AbortSignal`
+`Abortable`
 
 #### Returns
 
-`T`
+`Duplex`
+
+a stream composed with the stream `stream`.
+
+#### Since
+
+v19.1.0, v18.13.0
 
 #### Inherited from
 
@@ -1541,9 +1142,9 @@ Defined in: node\_modules/@types/node/stream.d.ts:36
 
 #### Call Signature
 
-> **connect**(`options`, `connectionListener`?): `this`
+> **connect**(`options`, `connectionListener?`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:133
+Defined in: node\_modules/@types/node/net.d.ts:134
 
 Initiate a connection on a given socket.
 
@@ -1583,9 +1184,9 @@ behavior.
 
 #### Call Signature
 
-> **connect**(`port`, `host`, `connectionListener`?): `this`
+> **connect**(`port`, `host`, `connectionListener?`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:134
+Defined in: node\_modules/@types/node/net.d.ts:135
 
 Initiate a connection on a given socket.
 
@@ -1629,9 +1230,9 @@ behavior.
 
 #### Call Signature
 
-> **connect**(`port`, `connectionListener`?): `this`
+> **connect**(`port`, `connectionListener?`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:135
+Defined in: node\_modules/@types/node/net.d.ts:136
 
 Initiate a connection on a given socket.
 
@@ -1671,9 +1272,9 @@ behavior.
 
 #### Call Signature
 
-> **connect**(`path`, `connectionListener`?): `this`
+> **connect**(`path`, `connectionListener?`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:136
+Defined in: node\_modules/@types/node/net.d.ts:137
 
 Initiate a connection on a given socket.
 
@@ -1717,10 +1318,10 @@ behavior.
 
 > **cork**(): `void`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1127
+Defined in: node\_modules/@types/node/stream.d.ts:957
 
 The `writable.cork()` method forces all written data to be buffered in memory.
-The buffered data will be flushed when either the [uncork](ReadStream.md#uncork) or [end](ReadStream.md#end) methods are called.
+The buffered data will be flushed when either the [uncork](#uncork) or [end](#end) methods are called.
 
 The primary intent of `writable.cork()` is to accommodate a situation in which
 several small chunks are written to the stream in rapid succession. Instead of
@@ -1747,9 +1348,9 @@ v0.11.2
 
 ### destroy()
 
-> **destroy**(`error`?): `this`
+> **destroy**(`error?`): `this`
 
-Defined in: node\_modules/@types/node/stream.d.ts:586
+Defined in: node\_modules/@types/node/stream.d.ts:648
 
 Destroy the stream. Optionally emit an `'error'` event, and emit a `'close'` event (unless `emitClose` is set to `false`). After this call, the readable
 stream will release any internal resources and subsequent calls to `push()` will be ignored.
@@ -1785,7 +1386,7 @@ v8.0.0
 
 > **destroySoon**(): `void`
 
-Defined in: node\_modules/@types/node/net.d.ts:96
+Defined in: node\_modules/@types/node/net.d.ts:92
 
 Destroys the socket after all data is written. If the `finish` event was already emitted the socket is destroyed immediately.
 If the socket is still writable it implicitly calls `socket.end()`.
@@ -1806,9 +1407,9 @@ v0.3.4
 
 ### drop()
 
-> **drop**(`limit`, `options`?): `Readable`
+> **drop**(`limit`, `options?`): `Readable`
 
-Defined in: node\_modules/@types/node/stream.d.ts:535
+Defined in: node\_modules/@types/node/stream.d.ts:608
 
 This method returns a new stream with the first *limit* chunks dropped from the start.
 
@@ -1822,7 +1423,7 @@ the number of chunks to drop from the readable.
 
 ##### options?
 
-`Pick`\<`ArrayOptions`, `"signal"`\>
+`Abortable`
 
 #### Returns
 
@@ -1844,323 +1445,49 @@ v17.5.0
 
 #### Call Signature
 
-> **emit**(`event`, ...`args`): `boolean`
+> **emit**\<`E`\>(`eventName`, ...`args`): `boolean`
 
-Defined in: node\_modules/@types/node/net.d.ts:396
+Defined in: node\_modules/@types/node/net.d.ts:408
+
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `SocketEventMap`
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`string` | `symbol`
+`E`
+
+###### args
+
+...`SocketEventMap`\[`E`\]
+
+##### Returns
+
+`boolean`
+
+##### Inherited from
+
+`tty.ReadStream.emit`
+
+#### Call Signature
+
+> **emit**(`eventName`, ...`args`): `boolean`
+
+Defined in: node\_modules/@types/node/net.d.ts:409
+
+##### Parameters
+
+###### eventName
+
+`string` \| `symbol`
 
 ###### args
 
 ...`any`[]
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `hadError`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:397
-
-##### Parameters
-
-###### event
-
-`"close"`
-
-###### hadError
-
-`boolean`
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:398
-
-##### Parameters
-
-###### event
-
-`"connect"`
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `ip`, `port`, `family`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:399
-
-##### Parameters
-
-###### event
-
-`"connectionAttempt"`
-
-###### ip
-
-`string`
-
-###### port
-
-`number`
-
-###### family
-
-`number`
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `ip`, `port`, `family`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:400
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptFailed"`
-
-###### ip
-
-`string`
-
-###### port
-
-`number`
-
-###### family
-
-`number`
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `ip`, `port`, `family`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:401
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptTimeout"`
-
-###### ip
-
-`string`
-
-###### port
-
-`number`
-
-###### family
-
-`number`
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `data`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:402
-
-##### Parameters
-
-###### event
-
-`"data"`
-
-###### data
-
-`Buffer`
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:403
-
-##### Parameters
-
-###### event
-
-`"drain"`
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:404
-
-##### Parameters
-
-###### event
-
-`"end"`
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `err`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:405
-
-##### Parameters
-
-###### event
-
-`"error"`
-
-###### err
-
-`Error`
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `err`, `address`, `family`, `host`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:406
-
-##### Parameters
-
-###### event
-
-`"lookup"`
-
-###### err
-
-`Error`
-
-###### address
-
-`string`
-
-###### family
-
-`string` | `number`
-
-###### host
-
-`string`
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:407
-
-##### Parameters
-
-###### event
-
-`"ready"`
-
-##### Returns
-
-`boolean`
-
-##### Inherited from
-
-`tty.ReadStream.emit`
-
-#### Call Signature
-
-> **emit**(`event`): `boolean`
-
-Defined in: node\_modules/@types/node/net.d.ts:408
-
-##### Parameters
-
-###### event
-
-`"timeout"`
 
 ##### Returns
 
@@ -2176,9 +1503,9 @@ Defined in: node\_modules/@types/node/net.d.ts:408
 
 #### Call Signature
 
-> **end**(`callback`?): `this`
+> **end**(`callback?`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:356
+Defined in: node\_modules/@types/node/net.d.ts:387
 
 Half-closes the socket. i.e., it sends a FIN packet. It is possible the
 server will still send some data.
@@ -2209,20 +1536,17 @@ v0.1.90
 
 #### Call Signature
 
-> **end**(`buffer`, `callback`?): `this`
+> **end**(`buffer`, `callback?`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:357
+Defined in: node\_modules/@types/node/net.d.ts:395
 
-Half-closes the socket. i.e., it sends a FIN packet. It is possible the
-server will still send some data.
-
-See `writable.end()` for further details.
+Half-closes the socket, with one final chunk of data.
 
 ##### Parameters
 
 ###### buffer
 
-`string` | `Uint8Array`
+`string` \| `Uint8Array`\<`ArrayBufferLike`\>
 
 ###### callback?
 
@@ -2236,6 +1560,10 @@ Optional callback for when the socket is finished.
 
 The socket itself.
 
+##### See
+
+[Socket.end](Socket.md#end) for full details.
+
 ##### Since
 
 v0.1.90
@@ -2246,20 +1574,17 @@ v0.1.90
 
 #### Call Signature
 
-> **end**(`str`, `encoding`?, `callback`?): `this`
+> **end**(`str`, `encoding?`, `callback?`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:358
+Defined in: node\_modules/@types/node/net.d.ts:404
 
-Half-closes the socket. i.e., it sends a FIN packet. It is possible the
-server will still send some data.
-
-See `writable.end()` for further details.
+Half-closes the socket, with one final chunk of data.
 
 ##### Parameters
 
 ###### str
 
-`string` | `Uint8Array`
+`string` \| `Uint8Array`\<`ArrayBufferLike`\>
 
 ###### encoding?
 
@@ -2279,6 +1604,10 @@ Optional callback for when the socket is finished.
 
 The socket itself.
 
+##### See
+
+[Socket.end](Socket.md#end) for full details.
+
 ##### Since
 
 v0.1.90
@@ -2293,10 +1622,10 @@ v0.1.90
 
 > **eventNames**(): (`string` \| `symbol`)[]
 
-Defined in: node\_modules/@types/node/events.d.ts:922
+Defined in: node\_modules/@types/node/events.d.ts:154
 
 Returns an array listing the events for which the emitter has registered
-listeners. The values in the array are strings or `Symbol`s.
+listeners.
 
 ```js
 import { EventEmitter } from 'node:events';
@@ -2328,9 +1657,9 @@ v6.0.0
 
 ### every()
 
-> **every**(`fn`, `options`?): `Promise`\<`boolean`\>
+> **every**(`fn`, `options?`): `Promise`\<`boolean`\>
 
-Defined in: node\_modules/@types/node/stream.d.ts:514
+Defined in: node\_modules/@types/node/stream.d.ts:584
 
 This method is similar to `Array.prototype.every` and calls *fn* on each chunk in the stream
 to check if all awaited return values are truthy value for *fn*. Once an *fn* call on a chunk
@@ -2341,13 +1670,13 @@ If all of the *fn* calls on the chunks return a truthy value, the promise is ful
 
 ##### fn
 
-(`data`, `options`?) => `boolean` \| `Promise`\<`boolean`\>
+(`data`, `options?`) => `boolean` \| `Promise`\<`boolean`\>
 
 a function to call on each chunk of the stream. Async or not.
 
 ##### options?
 
-`ArrayOptions`
+`Pick`\<`ReadableOperatorOptions`, `"concurrency"` \| `"signal"`\>
 
 #### Returns
 
@@ -2367,9 +1696,9 @@ v17.5.0
 
 ### filter()
 
-> **filter**(`fn`, `options`?): `Readable`
+> **filter**(`fn`, `options?`): `Readable`
 
-Defined in: node\_modules/@types/node/stream.d.ts:442
+Defined in: node\_modules/@types/node/stream.d.ts:512
 
 This method allows filtering the stream. For each chunk in the stream the *fn* function will be called
 and if it returns a truthy value, the chunk will be passed to the result stream.
@@ -2379,13 +1708,13 @@ If the *fn* function returns a promise - that promise will be `await`ed.
 
 ##### fn
 
-(`data`, `options`?) => `boolean` \| `Promise`\<`boolean`\>
+(`data`, `options?`) => `boolean` \| `Promise`\<`boolean`\>
 
 a function to filter chunks from the stream. Async or not.
 
 ##### options?
 
-`ArrayOptions`
+`ReadableOperatorOptions`
 
 #### Returns
 
@@ -2407,9 +1736,9 @@ v17.4.0, v16.14.0
 
 #### Call Signature
 
-> **find**\<`T`\>(`fn`, `options`?): `Promise`\<`undefined` \| `T`\>
+> **find**\<`T`\>(`fn`, `options?`): `Promise`\<`T` \| `undefined`\>
 
-Defined in: node\_modules/@types/node/stream.d.ts:497
+Defined in: node\_modules/@types/node/stream.d.ts:567
 
 This method is similar to `Array.prototype.find` and calls *fn* on each chunk in the stream
 to find a chunk with a truthy value for *fn*. Once an *fn* call's awaited return value is truthy,
@@ -2418,23 +1747,25 @@ If all of the *fn* calls on the chunks return a falsy value, the promise is fulf
 
 ##### Type Parameters
 
-• **T**
+###### T
+
+`T`
 
 ##### Parameters
 
 ###### fn
 
-(`data`, `options`?) => `data is T`
+(`data`, `options?`) => `data is T`
 
 a function to call on each chunk of the stream. Async or not.
 
 ###### options?
 
-`ArrayOptions`
+`Pick`\<`ReadableOperatorOptions`, `"concurrency"` \| `"signal"`\>
 
 ##### Returns
 
-`Promise`\<`undefined` \| `T`\>
+`Promise`\<`T` \| `undefined`\>
 
 a promise evaluating to the first chunk for which *fn* evaluated with a truthy value,
 or `undefined` if no element was found.
@@ -2449,9 +1780,9 @@ v17.5.0
 
 #### Call Signature
 
-> **find**(`fn`, `options`?): `Promise`\<`any`\>
+> **find**(`fn`, `options?`): `Promise`\<`any`\>
 
-Defined in: node\_modules/@types/node/stream.d.ts:501
+Defined in: node\_modules/@types/node/stream.d.ts:571
 
 This method is similar to `Array.prototype.find` and calls *fn* on each chunk in the stream
 to find a chunk with a truthy value for *fn*. Once an *fn* call's awaited return value is truthy,
@@ -2462,13 +1793,13 @@ If all of the *fn* calls on the chunks return a falsy value, the promise is fulf
 
 ###### fn
 
-(`data`, `options`?) => `boolean` \| `Promise`\<`boolean`\>
+(`data`, `options?`) => `boolean` \| `Promise`\<`boolean`\>
 
 a function to call on each chunk of the stream. Async or not.
 
 ###### options?
 
-`ArrayOptions`
+`Pick`\<`ReadableOperatorOptions`, `"concurrency"` \| `"signal"`\>
 
 ##### Returns
 
@@ -2489,9 +1820,9 @@ v17.5.0
 
 ### flatMap()
 
-> **flatMap**(`fn`, `options`?): `Readable`
+> **flatMap**(`fn`, `options?`): `Readable`
 
-Defined in: node\_modules/@types/node/stream.d.ts:528
+Defined in: node\_modules/@types/node/stream.d.ts:598
 
 This method returns a new stream by applying the given callback to each chunk of the stream
 and then flattening the result.
@@ -2503,13 +1834,13 @@ will be merged (flattened) into the returned stream.
 
 ##### fn
 
-(`data`, `options`?) => `any`
+(`data`, `options?`) => `any`
 
 a function to map over every chunk in the stream. May be async. May be a stream or generator.
 
 ##### options?
 
-`ArrayOptions`
+`Pick`\<`ReadableOperatorOptions`, `"concurrency"` \| `"signal"`\>
 
 #### Returns
 
@@ -2529,9 +1860,9 @@ v17.5.0
 
 ### forEach()
 
-> **forEach**(`fn`, `options`?): `Promise`\<`void`\>
+> **forEach**(`fn`, `options?`): `Promise`\<`void`\>
 
-Defined in: node\_modules/@types/node/stream.d.ts:461
+Defined in: node\_modules/@types/node/stream.d.ts:531
 
 This method allows iterating a stream. For each chunk in the stream the *fn* function will be called.
 If the *fn* function returns a promise - that promise will be `await`ed.
@@ -2548,13 +1879,13 @@ in the underlying machinary and can limit the number of concurrent *fn* calls.
 
 ##### fn
 
-(`data`, `options`?) => `void` \| `Promise`\<`void`\>
+(`data`, `options?`) => `void` \| `Promise`\<`void`\>
 
 a function to call on each chunk of the stream. Async or not.
 
 ##### options?
 
-`ArrayOptions`
+`Pick`\<`ReadableOperatorOptions`, `"concurrency"` \| `"signal"`\>
 
 #### Returns
 
@@ -2576,10 +1907,11 @@ v17.5.0
 
 > **getMaxListeners**(): `number`
 
-Defined in: node\_modules/@types/node/events.d.ts:774
+Defined in: node\_modules/@types/node/events.d.ts:161
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to EventEmitter.defaultMaxListeners.
+set by `emitter.setMaxListeners(n)` or defaults to
+`events.defaultMaxListeners`.
 
 #### Returns
 
@@ -2595,11 +1927,44 @@ v1.0.0
 
 ***
 
+### getTypeOfService()
+
+> **getTypeOfService**(): `number`
+
+Defined in: node\_modules/@types/node/net.d.ts:235
+
+Returns the current Type of Service (TOS) field for IPv4 packets or Traffic
+Class for IPv6 packets for this socket.
+
+`setTypeOfService()` may be called before the socket is connected; the value
+will be cached and applied when the socket establishes a connection.
+`getTypeOfService()` will return the currently set value even before connection.
+
+On some platforms (e.g., Linux), certain TOS/ECN bits may be masked or ignored,
+and behavior can differ between IPv4 and IPv6 or dual-stack sockets. Callers
+should verify platform-specific semantics.
+
+#### Returns
+
+`number`
+
+The current TOS value.
+
+#### Since
+
+v25.6.0
+
+#### Inherited from
+
+`tty.ReadStream.getTypeOfService`
+
+***
+
 ### isPaused()
 
 > **isPaused**(): `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:295
+Defined in: node\_modules/@types/node/stream.d.ts:335
 
 The `readable.isPaused()` method returns the current operating state of the `Readable`.
 This is used primarily by the mechanism that underlies the `readable.pipe()` method.
@@ -2631,9 +1996,9 @@ v0.11.14
 
 ### iterator()
 
-> **iterator**(`options`?): [`AsyncIterator`](AsyncIterator.md)
+> **iterator**(`options?`): [`AsyncIterator`](AsyncIterator.md)\<`any`\>
 
-Defined in: node\_modules/@types/node/stream.d.ts:425
+Defined in: node\_modules/@types/node/stream.d.ts:495
 
 The iterator created by this method gives users the option to cancel the destruction
 of the stream if the `for await...of` loop is exited by `return`, `break`, or `throw`,
@@ -2643,17 +2008,11 @@ or if the iterator should destroy the stream if the stream emitted an error duri
 
 ##### options?
 
-###### destroyOnReturn
-
-`boolean`
-
-When set to `false`, calling `return` on the async iterator,
-or exiting a `for await...of` iteration using a `break`, `return`, or `throw` will not destroy the stream.
-**Default: `true`**.
+`ReadableIteratorOptions`
 
 #### Returns
 
-[`AsyncIterator`](AsyncIterator.md)
+[`AsyncIterator`](AsyncIterator.md)\<`any`\>
 
 #### Since
 
@@ -2667,41 +2026,57 @@ v16.3.0
 
 ### listenerCount()
 
-> **listenerCount**\<`K`\>(`eventName`, `listener`?): `number`
+#### Call Signature
 
-Defined in: node\_modules/@types/node/events.d.ts:868
+> **listenerCount**\<`E`\>(`eventName`, `listener?`): `number`
 
-Returns the number of listeners listening for the event named `eventName`.
-If `listener` is provided, it will return how many times the listener is found
-in the list of the listeners of the event.
+Defined in: node\_modules/@types/node/net.d.ts:410
 
-#### Type Parameters
+##### Type Parameters
 
-• **K**
+###### E
 
-#### Parameters
+`E` *extends* keyof `SocketEventMap`
 
-##### eventName
+##### Parameters
 
-The name of the event being listened for
+###### eventName
 
-`string` | `symbol`
+`E`
 
-##### listener?
+###### listener?
 
-`Function`
+(...`args`) => `void`
 
-The event handler function
-
-#### Returns
+##### Returns
 
 `number`
 
-#### Since
+##### Inherited from
 
-v3.2.0
+`tty.ReadStream.listenerCount`
 
-#### Inherited from
+#### Call Signature
+
+> **listenerCount**(`eventName`, `listener?`): `number`
+
+Defined in: node\_modules/@types/node/net.d.ts:414
+
+##### Parameters
+
+###### eventName
+
+`string` \| `symbol`
+
+###### listener?
+
+(...`args`) => `void`
+
+##### Returns
+
+`number`
+
+##### Inherited from
 
 `tty.ReadStream.listenerCount`
 
@@ -2709,39 +2084,49 @@ v3.2.0
 
 ### listeners()
 
-> **listeners**\<`K`\>(`eventName`): `Function`[]
+#### Call Signature
 
-Defined in: node\_modules/@types/node/events.d.ts:787
+> **listeners**\<`E`\>(`eventName`): ((...`args`) => `void`)[]
 
-Returns a copy of the array of listeners for the event named `eventName`.
+Defined in: node\_modules/@types/node/net.d.ts:415
 
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
-```
+##### Type Parameters
 
-#### Type Parameters
+###### E
 
-• **K**
+`E` *extends* keyof `SocketEventMap`
 
-#### Parameters
+##### Parameters
 
-##### eventName
+###### eventName
 
-`string` | `symbol`
+`E`
 
-#### Returns
+##### Returns
 
-`Function`[]
+((...`args`) => `void`)[]
 
-#### Since
+##### Inherited from
 
-v0.1.26
+`tty.ReadStream.listeners`
 
-#### Inherited from
+#### Call Signature
+
+> **listeners**(`eventName`): ((...`args`) => `void`)[]
+
+Defined in: node\_modules/@types/node/net.d.ts:416
+
+##### Parameters
+
+###### eventName
+
+`string` \| `symbol`
+
+##### Returns
+
+((...`args`) => `void`)[]
+
+##### Inherited from
 
 `tty.ReadStream.listeners`
 
@@ -2749,9 +2134,9 @@ v0.1.26
 
 ### map()
 
-> **map**(`fn`, `options`?): `Readable`
+> **map**(`fn`, `options?`): `Readable`
 
-Defined in: node\_modules/@types/node/stream.d.ts:433
+Defined in: node\_modules/@types/node/stream.d.ts:503
 
 This method allows mapping over the stream. The *fn* function will be called for every chunk in the stream.
 If the *fn* function returns a promise - that promise will be `await`ed before being passed to the result stream.
@@ -2760,13 +2145,13 @@ If the *fn* function returns a promise - that promise will be `await`ed before b
 
 ##### fn
 
-(`data`, `options`?) => `any`
+(`data`, `options?`) => `any`
 
 a function to map over every chunk in the stream. Async or not.
 
 ##### options?
 
-`ArrayOptions`
+`ReadableOperatorOptions`
 
 #### Returns
 
@@ -2786,35 +2171,57 @@ v17.4.0, v16.14.0
 
 ### off()
 
-> **off**\<`K`\>(`eventName`, `listener`): `this`
+#### Call Signature
 
-Defined in: node\_modules/@types/node/events.d.ts:747
+> **off**\<`E`\>(`eventName`, `listener`): `this`
 
-Alias for `emitter.removeListener()`.
+Defined in: node\_modules/@types/node/net.d.ts:417
 
-#### Type Parameters
+##### Type Parameters
 
-• **K**
+###### E
 
-#### Parameters
+`E` *extends* keyof `SocketEventMap`
 
-##### eventName
+##### Parameters
 
-`string` | `symbol`
+###### eventName
 
-##### listener
+`E`
+
+###### listener
 
 (...`args`) => `void`
 
-#### Returns
+##### Returns
 
 `this`
 
-#### Since
+##### Inherited from
 
-v10.0.0
+`tty.ReadStream.off`
 
-#### Inherited from
+#### Call Signature
+
+> **off**(`eventName`, `listener`): `this`
+
+Defined in: node\_modules/@types/node/net.d.ts:418
+
+##### Parameters
+
+###### eventName
+
+`string` \| `symbol`
+
+###### listener
+
+(...`args`) => `void`
+
+##### Returns
+
+`this`
+
+##### Inherited from
 
 `tty.ReadStream.off`
 
@@ -2824,15 +2231,21 @@ v10.0.0
 
 #### Call Signature
 
-> **on**(`event`, `listener`): `this`
+> **on**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:409
+Defined in: node\_modules/@types/node/net.d.ts:419
+
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `SocketEventMap`
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`string`
+`E`
 
 ###### listener
 
@@ -2848,283 +2261,19 @@ Defined in: node\_modules/@types/node/net.d.ts:409
 
 #### Call Signature
 
-> **on**(`event`, `listener`): `this`
+> **on**(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:410
-
-##### Parameters
-
-###### event
-
-`"close"`
-
-###### listener
-
-(`hadError`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:411
+Defined in: node\_modules/@types/node/net.d.ts:420
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"connect"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:412
-
-##### Parameters
-
-###### event
-
-`"connectionAttempt"`
+`string` \| `symbol`
 
 ###### listener
 
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:413
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptFailed"`
-
-###### listener
-
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:414
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptTimeout"`
-
-###### listener
-
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:415
-
-##### Parameters
-
-###### event
-
-`"data"`
-
-###### listener
-
-(`data`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:416
-
-##### Parameters
-
-###### event
-
-`"drain"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:417
-
-##### Parameters
-
-###### event
-
-`"end"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:418
-
-##### Parameters
-
-###### event
-
-`"error"`
-
-###### listener
-
-(`err`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:419
-
-##### Parameters
-
-###### event
-
-`"lookup"`
-
-###### listener
-
-(`err`, `address`, `family`, `host`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:423
-
-##### Parameters
-
-###### event
-
-`"ready"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:424
-
-##### Parameters
-
-###### event
-
-`"timeout"`
-
-###### listener
-
-() => `void`
+(...`args`) => `void`
 
 ##### Returns
 
@@ -3140,15 +2289,21 @@ Defined in: node\_modules/@types/node/net.d.ts:424
 
 #### Call Signature
 
-> **once**(`event`, `listener`): `this`
+> **once**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:425
+Defined in: node\_modules/@types/node/net.d.ts:421
+
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `SocketEventMap`
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`string`
+`E`
 
 ###### listener
 
@@ -3164,283 +2319,19 @@ Defined in: node\_modules/@types/node/net.d.ts:425
 
 #### Call Signature
 
-> **once**(`event`, `listener`): `this`
+> **once**(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:426
-
-##### Parameters
-
-###### event
-
-`"close"`
-
-###### listener
-
-(`hadError`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:427
+Defined in: node\_modules/@types/node/net.d.ts:422
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"connectionAttempt"`
-
-###### listener
-
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:428
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptFailed"`
+`string` \| `symbol`
 
 ###### listener
 
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:429
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptTimeout"`
-
-###### listener
-
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:430
-
-##### Parameters
-
-###### event
-
-`"connect"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:431
-
-##### Parameters
-
-###### event
-
-`"data"`
-
-###### listener
-
-(`data`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:432
-
-##### Parameters
-
-###### event
-
-`"drain"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:433
-
-##### Parameters
-
-###### event
-
-`"end"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:434
-
-##### Parameters
-
-###### event
-
-`"error"`
-
-###### listener
-
-(`err`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:435
-
-##### Parameters
-
-###### event
-
-`"lookup"`
-
-###### listener
-
-(`err`, `address`, `family`, `host`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:439
-
-##### Parameters
-
-###### event
-
-`"ready"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:440
-
-##### Parameters
-
-###### event
-
-`"timeout"`
-
-###### listener
-
-() => `void`
+(...`args`) => `void`
 
 ##### Returns
 
@@ -3456,7 +2347,7 @@ Defined in: node\_modules/@types/node/net.d.ts:440
 
 > **pause**(): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:148
+Defined in: node\_modules/@types/node/net.d.ts:149
 
 Pauses the reading of data. That is, `'data'` events will not be emitted.
 Useful to throttle back an upload.
@@ -3475,13 +2366,15 @@ The socket itself.
 
 ### pipe()
 
-> **pipe**\<`T`\>(`destination`, `options`?): `T`
+> **pipe**\<`T`\>(`destination`, `options?`): `T`
 
-Defined in: node\_modules/@types/node/stream.d.ts:30
+Defined in: node\_modules/@types/node/stream.d.ts:10
 
 #### Type Parameters
 
-• **T** *extends* [`WritableStream`](WritableStream.md)
+##### T
+
+`T` *extends* [`WritableStream`](WritableStream.md)
 
 #### Parameters
 
@@ -3491,13 +2384,15 @@ Defined in: node\_modules/@types/node/stream.d.ts:30
 
 ##### options?
 
-###### end
-
-`boolean`
+`PipeOptions`
 
 #### Returns
 
 `T`
+
+#### Since
+
+v0.9.4
 
 #### Inherited from
 
@@ -3509,15 +2404,21 @@ Defined in: node\_modules/@types/node/stream.d.ts:30
 
 #### Call Signature
 
-> **prependListener**(`event`, `listener`): `this`
+> **prependListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:441
+Defined in: node\_modules/@types/node/net.d.ts:423
+
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `SocketEventMap`
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`string`
+`E`
 
 ###### listener
 
@@ -3533,283 +2434,19 @@ Defined in: node\_modules/@types/node/net.d.ts:441
 
 #### Call Signature
 
-> **prependListener**(`event`, `listener`): `this`
+> **prependListener**(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:442
-
-##### Parameters
-
-###### event
-
-`"close"`
-
-###### listener
-
-(`hadError`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:443
+Defined in: node\_modules/@types/node/net.d.ts:427
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"connect"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:444
-
-##### Parameters
-
-###### event
-
-`"connectionAttempt"`
+`string` \| `symbol`
 
 ###### listener
 
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:445
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptFailed"`
-
-###### listener
-
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:449
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptTimeout"`
-
-###### listener
-
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:453
-
-##### Parameters
-
-###### event
-
-`"data"`
-
-###### listener
-
-(`data`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:454
-
-##### Parameters
-
-###### event
-
-`"drain"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:455
-
-##### Parameters
-
-###### event
-
-`"end"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:456
-
-##### Parameters
-
-###### event
-
-`"error"`
-
-###### listener
-
-(`err`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:457
-
-##### Parameters
-
-###### event
-
-`"lookup"`
-
-###### listener
-
-(`err`, `address`, `family`, `host`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:461
-
-##### Parameters
-
-###### event
-
-`"ready"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:462
-
-##### Parameters
-
-###### event
-
-`"timeout"`
-
-###### listener
-
-() => `void`
+(...`args`) => `void`
 
 ##### Returns
 
@@ -3825,15 +2462,21 @@ Defined in: node\_modules/@types/node/net.d.ts:462
 
 #### Call Signature
 
-> **prependOnceListener**(`event`, `listener`): `this`
+> **prependOnceListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:463
+Defined in: node\_modules/@types/node/net.d.ts:428
+
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `SocketEventMap`
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`string`
+`E`
 
 ###### listener
 
@@ -3849,283 +2492,19 @@ Defined in: node\_modules/@types/node/net.d.ts:463
 
 #### Call Signature
 
-> **prependOnceListener**(`event`, `listener`): `this`
+> **prependOnceListener**(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:464
-
-##### Parameters
-
-###### event
-
-`"close"`
-
-###### listener
-
-(`hadError`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:465
+Defined in: node\_modules/@types/node/net.d.ts:432
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"connect"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:466
-
-##### Parameters
-
-###### event
-
-`"connectionAttempt"`
+`string` \| `symbol`
 
 ###### listener
 
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:470
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptFailed"`
-
-###### listener
-
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:474
-
-##### Parameters
-
-###### event
-
-`"connectionAttemptTimeout"`
-
-###### listener
-
-(`ip`, `port`, `family`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:478
-
-##### Parameters
-
-###### event
-
-`"data"`
-
-###### listener
-
-(`data`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:479
-
-##### Parameters
-
-###### event
-
-`"drain"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:480
-
-##### Parameters
-
-###### event
-
-`"end"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:481
-
-##### Parameters
-
-###### event
-
-`"error"`
-
-###### listener
-
-(`err`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:482
-
-##### Parameters
-
-###### event
-
-`"lookup"`
-
-###### listener
-
-(`err`, `address`, `family`, `host`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:486
-
-##### Parameters
-
-###### event
-
-`"ready"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/net.d.ts:487
-
-##### Parameters
-
-###### event
-
-`"timeout"`
-
-###### listener
-
-() => `void`
+(...`args`) => `void`
 
 ##### Returns
 
@@ -4139,9 +2518,9 @@ Defined in: node\_modules/@types/node/net.d.ts:487
 
 ### push()
 
-> **push**(`chunk`, `encoding`?): `boolean`
+> **push**(`chunk`, `encoding?`): `boolean`
 
-Defined in: node\_modules/@types/node/stream.d.ts:415
+Defined in: node\_modules/@types/node/stream.d.ts:455
 
 #### Parameters
 
@@ -4165,57 +2544,49 @@ Defined in: node\_modules/@types/node/stream.d.ts:415
 
 ### rawListeners()
 
-> **rawListeners**\<`K`\>(`eventName`): `Function`[]
+#### Call Signature
 
-Defined in: node\_modules/@types/node/events.d.ts:818
+> **rawListeners**\<`E`\>(`eventName`): ((...`args`) => `void`)[]
 
-Returns a copy of the array of listeners for the event named `eventName`,
-including any wrappers (such as those created by `.once()`).
+Defined in: node\_modules/@types/node/net.d.ts:433
 
-```js
-import { EventEmitter } from 'node:events';
-const emitter = new EventEmitter();
-emitter.once('log', () => console.log('log once'));
+##### Type Parameters
 
-// Returns a new Array with a function `onceWrapper` which has a property
-// `listener` which contains the original listener bound above
-const listeners = emitter.rawListeners('log');
-const logFnWrapper = listeners[0];
+###### E
 
-// Logs "log once" to the console and does not unbind the `once` event
-logFnWrapper.listener();
+`E` *extends* keyof `SocketEventMap`
 
-// Logs "log once" to the console and removes the listener
-logFnWrapper();
+##### Parameters
 
-emitter.on('log', () => console.log('log persistently'));
-// Will return a new Array with a single function bound by `.on()` above
-const newListeners = emitter.rawListeners('log');
+###### eventName
 
-// Logs "log persistently" twice
-newListeners[0]();
-emitter.emit('log');
-```
+`E`
 
-#### Type Parameters
+##### Returns
 
-• **K**
+((...`args`) => `void`)[]
 
-#### Parameters
+##### Inherited from
 
-##### eventName
+`tty.ReadStream.rawListeners`
 
-`string` | `symbol`
+#### Call Signature
 
-#### Returns
+> **rawListeners**(`eventName`): ((...`args`) => `void`)[]
 
-`Function`[]
+Defined in: node\_modules/@types/node/net.d.ts:434
 
-#### Since
+##### Parameters
 
-v9.4.0
+###### eventName
 
-#### Inherited from
+`string` \| `symbol`
+
+##### Returns
+
+((...`args`) => `void`)[]
+
+##### Inherited from
 
 `tty.ReadStream.rawListeners`
 
@@ -4223,9 +2594,9 @@ v9.4.0
 
 ### read()
 
-> **read**(`size`?): `any`
+> **read**(`size?`): `any`
 
-Defined in: node\_modules/@types/node/stream.d.ts:212
+Defined in: node\_modules/@types/node/stream.d.ts:252
 
 The `readable.read()` method reads data out of the internal buffer and
 returns it. If no data is available to be read, `null` is returned. By default,
@@ -4298,7 +2669,7 @@ a call to `readable.read(size)`, regardless of the value of the `size` argument.
 If the `readable.read()` method returns a chunk of data, a `'data'` event will
 also be emitted.
 
-Calling [read](ReadStream.md#read) after the `'end'` event has
+Calling [read](#read) after the `'end'` event has
 been emitted will return `null`. No runtime error will be raised.
 
 #### Parameters
@@ -4327,9 +2698,9 @@ v0.9.4
 
 #### Call Signature
 
-> **reduce**\<`T`\>(`fn`, `initial`?, `options`?): `Promise`\<`T`\>
+> **reduce**\<`T`\>(`fn`): `Promise`\<`T`\>
 
-Defined in: node\_modules/@types/node/stream.d.ts:564
+Defined in: node\_modules/@types/node/stream.d.ts:630
 
 This method calls *fn* on each chunk of the stream in order, passing it the result from the calculation
 on the previous element. It returns a promise for the final value of the reduction.
@@ -4342,25 +2713,17 @@ or parallelism. To perform a reduce concurrently, you can extract the async func
 
 ##### Type Parameters
 
-• **T** = `any`
+###### T
+
+`T`
 
 ##### Parameters
 
 ###### fn
 
-(`previous`, `data`, `options`?) => `T`
+(`previous`, `data`, `options?`) => `T`
 
 a reducer function to call over every chunk in the stream. Async or not.
-
-###### initial?
-
-`undefined`
-
-the initial value to use in the reduction.
-
-###### options?
-
-`Pick`\<`ArrayOptions`, `"signal"`\>
 
 ##### Returns
 
@@ -4378,9 +2741,9 @@ v17.5.0
 
 #### Call Signature
 
-> **reduce**\<`T`\>(`fn`, `initial`, `options`?): `Promise`\<`T`\>
+> **reduce**\<`T`\>(`fn`, `initial`, `options?`): `Promise`\<`T`\>
 
-Defined in: node\_modules/@types/node/stream.d.ts:569
+Defined in: node\_modules/@types/node/stream.d.ts:631
 
 This method calls *fn* on each chunk of the stream in order, passing it the result from the calculation
 on the previous element. It returns a promise for the final value of the reduction.
@@ -4393,13 +2756,15 @@ or parallelism. To perform a reduce concurrently, you can extract the async func
 
 ##### Type Parameters
 
-• **T** = `any`
+###### T
+
+`T`
 
 ##### Parameters
 
 ###### fn
 
-(`previous`, `data`, `options`?) => `T`
+(`previous`, `data`, `options?`) => `T`
 
 a reducer function to call over every chunk in the stream. Async or not.
 
@@ -4411,7 +2776,7 @@ the initial value to use in the reduction.
 
 ###### options?
 
-`Pick`\<`ArrayOptions`, `"signal"`\>
+`Abortable`
 
 ##### Returns
 
@@ -4433,7 +2798,7 @@ v17.5.0
 
 > **ref**(): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:239
+Defined in: node\_modules/@types/node/net.d.ts:271
 
 Opposite of `unref()`, calling `ref()` on a previously `unref`ed socket will _not_ let the program exit if it's the only socket left (the default behavior).
 If the socket is `ref`ed calling `ref` again will have no effect.
@@ -4456,33 +2821,49 @@ v0.9.1
 
 ### removeAllListeners()
 
-> **removeAllListeners**(`eventName`?): `this`
+#### Call Signature
 
-Defined in: node\_modules/@types/node/events.d.ts:758
+> **removeAllListeners**\<`E`\>(`eventName?`): `this`
 
-Removes all listeners, or those of the specified `eventName`.
+Defined in: node\_modules/@types/node/net.d.ts:436
 
-It is bad practice to remove listeners added elsewhere in the code,
-particularly when the `EventEmitter` instance was created by some other
-component or module (e.g. sockets or file streams).
+##### Type Parameters
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+###### E
 
-#### Parameters
+`E` *extends* keyof `SocketEventMap`
 
-##### eventName?
+##### Parameters
 
-`string` | `symbol`
+###### eventName?
 
-#### Returns
+`E`
+
+##### Returns
 
 `this`
 
-#### Since
+##### Inherited from
 
-v0.1.26
+`tty.ReadStream.removeAllListeners`
 
-#### Inherited from
+#### Call Signature
+
+> **removeAllListeners**(`eventName?`): `this`
+
+Defined in: node\_modules/@types/node/net.d.ts:437
+
+##### Parameters
+
+###### eventName?
+
+`string` \| `symbol`
+
+##### Returns
+
+`this`
+
+##### Inherited from
 
 `tty.ReadStream.removeAllListeners`
 
@@ -4492,19 +2873,25 @@ v0.1.26
 
 #### Call Signature
 
-> **removeListener**(`event`, `listener`): `this`
+> **removeListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1240
+Defined in: node\_modules/@types/node/net.d.ts:438
+
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `SocketEventMap`
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"close"`
+`E`
 
 ###### listener
 
-() => `void`
+(...`args`) => `void`
 
 ##### Returns
 
@@ -4516,255 +2903,15 @@ Defined in: node\_modules/@types/node/stream.d.ts:1240
 
 #### Call Signature
 
-> **removeListener**(`event`, `listener`): `this`
+> **removeListener**(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1241
-
-##### Parameters
-
-###### event
-
-`"data"`
-
-###### listener
-
-(`chunk`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.removeListener`
-
-#### Call Signature
-
-> **removeListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/stream.d.ts:1242
+Defined in: node\_modules/@types/node/net.d.ts:442
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"drain"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.removeListener`
-
-#### Call Signature
-
-> **removeListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/stream.d.ts:1243
-
-##### Parameters
-
-###### event
-
-`"end"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.removeListener`
-
-#### Call Signature
-
-> **removeListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/stream.d.ts:1244
-
-##### Parameters
-
-###### event
-
-`"error"`
-
-###### listener
-
-(`err`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.removeListener`
-
-#### Call Signature
-
-> **removeListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/stream.d.ts:1245
-
-##### Parameters
-
-###### event
-
-`"finish"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.removeListener`
-
-#### Call Signature
-
-> **removeListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/stream.d.ts:1246
-
-##### Parameters
-
-###### event
-
-`"pause"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.removeListener`
-
-#### Call Signature
-
-> **removeListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/stream.d.ts:1247
-
-##### Parameters
-
-###### event
-
-`"pipe"`
-
-###### listener
-
-(`src`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.removeListener`
-
-#### Call Signature
-
-> **removeListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/stream.d.ts:1248
-
-##### Parameters
-
-###### event
-
-`"readable"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.removeListener`
-
-#### Call Signature
-
-> **removeListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/stream.d.ts:1249
-
-##### Parameters
-
-###### event
-
-`"resume"`
-
-###### listener
-
-() => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.removeListener`
-
-#### Call Signature
-
-> **removeListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/stream.d.ts:1250
-
-##### Parameters
-
-###### event
-
-`"unpipe"`
-
-###### listener
-
-(`src`) => `void`
-
-##### Returns
-
-`this`
-
-##### Inherited from
-
-`tty.ReadStream.removeListener`
-
-#### Call Signature
-
-> **removeListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/stream.d.ts:1251
-
-##### Parameters
-
-###### event
-
-`string` | `symbol`
+`string` \| `symbol`
 
 ###### listener
 
@@ -4784,7 +2931,7 @@ Defined in: node\_modules/@types/node/stream.d.ts:1251
 
 > **resetAndDestroy**(): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:156
+Defined in: node\_modules/@types/node/net.d.ts:157
 
 Close the TCP connection by sending an RST packet and destroy the stream.
 If this TCP socket is in connecting status, it will send an RST packet and destroy this TCP socket once it is connected.
@@ -4809,7 +2956,7 @@ v18.3.0, v16.17.0
 
 > **resume**(): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:161
+Defined in: node\_modules/@types/node/net.d.ts:162
 
 Resumes reading after a call to `socket.pause()`.
 
@@ -4829,7 +2976,7 @@ The socket itself.
 
 > **setDefaultEncoding**(`encoding`): `this`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1123
+Defined in: node\_modules/@types/node/stream.d.ts:903
 
 The `writable.setDefaultEncoding()` method sets the default `encoding` for a `Writable` stream.
 
@@ -4857,9 +3004,9 @@ v0.11.15
 
 ### setEncoding()
 
-> **setEncoding**(`encoding`?): `this`
+> **setEncoding**(`encoding?`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:142
+Defined in: node\_modules/@types/node/net.d.ts:143
 
 Set the encoding for the socket as a `Readable Stream`. See `readable.setEncoding()` for more information.
 
@@ -4887,9 +3034,9 @@ v0.1.90
 
 ### setKeepAlive()
 
-> **setKeepAlive**(`enable`?, `initialDelay`?): `this`
+> **setKeepAlive**(`enable?`, `initialDelay?`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:219
+Defined in: node\_modules/@types/node/net.d.ts:220
 
 Enable/disable keep-alive functionality, and optionally set the initial
 delay before the first keepalive probe is sent on an idle socket.
@@ -4935,12 +3082,13 @@ v0.1.92
 
 > **setMaxListeners**(`n`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:768
+Defined in: node\_modules/@types/node/events.d.ts:436
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
 memory leaks. The `emitter.setMaxListeners()` method allows the limit to be
-modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
+modified for this specific `EventEmitter` instance. The value can be set to
+`Infinity` (or `0`) to indicate an unlimited number of listeners.
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
@@ -4966,9 +3114,9 @@ v0.3.5
 
 ### setNoDelay()
 
-> **setNoDelay**(`noDelay`?): `this`
+> **setNoDelay**(`noDelay?`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:199
+Defined in: node\_modules/@types/node/net.d.ts:200
 
 Enable/disable the use of Nagle's algorithm.
 
@@ -5007,7 +3155,7 @@ v0.1.90
 
 > **setRawMode**(`mode`): `this`
 
-Defined in: node\_modules/@types/node/tty.d.ts:65
+Defined in: node\_modules/@types/node/tty.d.ts:40
 
 Allows configuration of `tty.ReadStream` so that it operates as a raw device.
 
@@ -5044,9 +3192,9 @@ v0.7.7
 
 ### setTimeout()
 
-> **setTimeout**(`timeout`, `callback`?): `this`
+> **setTimeout**(`timeout`, `callback?`): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:183
+Defined in: node\_modules/@types/node/net.d.ts:184
 
 Sets the socket to timeout after `timeout` milliseconds of inactivity on
 the socket. By default `net.Socket` do not have a timeout.
@@ -5092,11 +3240,52 @@ v0.1.90
 
 ***
 
+### setTypeOfService()
+
+> **setTypeOfService**(`tos`): `this`
+
+Defined in: node\_modules/@types/node/net.d.ts:251
+
+Sets the Type of Service (TOS) field for IPv4 packets or Traffic Class for IPv6
+Packets sent from this socket. This can be used to prioritize network traffic.
+
+`setTypeOfService()` may be called before the socket is connected; the value
+will be cached and applied when the socket establishes a connection.
+`getTypeOfService()` will return the currently set value even before connection.
+
+On some platforms (e.g., Linux), certain TOS/ECN bits may be masked or ignored,
+and behavior can differ between IPv4 and IPv6 or dual-stack sockets. Callers
+should verify platform-specific semantics.
+
+#### Parameters
+
+##### tos
+
+`number`
+
+The TOS value to set (0-255).
+
+#### Returns
+
+`this`
+
+The socket itself.
+
+#### Since
+
+v25.6.0
+
+#### Inherited from
+
+`tty.ReadStream.setTypeOfService`
+
+***
+
 ### some()
 
-> **some**(`fn`, `options`?): `Promise`\<`boolean`\>
+> **some**(`fn`, `options?`): `Promise`\<`boolean`\>
 
-Defined in: node\_modules/@types/node/stream.d.ts:483
+Defined in: node\_modules/@types/node/stream.d.ts:553
 
 This method is similar to `Array.prototype.some` and calls *fn* on each chunk in the stream
 until the awaited return value is `true` (or any truthy value). Once an *fn* call on a chunk
@@ -5107,13 +3296,13 @@ If none of the *fn* calls on the chunks return a truthy value, the promise is fu
 
 ##### fn
 
-(`data`, `options`?) => `boolean` \| `Promise`\<`boolean`\>
+(`data`, `options?`) => `boolean` \| `Promise`\<`boolean`\>
 
 a function to call on each chunk of the stream. Async or not.
 
 ##### options?
 
-`ArrayOptions`
+`Pick`\<`ReadableOperatorOptions`, `"concurrency"` \| `"signal"`\>
 
 #### Returns
 
@@ -5133,9 +3322,9 @@ v17.5.0
 
 ### take()
 
-> **take**(`limit`, `options`?): `Readable`
+> **take**(`limit`, `options?`): `Readable`
 
-Defined in: node\_modules/@types/node/stream.d.ts:542
+Defined in: node\_modules/@types/node/stream.d.ts:615
 
 This method returns a new stream with the first *limit* chunks.
 
@@ -5149,7 +3338,7 @@ the number of chunks to take from the readable.
 
 ##### options?
 
-`Pick`\<`ArrayOptions`, `"signal"`\>
+`Abortable`
 
 #### Returns
 
@@ -5169,9 +3358,9 @@ v17.5.0
 
 ### toArray()
 
-> **toArray**(`options`?): `Promise`\<`any`[]\>
+> **toArray**(`options?`): `Promise`\<`any`[]\>
 
-Defined in: node\_modules/@types/node/stream.d.ts:473
+Defined in: node\_modules/@types/node/stream.d.ts:543
 
 This method allows easily obtaining the contents of a stream.
 
@@ -5182,7 +3371,7 @@ for interoperability and convenience, not as the primary way to consume streams.
 
 ##### options?
 
-`Pick`\<`ArrayOptions`, `"signal"`\>
+`Abortable`
 
 #### Returns
 
@@ -5204,9 +3393,9 @@ v17.5.0
 
 > **uncork**(): `void`
 
-Defined in: node\_modules/@types/node/stream.d.ts:1128
+Defined in: node\_modules/@types/node/stream.d.ts:991
 
-The `writable.uncork()` method flushes all data buffered since [cork](ReadStream.md#cork) was called.
+The `writable.uncork()` method flushes all data buffered since [cork](#cork) was called.
 
 When using `writable.cork()` and `writable.uncork()` to manage the buffering
 of writes to a stream, defer calls to `writable.uncork()` using `process.nextTick()`. Doing so allows batching of all `writable.write()` calls that occur within a given Node.js event
@@ -5253,12 +3442,12 @@ v0.11.2
 
 ### unpipe()
 
-> **unpipe**(`destination`?): `this`
+> **unpipe**(`destination?`): `this`
 
-Defined in: node\_modules/@types/node/stream.d.ts:322
+Defined in: node\_modules/@types/node/stream.d.ts:362
 
 The `readable.unpipe()` method detaches a `Writable` stream previously attached
-using the [pipe](ReadStream.md#pipe) method.
+using the [pipe](#pipe) method.
 
 If the `destination` is not specified, then _all_ pipes are detached.
 
@@ -5306,7 +3495,7 @@ v0.9.4
 
 > **unref**(): `this`
 
-Defined in: node\_modules/@types/node/net.d.ts:232
+Defined in: node\_modules/@types/node/net.d.ts:264
 
 Calling `unref()` on a socket will allow the program to exit if this is the only
 active socket in the event system. If the socket is already `unref`ed calling`unref()` again will have no effect.
@@ -5329,9 +3518,9 @@ v0.9.1
 
 ### unshift()
 
-> **unshift**(`chunk`, `encoding`?): `void`
+> **unshift**(`chunk`, `encoding?`): `void`
 
-Defined in: node\_modules/@types/node/stream.d.ts:388
+Defined in: node\_modules/@types/node/stream.d.ts:428
 
 Passing `chunk` as `null` signals the end of the stream (EOF) and behaves the
 same as `readable.push(null)`, after which no more data can be written. The EOF
@@ -5385,11 +3574,11 @@ function parseHeader(stream, callback) {
 }
 ```
 
-Unlike [push](ReadStream.md#push), `stream.unshift(chunk)` will not
+Unlike [push](#push), `stream.unshift(chunk)` will not
 end the reading process by resetting the internal reading state of the stream.
 This can cause unexpected results if `readable.unshift()` is called during a
-read (i.e. from within a [\_read](ReadStream.md#_read) implementation on a
-custom stream). Following the call to `readable.unshift()` with an immediate [push](ReadStream.md#push) will reset the reading state appropriately,
+read (i.e. from within a [\_read](#_read) implementation on a
+custom stream). Following the call to `readable.unshift()` with an immediate [push](#push) will reset the reading state appropriately,
 however it is best to simply avoid calling `readable.unshift()` while in the
 process of performing a read.
 
@@ -5426,12 +3615,12 @@ v0.9.11
 
 > **wrap**(`stream`): `this`
 
-Defined in: node\_modules/@types/node/stream.d.ts:414
+Defined in: node\_modules/@types/node/stream.d.ts:454
 
 Prior to Node.js 0.10, streams did not implement the entire `node:stream` module API as it is currently defined. (See `Compatibility` for more
 information.)
 
-When using an older Node.js library that emits `'data'` events and has a [pause](ReadStream.md#pause) method that is advisory only, the `readable.wrap()` method can be used to create a `Readable`
+When using an older Node.js library that emits `'data'` events and has a [pause](#pause) method that is advisory only, the `readable.wrap()` method can be used to create a `Readable`
 stream that uses
 the old stream as its data source.
 
@@ -5476,9 +3665,9 @@ v0.9.4
 
 #### Call Signature
 
-> **write**(`buffer`, `cb`?): `boolean`
+> **write**(`buffer`, `cb?`): `boolean`
 
-Defined in: node\_modules/@types/node/net.d.ts:112
+Defined in: node\_modules/@types/node/net.d.ts:107
 
 Sends data on the socket. The second parameter specifies the encoding in the
 case of a string. It defaults to UTF8 encoding.
@@ -5496,11 +3685,11 @@ information.
 
 ###### buffer
 
-`string` | `Uint8Array`
+`string` \| `Uint8Array`\<`ArrayBufferLike`\>
 
 ###### cb?
 
-(`err`?) => `void`
+(`err?`) => `void`
 
 ##### Returns
 
@@ -5516,27 +3705,17 @@ v0.1.90
 
 #### Call Signature
 
-> **write**(`str`, `encoding`?, `cb`?): `boolean`
+> **write**(`str`, `encoding?`, `cb?`): `boolean`
 
-Defined in: node\_modules/@types/node/net.d.ts:113
+Defined in: node\_modules/@types/node/net.d.ts:114
 
-Sends data on the socket. The second parameter specifies the encoding in the
-case of a string. It defaults to UTF8 encoding.
-
-Returns `true` if the entire data was flushed successfully to the kernel
-buffer. Returns `false` if all or part of the data was queued in user memory.`'drain'` will be emitted when the buffer is again free.
-
-The optional `callback` parameter will be executed when the data is finally
-written out, which may not be immediately.
-
-See `Writable` stream `write()` method for more
-information.
+Sends data on the socket, with an explicit encoding for string data.
 
 ##### Parameters
 
 ###### str
 
-`string` | `Uint8Array`
+`string` \| `Uint8Array`\<`ArrayBufferLike`\>
 
 ###### encoding?
 
@@ -5546,11 +3725,15 @@ Only used when data is `string`.
 
 ###### cb?
 
-(`err`?) => `void`
+(`err?`) => `void`
 
 ##### Returns
 
 `boolean`
+
+##### See
+
+[Socket.write](Socket.md#write) for full details.
 
 ##### Since
 

@@ -6,20 +6,20 @@
 
 # Interface: RequireResolveOptions
 
-Defined in: node\_modules/@types/node/module.d.ts:617
+Defined in: node\_modules/@types/node/module.d.ts:677
 
 ## Properties
 
 ### paths?
 
-> `optional` **paths**: `string`[]
+> `optional` **paths?**: `string`[]
 
-Defined in: node\_modules/@types/node/module.d.ts:629
+Defined in: node\_modules/@types/node/module.d.ts:689
 
 Paths to resolve module location from. If present, these
 paths are used instead of the default resolution paths, with the exception
 of
-[GLOBAL\_FOLDERS](https://nodejs.org/docs/latest-v22.x/api/modules.html#loading-from-the-global-folders)
+[GLOBAL\_FOLDERS](https://nodejs.org/docs/latest-v25.x/api/modules.html#loading-from-the-global-folders)
 like `$HOME/.node_modules`, which are
 always included. Each of these paths is used as a starting point for
 the module resolution algorithm, meaning that the `node_modules` hierarchy

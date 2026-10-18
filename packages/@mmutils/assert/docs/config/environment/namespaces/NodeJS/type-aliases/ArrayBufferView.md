@@ -6,10 +6,12 @@
 
 # Type Alias: ArrayBufferView\<TArrayBuffer\>
 
-> **ArrayBufferView**\<`TArrayBuffer`\>: [`TypedArray`](TypedArray.md)\<`TArrayBuffer`\> \| `DataView`\<`TArrayBuffer`\>
+> **ArrayBufferView**\<`TArrayBuffer`\> = [`TypedArray`](TypedArray.md)\<`TArrayBuffer`\> \| `DataView`\<`TArrayBuffer`\>
 
-Defined in: node\_modules/@types/node/globals.typedarray.d.ts:17
+Defined in: node\_modules/@types/node/globals.typedarray.d.ts:18
 
 ## Type Parameters
 
-• **TArrayBuffer** *extends* `ArrayBufferLike` = `ArrayBufferLike`
+### TArrayBuffer
+
+`TArrayBuffer` *extends* `ArrayBufferLike` = `ArrayBufferLike`

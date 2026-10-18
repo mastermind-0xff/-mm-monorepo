@@ -6,7 +6,7 @@
 
 # Interface: CpuUsage
 
-Defined in: node\_modules/@types/node/process.d.ts:160
+Defined in: node\_modules/@types/node/process.d.ts:182
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: node\_modules/@types/node/process.d.ts:160
 
 > **system**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:162
+Defined in: node\_modules/@types/node/process.d.ts:184
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: node\_modules/@types/node/process.d.ts:162
 
 > **user**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:161
+Defined in: node\_modules/@types/node/process.d.ts:183

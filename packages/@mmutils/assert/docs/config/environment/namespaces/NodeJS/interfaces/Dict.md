@@ -6,7 +6,7 @@
 
 # Interface: Dict\<T\>
 
-Defined in: node\_modules/@types/node/globals.d.ts:429
+Defined in: node\_modules/@types/node/globals.d.ts:112
 
 ## Extended by
 
@@ -16,8 +16,10 @@ Defined in: node\_modules/@types/node/globals.d.ts:429
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Indexable
 
-\[`key`: `string`\]: `undefined` \| `T`
+> \[`key`: `string`\]: `T` \| `undefined`

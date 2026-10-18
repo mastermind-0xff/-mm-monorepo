@@ -6,6 +6,6 @@
 
 # Type Alias: UncaughtExceptionOrigin
 
-> **UncaughtExceptionOrigin**: `"uncaughtException"` \| `"unhandledRejection"`
+> **UncaughtExceptionOrigin** = `"uncaughtException"` \| `"unhandledRejection"`
 
-Defined in: node\_modules/@types/node/process.d.ts:321
+Defined in: node\_modules/@types/node/process.d.ts:342

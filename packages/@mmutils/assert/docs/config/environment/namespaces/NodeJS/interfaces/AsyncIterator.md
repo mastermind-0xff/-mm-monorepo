@@ -12,37 +12,32 @@ An async iterable iterator returned by the Node.js API.
 
 ## Extends
 
-- `AsyncIterator`\<`T`, `TReturn`, `TNext`\>.`AsyncIteratorObject`\<`T`, `TReturn`, `TNext`\>
+- `AsyncIterator`\<`T`, `TReturn`, `TNext`\>
+- `AsyncIteratorObject`\<`T`, `TReturn`, `TNext`\>
 
 ## Type Parameters
 
-• **T**
+### T
 
-• **TReturn**
+`T`
 
-• **TNext**
+### TReturn
+
+`TReturn`
+
+### TNext
+
+`TNext`
 
 ## Methods
 
 ### \[asyncDispose\]()
 
-#### Call Signature
-
 > **\[asyncDispose\]**(): `PromiseLike`\<`void`\>
 
-Defined in: node\_modules/typescript/lib/lib.esnext.disposable.d.ts:40
+Defined in: node\_modules/typescript/lib/lib.esnext.disposable.d.ts:38
 
-##### Returns
-
-`PromiseLike`\<`void`\>
-
-#### Call Signature
-
-> **\[asyncDispose\]**(): `PromiseLike`\<`void`\>
-
-Defined in: node\_modules/@types/node/compatibility/disposable.d.ts:15
-
-##### Returns
+#### Returns
 
 `PromiseLike`\<`void`\>
 
@@ -50,13 +45,13 @@ Defined in: node\_modules/@types/node/compatibility/disposable.d.ts:15
 
 ### \[asyncIterator\]()
 
-> **\[asyncIterator\]**(): [`AsyncIterator`](AsyncIterator.md)\<`T`, `TReturn`, `TNext`\>
+> **\[asyncIterator\]**(): `AsyncIterator`\<`T`, `TReturn`, `TNext`\>
 
-Defined in: node\_modules/@types/node/globals.d.ts:448
+Defined in: node\_modules/@types/node/globals.d.ts:142
 
 #### Returns
 
-[`AsyncIterator`](AsyncIterator.md)\<`T`, `TReturn`, `TNext`\>
+`AsyncIterator`\<`T`, `TReturn`, `TNext`\>
 
 ***
 
@@ -64,13 +59,13 @@ Defined in: node\_modules/@types/node/globals.d.ts:448
 
 > **next**(...`__namedParameters`): `Promise`\<`IteratorResult`\<`T`, `TReturn`\>\>
 
-Defined in: node\_modules/typescript/lib/lib.es2018.asynciterable.d.ts:32
+Defined in: node\_modules/typescript/lib/lib.es2018.asynciterable.d.ts:30
 
 #### Parameters
 
 ##### \_\_namedParameters
 
-\[\] | \[`TNext`\]
+\[\] \| \[`TNext`\]
 
 #### Returns
 
@@ -84,15 +79,15 @@ Defined in: node\_modules/typescript/lib/lib.es2018.asynciterable.d.ts:32
 
 ### return()?
 
-> `optional` **return**(`value`?): `Promise`\<`IteratorResult`\<`T`, `TReturn`\>\>
+> `optional` **return**(`value?`): `Promise`\<`IteratorResult`\<`T`, `TReturn`\>\>
 
-Defined in: node\_modules/typescript/lib/lib.es2018.asynciterable.d.ts:33
+Defined in: node\_modules/typescript/lib/lib.es2018.asynciterable.d.ts:31
 
 #### Parameters
 
 ##### value?
 
-`TReturn` | `PromiseLike`\<`TReturn`\>
+`TReturn` \| `PromiseLike`\<`TReturn`\>
 
 #### Returns
 
@@ -106,9 +101,9 @@ Defined in: node\_modules/typescript/lib/lib.es2018.asynciterable.d.ts:33
 
 ### throw()?
 
-> `optional` **throw**(`e`?): `Promise`\<`IteratorResult`\<`T`, `TReturn`\>\>
+> `optional` **throw**(`e?`): `Promise`\<`IteratorResult`\<`T`, `TReturn`\>\>
 
-Defined in: node\_modules/typescript/lib/lib.es2018.asynciterable.d.ts:34
+Defined in: node\_modules/typescript/lib/lib.es2018.asynciterable.d.ts:32
 
 #### Parameters
 

@@ -6,7 +6,7 @@
 
 # Interface: ProcessConfig
 
-Defined in: node\_modules/@types/node/process.d.ts:536
+Defined in: node\_modules/@types/node/process.d.ts:660
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: node\_modules/@types/node/process.d.ts:536
 
 > `readonly` **target\_defaults**: `object`
 
-Defined in: node\_modules/@types/node/process.d.ts:537
+Defined in: node\_modules/@types/node/process.d.ts:661
 
 #### cflags
 
@@ -42,7 +42,7 @@ Defined in: node\_modules/@types/node/process.d.ts:537
 
 > `readonly` **variables**: `object`
 
-Defined in: node\_modules/@types/node/process.d.ts:544
+Defined in: node\_modules/@types/node/process.d.ts:668
 
 #### clang
 

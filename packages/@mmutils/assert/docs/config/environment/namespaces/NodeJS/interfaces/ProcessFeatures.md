@@ -6,7 +6,7 @@
 
 # Interface: ProcessFeatures
 
-Defined in: node\_modules/@types/node/process.d.ts:171
+Defined in: node\_modules/@types/node/process.d.ts:193
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: node\_modules/@types/node/process.d.ts:171
 
 > `readonly` **cached\_builtins**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:176
+Defined in: node\_modules/@types/node/process.d.ts:198
 
 A boolean value that is `true` if the current Node.js build is caching builtin modules.
 
@@ -28,7 +28,7 @@ v12.0.0
 
 > `readonly` **debug**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:181
+Defined in: node\_modules/@types/node/process.d.ts:203
 
 A boolean value that is `true` if the current Node.js build is a debug build.
 
@@ -42,7 +42,7 @@ v0.5.5
 
 > `readonly` **inspector**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:186
+Defined in: node\_modules/@types/node/process.d.ts:208
 
 A boolean value that is `true` if the current Node.js build includes the inspector.
 
@@ -56,7 +56,7 @@ v11.10.0
 
 > `readonly` **ipv6**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:194
+Defined in: node\_modules/@types/node/process.d.ts:216
 
 A boolean value that is `true` if the current Node.js build includes support for IPv6.
 
@@ -76,10 +76,10 @@ This property is always true, and any checks based on it are redundant.
 
 > `readonly` **require\_module**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:200
+Defined in: node\_modules/@types/node/process.d.ts:222
 
 A boolean value that is `true` if the current Node.js build supports
-[loading ECMAScript modules using `require()`](https://nodejs.org/docs/latest-v22.x/api/modules.md#loading-ecmascript-modules-using-require).
+[loading ECMAScript modules using `require()`](https://nodejs.org/docs/latest-v25.x/api/modules.md#loading-ecmascript-modules-using-require).
 
 #### Since
 
@@ -91,7 +91,7 @@ v22.10.0
 
 > `readonly` **tls**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:205
+Defined in: node\_modules/@types/node/process.d.ts:227
 
 A boolean value that is `true` if the current Node.js build includes support for TLS.
 
@@ -105,7 +105,7 @@ v0.5.3
 
 > `readonly` **tls\_alpn**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:214
+Defined in: node\_modules/@types/node/process.d.ts:236
 
 A boolean value that is `true` if the current Node.js build includes support for ALPN in TLS.
 
@@ -126,7 +126,7 @@ Use `process.features.tls` instead.
 
 > `readonly` **tls\_ocsp**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:223
+Defined in: node\_modules/@types/node/process.d.ts:245
 
 A boolean value that is `true` if the current Node.js build includes support for OCSP in TLS.
 
@@ -147,7 +147,7 @@ Use `process.features.tls` instead.
 
 > `readonly` **tls\_sni**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:232
+Defined in: node\_modules/@types/node/process.d.ts:254
 
 A boolean value that is `true` if the current Node.js build includes support for SNI in TLS.
 
@@ -168,10 +168,11 @@ Use `process.features.tls` instead.
 
 > `readonly` **typescript**: `false` \| `"strip"` \| `"transform"`
 
-Defined in: node\_modules/@types/node/process.d.ts:238
+Defined in: node\_modules/@types/node/process.d.ts:261
 
-A value that is `"strip"` if Node.js is run with `--experimental-strip-types`,
-`"transform"` if Node.js is run with `--experimental-transform-types`, and `false` otherwise.
+A value that is `"strip"` by default,
+`"transform"` if Node.js is run with `--experimental-transform-types`, and `false` if
+Node.js is run with `--no-strip-types`.
 
 #### Since
 
@@ -183,7 +184,7 @@ v22.10.0
 
 > `readonly` **uv**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:246
+Defined in: node\_modules/@types/node/process.d.ts:269
 
 A boolean value that is `true` if the current Node.js build includes support for libuv.
 

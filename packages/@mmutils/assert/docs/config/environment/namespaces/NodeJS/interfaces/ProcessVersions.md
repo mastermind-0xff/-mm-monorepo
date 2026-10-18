@@ -6,7 +6,7 @@
 
 # Interface: ProcessVersions
 
-Defined in: node\_modules/@types/node/process.d.ts:248
+Defined in: node\_modules/@types/node/process.d.ts:271
 
 ## Extends
 
@@ -14,7 +14,7 @@ Defined in: node\_modules/@types/node/process.d.ts:248
 
 ## Indexable
 
-\[`key`: `string`\]: `undefined` \| `string`
+> \[`key`: `string`\]: `string` \| `undefined`
 
 ## Properties
 
@@ -22,7 +22,7 @@ Defined in: node\_modules/@types/node/process.d.ts:248
 
 > **ares**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:252
+Defined in: node\_modules/@types/node/process.d.ts:275
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: node\_modules/@types/node/process.d.ts:252
 
 > **http\_parser**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:249
+Defined in: node\_modules/@types/node/process.d.ts:272
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: node\_modules/@types/node/process.d.ts:249
 
 > **modules**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:255
+Defined in: node\_modules/@types/node/process.d.ts:278
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: node\_modules/@types/node/process.d.ts:255
 
 > **node**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:250
+Defined in: node\_modules/@types/node/process.d.ts:273
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: node\_modules/@types/node/process.d.ts:250
 
 > **openssl**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:256
+Defined in: node\_modules/@types/node/process.d.ts:279
 
 ***
 
@@ -62,7 +62,7 @@ Defined in: node\_modules/@types/node/process.d.ts:256
 
 > **uv**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:253
+Defined in: node\_modules/@types/node/process.d.ts:276
 
 ***
 
@@ -70,7 +70,7 @@ Defined in: node\_modules/@types/node/process.d.ts:253
 
 > **v8**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:251
+Defined in: node\_modules/@types/node/process.d.ts:274
 
 ***
 
@@ -78,4 +78,4 @@ Defined in: node\_modules/@types/node/process.d.ts:251
 
 > **zlib**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:254
+Defined in: node\_modules/@types/node/process.d.ts:277

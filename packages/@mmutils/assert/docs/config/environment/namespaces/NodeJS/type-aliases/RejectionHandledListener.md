@@ -4,18 +4,31 @@
 
 [@mmutils/assert](../../../../../modules.md) / [config/environment](../../../README.md) / [NodeJS](../README.md) / RejectionHandledListener
 
-# Type Alias: RejectionHandledListener()
+# ~~Type Alias: RejectionHandledListener~~
 
-> **RejectionHandledListener**: (`promise`) => `void`
+> **RejectionHandledListener** = (...`args`) => `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:326
+Defined in: node\_modules/@types/node/process.d.ts:407
 
 ## Parameters
 
-### promise
+### args
 
-`Promise`\<`unknown`\>
+...`ProcessEventMap`\[`"rejectionHandled"`\]
 
 ## Returns
 
 `void`
+
+## Deprecated
+
+Global listener types will be removed in a future version.
+Callbacks passed directly to `process`'s EventEmitter methods
+have their parameter types inferred automatically.
+
+`process` event types are also available via `ProcessEventMap`:
+
+```ts
+import type { ProcessEventMap } from 'node:process';
+const listener = (...args: ProcessEventMap['rejectionHandled']) => { ... };
+```

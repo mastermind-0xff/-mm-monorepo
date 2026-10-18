@@ -6,7 +6,7 @@
 
 # Interface: ErrnoException
 
-Defined in: node\_modules/@types/node/globals.d.ts:392
+Defined in: node\_modules/@types/node/globals.d.ts:100
 
 ## Extends
 
@@ -16,9 +16,9 @@ Defined in: node\_modules/@types/node/globals.d.ts:392
 
 ### cause?
 
-> `optional` **cause**: `unknown`
+> `optional` **cause?**: `unknown`
 
-Defined in: node\_modules/typescript/lib/lib.es2022.error.d.ts:26
+Defined in: node\_modules/typescript/lib/lib.es2022.error.d.ts:24
 
 #### Inherited from
 
@@ -28,17 +28,17 @@ Defined in: node\_modules/typescript/lib/lib.es2022.error.d.ts:26
 
 ### code?
 
-> `optional` **code**: `string`
+> `optional` **code?**: `string`
 
-Defined in: node\_modules/@types/node/globals.d.ts:394
+Defined in: node\_modules/@types/node/globals.d.ts:102
 
 ***
 
 ### errno?
 
-> `optional` **errno**: `number`
+> `optional` **errno?**: `number`
 
-Defined in: node\_modules/@types/node/globals.d.ts:393
+Defined in: node\_modules/@types/node/globals.d.ts:101
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:393
 
 > **message**: `string`
 
-Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1077
+Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1075
 
 #### Inherited from
 
@@ -58,7 +58,7 @@ Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1077
 
 > **name**: `string`
 
-Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1076
+Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1074
 
 #### Inherited from
 
@@ -68,17 +68,17 @@ Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1076
 
 ### path?
 
-> `optional` **path**: `string`
+> `optional` **path?**: `string`
 
-Defined in: node\_modules/@types/node/globals.d.ts:395
+Defined in: node\_modules/@types/node/globals.d.ts:103
 
 ***
 
 ### stack?
 
-> `optional` **stack**: `string`
+> `optional` **stack?**: `string`
 
-Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1078
+Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1076
 
 #### Inherited from
 
@@ -88,6 +88,6 @@ Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1078
 
 ### syscall?
 
-> `optional` **syscall**: `string`
+> `optional` **syscall?**: `string`
 
-Defined in: node\_modules/@types/node/globals.d.ts:396
+Defined in: node\_modules/@types/node/globals.d.ts:104

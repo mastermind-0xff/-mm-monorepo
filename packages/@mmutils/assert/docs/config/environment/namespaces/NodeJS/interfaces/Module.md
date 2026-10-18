@@ -6,15 +6,15 @@
 
 # Interface: Module
 
-Defined in: node\_modules/@types/node/module.d.ts:516
+Defined in: node\_modules/@types/node/module.d.ts:576
 
 ## Properties
 
 ### children
 
-> **children**: [`Module`](Module.md)[]
+> **children**: `Module`[]
 
-Defined in: node\_modules/@types/node/module.d.ts:521
+Defined in: node\_modules/@types/node/module.d.ts:581
 
 The module objects required for the first time by this one.
 
@@ -28,7 +28,7 @@ v0.1.16
 
 > **exports**: `any`
 
-Defined in: node\_modules/@types/node/module.d.ts:528
+Defined in: node\_modules/@types/node/module.d.ts:588
 
 The `module.exports` object is created by the `Module` system. Sometimes this is
 not acceptable; many want their module to be an instance of some class. To do
@@ -44,7 +44,7 @@ v0.1.16
 
 > **filename**: `string`
 
-Defined in: node\_modules/@types/node/module.d.ts:533
+Defined in: node\_modules/@types/node/module.d.ts:593
 
 The fully resolved filename of the module.
 
@@ -58,7 +58,7 @@ v0.1.16
 
 > **id**: `string`
 
-Defined in: node\_modules/@types/node/module.d.ts:539
+Defined in: node\_modules/@types/node/module.d.ts:599
 
 The identifier for the module. Typically this is the fully resolved
 filename.
@@ -73,7 +73,7 @@ v0.1.16
 
 > **isPreloading**: `boolean`
 
-Defined in: node\_modules/@types/node/module.d.ts:545
+Defined in: node\_modules/@types/node/module.d.ts:605
 
 `true` if the module is running during the Node.js preload
 phase.
@@ -88,7 +88,7 @@ v15.4.0, v14.17.0
 
 > **loaded**: `boolean`
 
-Defined in: node\_modules/@types/node/module.d.ts:551
+Defined in: node\_modules/@types/node/module.d.ts:611
 
 Whether or not the module is done loading, or is in the process of
 loading.
@@ -101,9 +101,9 @@ v0.1.16
 
 ### ~~parent~~
 
-> **parent**: `undefined` \| `null` \| [`Module`](Module.md)
+> **parent**: `Module` \| `null` \| `undefined`
 
-Defined in: node\_modules/@types/node/module.d.ts:559
+Defined in: node\_modules/@types/node/module.d.ts:619
 
 The module that first required this one, or `null` if the current module is the
 entry point of the current process, or `undefined` if the module was loaded by
@@ -123,7 +123,7 @@ Please use `require.main` and `module.children` instead.
 
 > **path**: `string`
 
-Defined in: node\_modules/@types/node/module.d.ts:565
+Defined in: node\_modules/@types/node/module.d.ts:625
 
 The directory name of the module. This is usually the same as the
 `path.dirname()` of the `module.id`.
@@ -138,7 +138,7 @@ v11.14.0
 
 > **paths**: `string`[]
 
-Defined in: node\_modules/@types/node/module.d.ts:570
+Defined in: node\_modules/@types/node/module.d.ts:630
 
 The search paths for the module.
 
@@ -152,7 +152,7 @@ v0.4.0
 
 > **require**(`id`): `any`
 
-Defined in: node\_modules/@types/node/module.d.ts:576
+Defined in: node\_modules/@types/node/module.d.ts:636
 
 The `module.require()` method provides a way to load a module as if
 `require()` was called from the original module.

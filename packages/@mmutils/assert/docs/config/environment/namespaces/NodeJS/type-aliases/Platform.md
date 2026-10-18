@@ -6,6 +6,6 @@
 
 # Type Alias: Platform
 
-> **Platform**: `"aix"` \| `"android"` \| `"darwin"` \| `"freebsd"` \| `"haiku"` \| `"linux"` \| `"openbsd"` \| `"sunos"` \| `"win32"` \| `"cygwin"` \| `"netbsd"`
+> **Platform** = `"aix"` \| `"android"` \| `"darwin"` \| `"freebsd"` \| `"haiku"` \| `"linux"` \| `"openbsd"` \| `"sunos"` \| `"win32"` \| `"cygwin"` \| `"netbsd"`
 
-Defined in: node\_modules/@types/node/process.d.ts:258
+Defined in: node\_modules/@types/node/process.d.ts:281

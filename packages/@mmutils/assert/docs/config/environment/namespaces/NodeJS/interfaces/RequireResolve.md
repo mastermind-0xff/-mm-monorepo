@@ -6,11 +6,11 @@
 
 # Interface: RequireResolve()
 
-Defined in: node\_modules/@types/node/module.d.ts:631
+Defined in: node\_modules/@types/node/module.d.ts:691
 
-> **RequireResolve**(`request`, `options`?): `string`
+> **RequireResolve**(`request`, `options?`): `string`
 
-Defined in: node\_modules/@types/node/module.d.ts:640
+Defined in: node\_modules/@types/node/module.d.ts:700
 
 Use the internal `require()` machinery to look up the location of a module,
 but rather than loading the module, just return the resolved filename.
@@ -41,9 +41,9 @@ v0.3.0
 
 ### paths()
 
-> **paths**(`request`): `null` \| `string`[]
+> **paths**(`request`): `string`[] \| `null`
 
-Defined in: node\_modules/@types/node/module.d.ts:648
+Defined in: node\_modules/@types/node/module.d.ts:708
 
 Returns an array containing the paths searched during resolution of `request` or
 `null` if the `request` string references a core module, for example `http` or
@@ -59,7 +59,7 @@ The module path whose lookup paths are being retrieved.
 
 #### Returns
 
-`null` \| `string`[]
+`string`[] \| `null`
 
 #### Since
 

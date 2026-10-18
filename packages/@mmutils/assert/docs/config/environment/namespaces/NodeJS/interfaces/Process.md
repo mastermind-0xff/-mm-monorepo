@@ -6,7 +6,7 @@
 
 # Interface: Process
 
-Defined in: node\_modules/@types/node/process.d.ts:562
+Defined in: node\_modules/@types/node/process.d.ts:686
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: node\_modules/@types/node/process.d.ts:562
 
 > **allowedNodeEnvironmentFlags**: `ReadonlySet`\<`string`\>
 
-Defined in: node\_modules/@types/node/process.d.ts:1845
+Defined in: node\_modules/@types/node/process.d.ts:2029
 
 The `process.allowedNodeEnvironmentFlags` property is a special,
 read-only `Set` of flags allowable within the `NODE_OPTIONS` environment variable.
@@ -56,7 +56,7 @@ allowedNodeEnvironmentFlags.forEach((flag) => {
 The methods `add()`, `clear()`, and `delete()` of`process.allowedNodeEnvironmentFlags` do nothing, and will fail
 silently.
 
-If Node.js was compiled _without_ `NODE_OPTIONS` support (shown in [config](Process.md#config)), `process.allowedNodeEnvironmentFlags` will
+If Node.js was compiled _without_ `NODE_OPTIONS` support (shown in [config](#config)), `process.allowedNodeEnvironmentFlags` will
 contain what _would have_ been allowable.
 
 #### Since
@@ -69,10 +69,11 @@ v10.10.0
 
 > `readonly` **arch**: [`Architecture`](../type-aliases/Architecture.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1522
+Defined in: node\_modules/@types/node/process.d.ts:1689
 
 The operating system CPU architecture for which the Node.js binary was compiled.
-Possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'loong64'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'riscv64'`, `'s390'`, `'s390x'`, and `'x64'`.
+Possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'loong64'`, `'mips'`,
+`'mipsel'`, `'ppc64'`, `'riscv64'`, `'s390x'`, and `'x64'`.
 
 ```js
 import { arch } from 'node:process';
@@ -90,13 +91,14 @@ v0.5.0
 
 > **argv**: `string`[]
 
-Defined in: node\_modules/@types/node/process.d.ts:641
+Defined in: node\_modules/@types/node/process.d.ts:766
 
 The `process.argv` property returns an array containing the command-line
 arguments passed when the Node.js process was launched. The first element will
-be [execPath](Process.md#execpath). See `process.argv0` if access to the original value
+be [execPath](#execpath). See `process.argv0` if access to the original value
 of `argv[0]` is needed. The second element will be the path to the JavaScript
-file being executed. The remaining elements will be any additional command-line
+file being executed. If a [program entry point](https://nodejs.org/docs/latest-v25.x/api/cli.html#program-entry-point) was provided, the second element
+will be the absolute path to it. The remaining elements are additional command-line
 arguments.
 
 For example, assuming the following script for `process-args.js`:
@@ -136,7 +138,7 @@ v0.1.27
 
 > **argv0**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:654
+Defined in: node\_modules/@types/node/process.d.ts:779
 
 The `process.argv0` property stores a read-only copy of the original value of`argv[0]` passed when Node.js starts.
 
@@ -156,36 +158,12 @@ v6.4.0
 
 ### channel?
 
-> `optional` **channel**: `object`
+> `optional` **channel?**: `Control`
 
-Defined in: node\_modules/@types/node/process.d.ts:1753
+Defined in: node\_modules/@types/node/process.d.ts:1941
 
 If the Node.js process was spawned with an IPC channel, the process.channel property is a reference to the IPC channel.
 If no IPC channel exists, this property is undefined.
-
-#### ref()
-
-This method makes the IPC channel keep the event loop of the process running if .unref() has been called before.
-
-##### Returns
-
-`void`
-
-##### Since
-
-v7.1.0
-
-#### unref()
-
-This method makes the IPC channel not keep the event loop of the process running, and lets it finish even while the channel is open.
-
-##### Returns
-
-`void`
-
-##### Since
-
-v7.1.0
 
 #### Since
 
@@ -197,7 +175,7 @@ v7.1.0
 
 > `readonly` **config**: [`ProcessConfig`](ProcessConfig.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1418
+Defined in: node\_modules/@types/node/process.d.ts:1572
 
 The `process.config` property returns a frozen `Object` containing the
 JavaScript representation of the configure options used to compile the current
@@ -243,7 +221,7 @@ v0.7.7
 
 > **connected**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:1803
+Defined in: node\_modules/@types/node/process.d.ts:1987
 
 If the Node.js process is spawned with an IPC channel (see the `Child Process` and `Cluster` documentation), the `process.connected` property will return `true` so long as the IPC
 channel is connected and will return `false` after `process.disconnect()` is called.
@@ -261,7 +239,7 @@ v0.7.2
 
 > **debugPort**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:745
+Defined in: node\_modules/@types/node/process.d.ts:892
 
 The port used by the Node.js debugger when enabled.
 
@@ -281,7 +259,7 @@ v0.7.2
 
 > **env**: [`ProcessEnv`](ProcessEnv.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:928
+Defined in: node\_modules/@types/node/process.d.ts:1075
 
 The `process.env` property returns an object containing the user environment.
 See [`environ(7)`](http://man7.org/linux/man-pages/man7/environ.7.html).
@@ -375,11 +353,11 @@ v0.1.27
 
 > **execArgv**: `string`[]
 
-Defined in: node\_modules/@types/node/process.d.ts:683
+Defined in: node\_modules/@types/node/process.d.ts:808
 
 The `process.execArgv` property returns the set of Node.js-specific command-line
 options passed when the Node.js process was launched. These options do not
-appear in the array returned by the [argv](Process.md#argv) property, and do not
+appear in the array returned by the [argv](#argv) property, and do not
 include the Node.js executable, the name of the script, or any options following
 the script name. These options are useful in order to spawn child processes with
 the same execution environment as the parent.
@@ -413,7 +391,7 @@ v0.7.7
 
 > **execPath**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:693
+Defined in: node\_modules/@types/node/process.d.ts:818
 
 The `process.execPath` property returns the absolute pathname of the executable
 that started the Node.js process. Symbolic links, if any, are resolved.
@@ -428,17 +406,17 @@ v0.1.100
 
 ***
 
-### exitCode?
+### exitCode
 
-> `optional` **exitCode**: `string` \| `number`
+> **exitCode**: `string` \| `number` \| `null` \| `undefined`
 
-Defined in: node\_modules/@types/node/process.d.ts:1005
+Defined in: node\_modules/@types/node/process.d.ts:1152
 
 A number which will be the process exit code, when the process either
-exits gracefully, or is exited via [exit](Process.md#exit) without specifying
+exits gracefully, or is exited via [exit](#exit) without specifying
 a code.
 
-Specifying a code to [exit](Process.md#exit) will override any
+Specifying a code to [exit](#exit) will override any
 previous setting of `process.exitCode`.
 
 #### Default
@@ -457,7 +435,7 @@ v0.11.8
 
 > `readonly` **features**: [`ProcessFeatures`](ProcessFeatures.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1725
+Defined in: node\_modules/@types/node/process.d.ts:1895
 
 ***
 
@@ -465,9 +443,11 @@ Defined in: node\_modules/@types/node/process.d.ts:1725
 
 > **finalization**: `object`
 
-Defined in: node\_modules/@types/node/process.d.ts:1006
+Defined in: node\_modules/@types/node/process.d.ts:1153
 
 #### register()
+
+> **register**\<`T`\>(`ref`, `callback`): `void`
 
 **`Experimental`**
 
@@ -482,7 +462,9 @@ The idea of ​​this function is to help you free up resources when the starts
 
 ##### Type Parameters
 
-• **T** *extends* `object`
+###### T
+
+`T` *extends* `object`
 
 ##### Parameters
 
@@ -508,6 +490,8 @@ v22.5.0
 
 #### registerBeforeExit()
 
+> **registerBeforeExit**\<`T`\>(`ref`, `callback`): `void`
+
 **`Experimental`**
 
 This function behaves exactly like the `register`, except that the callback will be called when the process emits the `beforeExit` event if `ref` object was not garbage collected.
@@ -516,7 +500,9 @@ Be aware that all limitations applied to the `beforeExit` event are also applied
 
 ##### Type Parameters
 
-• **T** *extends* `object`
+###### T
+
+`T` *extends* `object`
 
 ##### Parameters
 
@@ -542,6 +528,8 @@ v22.5.0
 
 #### unregister()
 
+> **unregister**(`ref`): `void`
+
 **`Experimental`**
 
 This function remove the register of the object from the finalization registry, so the callback will not be called anymore.
@@ -564,11 +552,11 @@ v22.5.0
 
 ***
 
-### getegid()?
+### getegid?
 
-> `optional` **getegid**: () => `number`
+> `optional` **getegid?**: () => `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:1211
+Defined in: node\_modules/@types/node/process.d.ts:1358
 
 The `process.getegid()` method returns the numerical effective group identity
 of the Node.js process. (See [`getegid(2)`](http://man7.org/linux/man-pages/man2/getegid.2.html).)
@@ -594,11 +582,11 @@ v2.0.0
 
 ***
 
-### geteuid()?
+### geteuid?
 
-> `optional` **geteuid**: () => `number`
+> `optional` **geteuid?**: () => `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:1167
+Defined in: node\_modules/@types/node/process.d.ts:1314
 
 The `process.geteuid()` method returns the numerical effective user identity of
 the process. (See [`geteuid(2)`](http://man7.org/linux/man-pages/man2/geteuid.2.html).)
@@ -624,11 +612,11 @@ v2.0.0
 
 ***
 
-### getgid()?
+### getgid?
 
-> `optional` **getgid**: () => `number`
+> `optional` **getgid?**: () => `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:1080
+Defined in: node\_modules/@types/node/process.d.ts:1227
 
 The `process.getgid()` method returns the numerical group identity of the
 process. (See [`getgid(2)`](http://man7.org/linux/man-pages/man2/getgid.2.html).)
@@ -654,11 +642,11 @@ v0.1.31
 
 ***
 
-### getgroups()?
+### getgroups?
 
-> `optional` **getgroups**: () => `number`[]
+> `optional` **getgroups?**: () => `number`[]
 
-Defined in: node\_modules/@types/node/process.d.ts:1256
+Defined in: node\_modules/@types/node/process.d.ts:1403
 
 The `process.getgroups()` method returns an array with the supplementary group
 IDs. POSIX leaves it unspecified if the effective group ID is included but
@@ -685,11 +673,11 @@ v0.9.4
 
 ***
 
-### getuid()?
+### getuid?
 
-> `optional` **getuid**: () => `number`
+> `optional` **getuid?**: () => `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:1124
+Defined in: node\_modules/@types/node/process.d.ts:1271
 
 The `process.getuid()` method returns the numeric user identity of the process.
 (See [`getuid(2)`](http://man7.org/linux/man-pages/man2/getuid.2.html).)
@@ -719,15 +707,15 @@ v0.1.28
 
 > **hrtime**: [`HRTime`](HRTime.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1747
+Defined in: node\_modules/@types/node/process.d.ts:1935
 
 ***
 
 ### ~~mainModule?~~
 
-> `optional` **mainModule**: [`Module`](Module.md)
+> `optional` **mainModule?**: [`Module`](Module.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1559
+Defined in: node\_modules/@types/node/process.d.ts:1726
 
 The `process.mainModule` property provides an alternative way of retrieving `require.main`. The difference is that if the main module changes at
 runtime, `require.main` may still refer to the original main module in
@@ -751,7 +739,18 @@ Since v14.0.0 - Use `main` instead.
 
 > **memoryUsage**: [`MemoryUsageFn`](MemoryUsageFn.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1560
+Defined in: node\_modules/@types/node/process.d.ts:1727
+
+***
+
+### noDeprecation?
+
+> `optional` **noDeprecation?**: `boolean`
+
+Defined in: node\_modules/@types/node/process.d.ts:1864
+
+The process.noDeprecation property indicates whether the --no-deprecation flag is set on the current Node.js process.
+See the documentation for the ['warning' event](https://nodejs.org/docs/latest/api/process.html#event-warning) and the [emitWarning()](https://nodejs.org/docs/latest/api/process.html#processemitwarningwarning-type-code-ctor) method for more information about this flag's behavior.
 
 ***
 
@@ -759,7 +758,7 @@ Defined in: node\_modules/@types/node/process.d.ts:1560
 
 > **permission**: [`ProcessPermission`](ProcessPermission.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1702
+Defined in: node\_modules/@types/node/process.d.ts:1872
 
 This API is available through the [--permission](https://nodejs.org/api/cli.html#--permission) flag.
 
@@ -776,7 +775,7 @@ v20.0.0
 
 > `readonly` **pid**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:1480
+Defined in: node\_modules/@types/node/process.d.ts:1634
 
 The `process.pid` property returns the PID of the process.
 
@@ -796,7 +795,7 @@ v0.1.15
 
 > `readonly` **platform**: [`Platform`](../type-aliases/Platform.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1547
+Defined in: node\_modules/@types/node/process.d.ts:1714
 
 The `process.platform` property returns a string identifying the operating
 system platform for which the Node.js binary was compiled.
@@ -830,7 +829,7 @@ v0.1.16
 
 > `readonly` **ppid**: `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:1492
+Defined in: node\_modules/@types/node/process.d.ts:1646
 
 The `process.ppid` property returns the PID of the parent of the
 current process.
@@ -851,7 +850,7 @@ v9.2.0, v8.10.0, v6.13.0
 
 > `readonly` **release**: [`ProcessRelease`](ProcessRelease.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1724
+Defined in: node\_modules/@types/node/process.d.ts:1894
 
 The `process.release` property returns an `Object` containing metadata related
 to the current release, including URLs for the source tarball and headers-only
@@ -882,10 +881,10 @@ v3.0.0
 
 > **report**: [`ProcessReport`](ProcessReport.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1851
+Defined in: node\_modules/@types/node/process.d.ts:2035
 
 `process.report` is an object whose methods are used to generate diagnostic reports for the current process.
-Additional documentation is available in the [report documentation](https://nodejs.org/docs/latest-v22.x/api/report.html).
+Additional documentation is available in the [report documentation](https://nodejs.org/docs/latest-v25.x/api/report.html).
 
 #### Since
 
@@ -893,11 +892,11 @@ v11.8.0
 
 ***
 
-### setegid()?
+### setegid?
 
-> `optional` **setegid**: (`id`) => `void`
+> `optional` **setegid?**: (`id`) => `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:1238
+Defined in: node\_modules/@types/node/process.d.ts:1385
 
 The `process.setegid()` method sets the effective group identity of the process.
 (See [`setegid(2)`](http://man7.org/linux/man-pages/man2/setegid.2.html).) The `id` can be passed as either a numeric ID or a group
@@ -926,9 +925,9 @@ This feature is not available in `Worker` threads.
 
 ##### id
 
-A group name or ID
+`string` \| `number`
 
-`string` | `number`
+A group name or ID
 
 #### Returns
 
@@ -940,11 +939,11 @@ v2.0.0
 
 ***
 
-### seteuid()?
+### seteuid?
 
-> `optional` **seteuid**: (`id`) => `void`
+> `optional` **seteuid?**: (`id`) => `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:1194
+Defined in: node\_modules/@types/node/process.d.ts:1341
 
 The `process.seteuid()` method sets the effective user identity of the process.
 (See [`seteuid(2)`](http://man7.org/linux/man-pages/man2/seteuid.2.html).) The `id` can be passed as either a numeric ID or a username
@@ -973,9 +972,9 @@ This feature is not available in `Worker` threads.
 
 ##### id
 
-A user name or ID
+`string` \| `number`
 
-`string` | `number`
+A user name or ID
 
 #### Returns
 
@@ -987,11 +986,11 @@ v2.0.0
 
 ***
 
-### setgid()?
+### setgid?
 
-> `optional` **setgid**: (`id`) => `void`
+> `optional` **setgid?**: (`id`) => `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:1107
+Defined in: node\_modules/@types/node/process.d.ts:1254
 
 The `process.setgid()` method sets the group identity of the process. (See [`setgid(2)`](http://man7.org/linux/man-pages/man2/setgid.2.html).) The `id` can be passed as either a
 numeric ID or a group name
@@ -1020,9 +1019,9 @@ This feature is not available in `Worker` threads.
 
 ##### id
 
-The group name or ID
+`string` \| `number`
 
-`string` | `number`
+The group name or ID
 
 #### Returns
 
@@ -1034,11 +1033,11 @@ v0.1.31
 
 ***
 
-### setgroups()?
+### setgroups?
 
-> `optional` **setgroups**: (`groups`) => `void`
+> `optional` **setgroups?**: (`groups`) => `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:1282
+Defined in: node\_modules/@types/node/process.d.ts:1429
 
 The `process.setgroups()` method sets the supplementary group IDs for the
 Node.js process. This is a privileged operation that requires the Node.js
@@ -1079,11 +1078,11 @@ v0.9.4
 
 ***
 
-### setuid()?
+### setuid?
 
-> `optional` **setuid**: (`id`) => `void`
+> `optional` **setuid?**: (`id`) => `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:1150
+Defined in: node\_modules/@types/node/process.d.ts:1297
 
 The `process.setuid(id)` method sets the user identity of the process. (See [`setuid(2)`](http://man7.org/linux/man-pages/man2/setuid.2.html).) The `id` can be passed as either a
 numeric ID or a username string.
@@ -1112,7 +1111,7 @@ This feature is not available in `Worker` threads.
 
 ##### id
 
-`string` | `number`
+`string` \| `number`
 
 #### Returns
 
@@ -1128,7 +1127,7 @@ v0.1.28
 
 > `readonly` **sourceMapsEnabled**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:1312
+Defined in: node\_modules/@types/node/process.d.ts:1461
 
 **`Experimental`**
 
@@ -1144,14 +1143,14 @@ v20.7.0
 
 > **stderr**: [`WriteStream`](WriteStream.md) & `object`
 
-Defined in: node\_modules/@types/node/process.d.ts:586
+Defined in: node\_modules/@types/node/process.d.ts:710
 
 The `process.stderr` property returns a stream connected to`stderr` (fd `2`). It is a `net.Socket` (which is a `Duplex` stream) unless fd `2` refers to a file, in which case it is
 a `Writable` stream.
 
 `process.stderr` differs from other Node.js streams in important ways. See `note on process I/O` for more information.
 
-#### Type declaration
+#### Type Declaration
 
 ##### fd
 
@@ -1163,7 +1162,7 @@ a `Writable` stream.
 
 > **stdin**: [`ReadStream`](ReadStream.md) & `object`
 
-Defined in: node\_modules/@types/node/process.d.ts:602
+Defined in: node\_modules/@types/node/process.d.ts:726
 
 The `process.stdin` property returns a stream connected to`stdin` (fd `0`). It is a `net.Socket` (which is a `Duplex` stream) unless fd `0` refers to a file, in which case it is
 a `Readable` stream.
@@ -1177,7 +1176,7 @@ For more information see `Stream compatibility`.
 In "old" streams mode the `stdin` stream is paused by default, so one
 must call `process.stdin.resume()` to read from it. Note also that calling `process.stdin.resume()` itself would switch stream to "old" mode.
 
-#### Type declaration
+#### Type Declaration
 
 ##### fd
 
@@ -1189,7 +1188,7 @@ must call `process.stdin.resume()` to read from it. Note also that calling `proc
 
 > **stdout**: [`WriteStream`](WriteStream.md) & `object`
 
-Defined in: node\_modules/@types/node/process.d.ts:577
+Defined in: node\_modules/@types/node/process.d.ts:701
 
 The `process.stdout` property returns a stream connected to`stdout` (fd `1`). It is a `net.Socket` (which is a `Duplex` stream) unless fd `1` refers to a file, in which case it is
 a `Writable` stream.
@@ -1204,7 +1203,7 @@ stdin.pipe(stdout);
 
 `process.stdout` differs from other Node.js streams in important ways. See `note on process I/O` for more information.
 
-#### Type declaration
+#### Type Declaration
 
 ##### fd
 
@@ -1216,7 +1215,7 @@ stdin.pipe(stdout);
 
 > **throwDeprecation**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:1905
+Defined in: node\_modules/@types/node/process.d.ts:2089
 
 The initial value of `process.throwDeprecation` indicates whether the `--throw-deprecation` flag is set on the current Node.js process. `process.throwDeprecation`
 is mutable, so whether or not deprecation warnings result in errors may be altered at runtime. See the documentation for the 'warning' event and the emitWarning()
@@ -1248,7 +1247,7 @@ v0.9.12
 
 > **title**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:1510
+Defined in: node\_modules/@types/node/process.d.ts:1676
 
 The `process.title` property returns the current process title (i.e. returns
 the current value of `ps`). Assigning a new value to `process.title` modifies
@@ -1275,7 +1274,7 @@ v0.1.104
 
 > **traceDeprecation**: `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:1912
+Defined in: node\_modules/@types/node/process.d.ts:2096
 
 The `process.traceDeprecation` property indicates whether the `--trace-deprecation` flag is set on the current Node.js process. See the
 documentation for the `'warning' event` and the `emitWarning() method` for more information about this
@@ -1287,11 +1286,38 @@ v0.8.0
 
 ***
 
+### traceProcessWarnings
+
+> **traceProcessWarnings**: `boolean`
+
+Defined in: node\_modules/@types/node/process.d.ts:1913
+
+The `process.traceProcessWarnings` property indicates whether the `--trace-warnings` flag
+is set on the current Node.js process. This property allows programmatic control over the
+tracing of warnings, enabling or disabling stack traces for warnings at runtime.
+
+```js
+// Enable trace warnings
+process.traceProcessWarnings = true;
+
+// Emit a warning with a stack trace
+process.emitWarning('Warning with stack trace');
+
+// Disable trace warnings
+process.traceProcessWarnings = false;
+```
+
+#### Since
+
+v6.10.0
+
+***
+
 ### version
 
 > `readonly` **version**: `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:1338
+Defined in: node\_modules/@types/node/process.d.ts:1487
 
 The `process.version` property contains the Node.js version string.
 
@@ -1314,7 +1340,7 @@ v0.1.3
 
 > `readonly` **versions**: [`ProcessVersions`](ProcessVersions.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1381
+Defined in: node\_modules/@types/node/process.d.ts:1535
 
 The `process.versions` property returns an object listing the version strings of
 Node.js and its dependencies. `process.versions.modules` indicates the current
@@ -1330,30 +1356,35 @@ console.log(versions);
 Will generate an object similar to:
 
 ```console
-{ node: '20.2.0',
-  acorn: '8.8.2',
-  ada: '2.4.0',
-  ares: '1.19.0',
-  base64: '0.5.0',
-  brotli: '1.0.9',
-  cjs_module_lexer: '1.2.2',
-  cldr: '43.0',
-  icu: '73.1',
-  llhttp: '8.1.0',
-  modules: '115',
-  napi: '8',
-  nghttp2: '1.52.0',
-  nghttp3: '0.7.0',
-  ngtcp2: '0.8.1',
-  openssl: '3.0.8+quic',
-  simdutf: '3.2.9',
-  tz: '2023c',
-  undici: '5.22.0',
-  unicode: '15.0',
-  uv: '1.44.2',
-  uvwasi: '0.0.16',
-  v8: '11.3.244.8-node.9',
-  zlib: '1.2.13' }
+{ node: '26.0.0-pre',
+  acorn: '8.15.0',
+  ada: '3.4.1',
+  amaro: '1.1.5',
+  ares: '1.34.6',
+  brotli: '1.2.0',
+  merve: '1.0.0',
+  cldr: '48.0',
+  icu: '78.2',
+  llhttp: '9.3.0',
+  modules: '144',
+  napi: '10',
+  nbytes: '0.1.1',
+  ncrypto: '0.0.1',
+  nghttp2: '1.68.0',
+  nghttp3: '',
+  ngtcp2: '',
+  openssl: '3.5.4',
+  simdjson: '4.2.4',
+  simdutf: '7.3.3',
+  sqlite: '3.51.2',
+  tz: '2025c',
+  undici: '7.18.2',
+  unicode: '17.0',
+  uv: '1.51.0',
+  uvwasi: '0.0.23',
+  v8: '14.3.127.18-node.10',
+  zlib: '1.3.1-e00f703',
+  zstd: '1.5.7' }
 ```
 
 #### Since
@@ -1364,13 +1395,34 @@ v0.2.0
 
 ### \[captureRejectionSymbol\]()?
 
-> `optional` **\[captureRejectionSymbol\]**\<`K`\>(`error`, `event`, ...`args`): `void`
+> `optional` **\[captureRejectionSymbol\]**(`error`, `event`, ...`args`): `void`
 
-Defined in: node\_modules/@types/node/events.d.ts:592
+Defined in: node\_modules/@types/node/events.d.ts:87
 
-#### Type Parameters
+The `Symbol.for('nodejs.rejection')` method is called in case a
+promise rejection happens when emitting an event and
+`captureRejections` is enabled on the emitter.
+It is possible to use `events.captureRejectionSymbol` in
+place of `Symbol.for('nodejs.rejection')`.
 
-• **K**
+```js
+import { EventEmitter, captureRejectionSymbol } from 'node:events';
+
+class MyClass extends EventEmitter {
+  constructor() {
+    super({ captureRejections: true });
+  }
+
+  [captureRejectionSymbol](err, event, ...args) {
+    console.log('rejection happened for', event, 'with', err, ...args);
+    this.destroy(err);
+  }
+
+  destroy(err) {
+    // Tear the resource down here.
+  }
+}
+```
 
 #### Parameters
 
@@ -1380,15 +1432,19 @@ Defined in: node\_modules/@types/node/events.d.ts:592
 
 ##### event
 
-`string` | `symbol`
+`string` \| `symbol`
 
 ##### args
 
-...`AnyRest`
+...`any`[]
 
 #### Returns
 
 `void`
+
+#### Since
+
+v13.4.0, v12.16.0
 
 #### Inherited from
 
@@ -1400,7 +1456,7 @@ Defined in: node\_modules/@types/node/events.d.ts:592
 
 > **abort**(): `never`
 
-Defined in: node\_modules/@types/node/process.d.ts:701
+Defined in: node\_modules/@types/node/process.d.ts:826
 
 The `process.abort()` method causes the Node.js process to exit immediately and
 generate a core file.
@@ -1421,21 +1477,27 @@ v0.7.0
 
 #### Call Signature
 
-> **addListener**(`event`, `listener`): `this`
+> **addListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/process.d.ts:1914
+Defined in: node\_modules/@types/node/process.d.ts:2148
 
 Alias for `emitter.on(eventName, listener)`.
 
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `ProcessEventMap`
+
 ##### Parameters
 
-###### event
+###### eventName
 
-`"beforeExit"`
+`E`
 
 ###### listener
 
-[`BeforeExitListener`](../type-aliases/BeforeExitListener.md)
+(...`args`) => `void`
 
 ##### Returns
 
@@ -1451,321 +1513,21 @@ v0.1.26
 
 #### Call Signature
 
-> **addListener**(`event`, `listener`): `this`
+> **addListener**(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/process.d.ts:1915
-
-Alias for `emitter.on(eventName, listener)`.
-
-##### Parameters
-
-###### event
-
-`"disconnect"`
-
-###### listener
-
-[`DisconnectListener`](../type-aliases/DisconnectListener.md)
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1916
+Defined in: node\_modules/@types/node/process.d.ts:2152
 
 Alias for `emitter.on(eventName, listener)`.
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"exit"`
-
-###### listener
-
-[`ExitListener`](../type-aliases/ExitListener.md)
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1917
-
-Alias for `emitter.on(eventName, listener)`.
-
-##### Parameters
-
-###### event
-
-`"rejectionHandled"`
+`string` \| `symbol`
 
 ###### listener
 
-[`RejectionHandledListener`](../type-aliases/RejectionHandledListener.md)
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1918
-
-Alias for `emitter.on(eventName, listener)`.
-
-##### Parameters
-
-###### event
-
-`"uncaughtException"`
-
-###### listener
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1919
-
-Alias for `emitter.on(eventName, listener)`.
-
-##### Parameters
-
-###### event
-
-`"uncaughtExceptionMonitor"`
-
-###### listener
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1920
-
-Alias for `emitter.on(eventName, listener)`.
-
-##### Parameters
-
-###### event
-
-`"unhandledRejection"`
-
-###### listener
-
-[`UnhandledRejectionListener`](../type-aliases/UnhandledRejectionListener.md)
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1921
-
-Alias for `emitter.on(eventName, listener)`.
-
-##### Parameters
-
-###### event
-
-`"warning"`
-
-###### listener
-
-[`WarningListener`](../type-aliases/WarningListener.md)
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1922
-
-Alias for `emitter.on(eventName, listener)`.
-
-##### Parameters
-
-###### event
-
-`"message"`
-
-###### listener
-
-[`MessageListener`](../type-aliases/MessageListener.md)
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1923
-
-Alias for `emitter.on(eventName, listener)`.
-
-##### Parameters
-
-###### event
-
-[`Signals`](../type-aliases/Signals.md)
-
-###### listener
-
-[`SignalsListener`](../type-aliases/SignalsListener.md)
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1924
-
-Alias for `emitter.on(eventName, listener)`.
-
-##### Parameters
-
-###### event
-
-`"multipleResolves"`
-
-###### listener
-
-[`MultipleResolveListener`](../type-aliases/MultipleResolveListener.md)
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.addListener`
-
-#### Call Signature
-
-> **addListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1925
-
-Alias for `emitter.on(eventName, listener)`.
-
-##### Parameters
-
-###### event
-
-`"worker"`
-
-###### listener
-
-[`WorkerListener`](../type-aliases/WorkerListener.md)
+(...`args`) => `void`
 
 ##### Returns
 
@@ -1781,16 +1543,55 @@ v0.1.26
 
 ***
 
+### addUncaughtExceptionCaptureCallback()
+
+> **addUncaughtExceptionCaptureCallback**(`fn`): `void`
+
+Defined in: node\_modules/@types/node/process.d.ts:848
+
+The `process.addUncaughtExceptionCaptureCallback()` function adds a callback
+that will be invoked when an uncaught exception occurs, receiving the exception
+value as its first argument.
+
+Unlike `process.setUncaughtExceptionCaptureCallback()`, this function allows
+multiple callbacks to be registered and does not conflict with the
+[`domain`](https://nodejs.org/docs/latest-v25.x/api/domain.html) module. Callbacks are called in reverse order of registration
+(most recent first). If a callback returns `true`, subsequent callbacks
+and the default uncaught exception handling are skipped.
+
+```js
+import process from 'node:process';
+
+process.addUncaughtExceptionCaptureCallback((err) => {
+  console.error('Caught exception:', err.message);
+  return true; // Indicates exception was handled
+});
+```
+
+#### Parameters
+
+##### fn
+
+(`err`) => `boolean`
+
+#### Returns
+
+`void`
+
+#### Since
+
+v25.9.0
+
+***
+
 ### availableMemory()
 
 > **availableMemory**(): `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:1578
-
-**`Experimental`**
+Defined in: node\_modules/@types/node/process.d.ts:1743
 
 Gets the amount of free memory that is still available to the process (in bytes).
-See [`uv_get_available_memory`](https://nodejs.org/docs/latest-v22.x/api/process.html#processavailablememory) for more information.
+See [`uv_get_available_memory`](https://nodejs.org/docs/latest-v25.x/api/process.html#processavailablememory) for more information.
 
 #### Returns
 
@@ -1806,7 +1607,7 @@ v20.13.0
 
 > **chdir**(`directory`): `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:722
+Defined in: node\_modules/@types/node/process.d.ts:869
 
 The `process.chdir()` method changes the current working directory of the
 Node.js process or throws an exception if doing so fails (for instance, if
@@ -1846,9 +1647,7 @@ v0.1.17
 
 > **constrainedMemory**(): `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:1571
-
-**`Experimental`**
+Defined in: node\_modules/@types/node/process.d.ts:1737
 
 Gets the amount of memory available to the process (in bytes) based on
 limits imposed by the OS. If there is no such constraint, or the constraint
@@ -1869,9 +1668,9 @@ v19.6.0, v18.15.0
 
 ### cpuUsage()
 
-> **cpuUsage**(`previousValue`?): [`CpuUsage`](CpuUsage.md)
+> **cpuUsage**(`previousValue?`): [`CpuUsage`](CpuUsage.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1605
+Defined in: node\_modules/@types/node/process.d.ts:1770
 
 The `process.cpuUsage()` method returns the user and system CPU time usage of
 the current process, in an object with properties `user` and `system`, whose
@@ -1918,7 +1717,7 @@ v6.1.0
 
 > **cwd**(): `string`
 
-Defined in: node\_modules/@types/node/process.d.ts:734
+Defined in: node\_modules/@types/node/process.d.ts:881
 
 The `process.cwd()` method returns the current working directory of the Node.js
 process.
@@ -1939,11 +1738,11 @@ v0.1.8
 
 ***
 
-### disconnect()
+### disconnect()?
 
-> **disconnect**(): `void`
+> `optional` **disconnect**(): `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:1794
+Defined in: node\_modules/@types/node/process.d.ts:1978
 
 If the Node.js process is spawned with an IPC channel (see the `Child Process` and `Cluster` documentation), the `process.disconnect()` method will close the
 IPC channel to the parent process, allowing the child process to exit gracefully
@@ -1965,15 +1764,15 @@ v0.7.2
 
 ### dlopen()
 
-> **dlopen**(`module`, `filename`, `flags`?): `void`
+> **dlopen**(`module`, `filename`, `flags?`): `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:771
+Defined in: node\_modules/@types/node/process.d.ts:918
 
 The `process.dlopen()` method allows dynamically loading shared objects. It is primarily used by `require()` to load C++ Addons, and
 should not be used directly, except in special cases. In other words, `require()` should be preferred over `process.dlopen()`
 unless there are specific reasons such as custom dlopen flags or loading from ES modules.
 
-The `flags` argument is an integer that allows to specify dlopen behavior. See the `[os.constants.dlopen](https://nodejs.org/docs/latest-v22.x/api/os.html#dlopen-constants)`
+The `flags` argument is an integer that allows to specify dlopen behavior. See the `[os.constants.dlopen](https://nodejs.org/docs/latest-v25.x/api/os.html#dlopen-constants)`
 documentation for details.
 
 An important requirement when calling `process.dlopen()` is that the `module` instance must be passed. Functions exported by the C++ Addon
@@ -2017,11 +1816,12 @@ module.exports.foo();
 
 #### Call Signature
 
-> **emit**(`event`, `code`): `boolean`
+> **emit**\<`E`\>(`eventName`, ...`args`): `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:1926
+Defined in: node\_modules/@types/node/process.d.ts:2153
 
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
+Synchronously calls each of the listeners registered for the event named
+`eventName`, in the order they were registered, passing the supplied arguments
 to each.
 
 Returns `true` if the event had listeners, `false` otherwise.
@@ -2059,15 +1859,21 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 // event with parameters 1, 2, 3, 4, 5 in third listener
 ```
 
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `ProcessEventMap`
+
 ##### Parameters
 
-###### event
+###### eventName
 
-`"beforeExit"`
+`E`
 
-###### code
+###### args
 
-`number`
+...`ProcessEventMap`\[`E`\]
 
 ##### Returns
 
@@ -2083,11 +1889,12 @@ v0.1.26
 
 #### Call Signature
 
-> **emit**(`event`): `boolean`
+> **emit**(`eventName`, ...`args`): `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:1927
+Defined in: node\_modules/@types/node/process.d.ts:2154
 
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
+Synchronously calls each of the listeners registered for the event named
+`eventName`, in the order they were registered, passing the supplied arguments
 to each.
 
 Returns `true` if the event had listeners, `false` otherwise.
@@ -2127,689 +1934,17 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"disconnect"`
+`string` \| `symbol`
+
+###### args
+
+...`any`[]
 
 ##### Returns
 
 `boolean`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `code`): `boolean`
-
-Defined in: node\_modules/@types/node/process.d.ts:1928
-
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
-to each.
-
-Returns `true` if the event had listeners, `false` otherwise.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEmitter = new EventEmitter();
-
-// First listener
-myEmitter.on('event', function firstListener() {
-  console.log('Helloooo! first listener');
-});
-// Second listener
-myEmitter.on('event', function secondListener(arg1, arg2) {
-  console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
-});
-// Third listener
-myEmitter.on('event', function thirdListener(...args) {
-  const parameters = args.join(', ');
-  console.log(`event with parameters ${parameters} in third listener`);
-});
-
-console.log(myEmitter.listeners('event'));
-
-myEmitter.emit('event', 1, 2, 3, 4, 5);
-
-// Prints:
-// [
-//   [Function: firstListener],
-//   [Function: secondListener],
-//   [Function: thirdListener]
-// ]
-// Helloooo! first listener
-// event with parameters 1, 2 in second listener
-// event with parameters 1, 2, 3, 4, 5 in third listener
-```
-
-##### Parameters
-
-###### event
-
-`"exit"`
-
-###### code
-
-`number`
-
-##### Returns
-
-`boolean`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `promise`): `boolean`
-
-Defined in: node\_modules/@types/node/process.d.ts:1929
-
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
-to each.
-
-Returns `true` if the event had listeners, `false` otherwise.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEmitter = new EventEmitter();
-
-// First listener
-myEmitter.on('event', function firstListener() {
-  console.log('Helloooo! first listener');
-});
-// Second listener
-myEmitter.on('event', function secondListener(arg1, arg2) {
-  console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
-});
-// Third listener
-myEmitter.on('event', function thirdListener(...args) {
-  const parameters = args.join(', ');
-  console.log(`event with parameters ${parameters} in third listener`);
-});
-
-console.log(myEmitter.listeners('event'));
-
-myEmitter.emit('event', 1, 2, 3, 4, 5);
-
-// Prints:
-// [
-//   [Function: firstListener],
-//   [Function: secondListener],
-//   [Function: thirdListener]
-// ]
-// Helloooo! first listener
-// event with parameters 1, 2 in second listener
-// event with parameters 1, 2, 3, 4, 5 in third listener
-```
-
-##### Parameters
-
-###### event
-
-`"rejectionHandled"`
-
-###### promise
-
-`Promise`\<`unknown`\>
-
-##### Returns
-
-`boolean`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `error`): `boolean`
-
-Defined in: node\_modules/@types/node/process.d.ts:1930
-
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
-to each.
-
-Returns `true` if the event had listeners, `false` otherwise.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEmitter = new EventEmitter();
-
-// First listener
-myEmitter.on('event', function firstListener() {
-  console.log('Helloooo! first listener');
-});
-// Second listener
-myEmitter.on('event', function secondListener(arg1, arg2) {
-  console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
-});
-// Third listener
-myEmitter.on('event', function thirdListener(...args) {
-  const parameters = args.join(', ');
-  console.log(`event with parameters ${parameters} in third listener`);
-});
-
-console.log(myEmitter.listeners('event'));
-
-myEmitter.emit('event', 1, 2, 3, 4, 5);
-
-// Prints:
-// [
-//   [Function: firstListener],
-//   [Function: secondListener],
-//   [Function: thirdListener]
-// ]
-// Helloooo! first listener
-// event with parameters 1, 2 in second listener
-// event with parameters 1, 2, 3, 4, 5 in third listener
-```
-
-##### Parameters
-
-###### event
-
-`"uncaughtException"`
-
-###### error
-
-`Error`
-
-##### Returns
-
-`boolean`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `error`): `boolean`
-
-Defined in: node\_modules/@types/node/process.d.ts:1931
-
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
-to each.
-
-Returns `true` if the event had listeners, `false` otherwise.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEmitter = new EventEmitter();
-
-// First listener
-myEmitter.on('event', function firstListener() {
-  console.log('Helloooo! first listener');
-});
-// Second listener
-myEmitter.on('event', function secondListener(arg1, arg2) {
-  console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
-});
-// Third listener
-myEmitter.on('event', function thirdListener(...args) {
-  const parameters = args.join(', ');
-  console.log(`event with parameters ${parameters} in third listener`);
-});
-
-console.log(myEmitter.listeners('event'));
-
-myEmitter.emit('event', 1, 2, 3, 4, 5);
-
-// Prints:
-// [
-//   [Function: firstListener],
-//   [Function: secondListener],
-//   [Function: thirdListener]
-// ]
-// Helloooo! first listener
-// event with parameters 1, 2 in second listener
-// event with parameters 1, 2, 3, 4, 5 in third listener
-```
-
-##### Parameters
-
-###### event
-
-`"uncaughtExceptionMonitor"`
-
-###### error
-
-`Error`
-
-##### Returns
-
-`boolean`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `reason`, `promise`): `boolean`
-
-Defined in: node\_modules/@types/node/process.d.ts:1932
-
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
-to each.
-
-Returns `true` if the event had listeners, `false` otherwise.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEmitter = new EventEmitter();
-
-// First listener
-myEmitter.on('event', function firstListener() {
-  console.log('Helloooo! first listener');
-});
-// Second listener
-myEmitter.on('event', function secondListener(arg1, arg2) {
-  console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
-});
-// Third listener
-myEmitter.on('event', function thirdListener(...args) {
-  const parameters = args.join(', ');
-  console.log(`event with parameters ${parameters} in third listener`);
-});
-
-console.log(myEmitter.listeners('event'));
-
-myEmitter.emit('event', 1, 2, 3, 4, 5);
-
-// Prints:
-// [
-//   [Function: firstListener],
-//   [Function: secondListener],
-//   [Function: thirdListener]
-// ]
-// Helloooo! first listener
-// event with parameters 1, 2 in second listener
-// event with parameters 1, 2, 3, 4, 5 in third listener
-```
-
-##### Parameters
-
-###### event
-
-`"unhandledRejection"`
-
-###### reason
-
-`unknown`
-
-###### promise
-
-`Promise`\<`unknown`\>
-
-##### Returns
-
-`boolean`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `warning`): `boolean`
-
-Defined in: node\_modules/@types/node/process.d.ts:1933
-
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
-to each.
-
-Returns `true` if the event had listeners, `false` otherwise.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEmitter = new EventEmitter();
-
-// First listener
-myEmitter.on('event', function firstListener() {
-  console.log('Helloooo! first listener');
-});
-// Second listener
-myEmitter.on('event', function secondListener(arg1, arg2) {
-  console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
-});
-// Third listener
-myEmitter.on('event', function thirdListener(...args) {
-  const parameters = args.join(', ');
-  console.log(`event with parameters ${parameters} in third listener`);
-});
-
-console.log(myEmitter.listeners('event'));
-
-myEmitter.emit('event', 1, 2, 3, 4, 5);
-
-// Prints:
-// [
-//   [Function: firstListener],
-//   [Function: secondListener],
-//   [Function: thirdListener]
-// ]
-// Helloooo! first listener
-// event with parameters 1, 2 in second listener
-// event with parameters 1, 2, 3, 4, 5 in third listener
-```
-
-##### Parameters
-
-###### event
-
-`"warning"`
-
-###### warning
-
-`Error`
-
-##### Returns
-
-`boolean`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `message`, `sendHandle`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1934
-
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
-to each.
-
-Returns `true` if the event had listeners, `false` otherwise.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEmitter = new EventEmitter();
-
-// First listener
-myEmitter.on('event', function firstListener() {
-  console.log('Helloooo! first listener');
-});
-// Second listener
-myEmitter.on('event', function secondListener(arg1, arg2) {
-  console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
-});
-// Third listener
-myEmitter.on('event', function thirdListener(...args) {
-  const parameters = args.join(', ');
-  console.log(`event with parameters ${parameters} in third listener`);
-});
-
-console.log(myEmitter.listeners('event'));
-
-myEmitter.emit('event', 1, 2, 3, 4, 5);
-
-// Prints:
-// [
-//   [Function: firstListener],
-//   [Function: secondListener],
-//   [Function: thirdListener]
-// ]
-// Helloooo! first listener
-// event with parameters 1, 2 in second listener
-// event with parameters 1, 2, 3, 4, 5 in third listener
-```
-
-##### Parameters
-
-###### event
-
-`"message"`
-
-###### message
-
-`unknown`
-
-###### sendHandle
-
-`unknown`
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `signal`?): `boolean`
-
-Defined in: node\_modules/@types/node/process.d.ts:1935
-
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
-to each.
-
-Returns `true` if the event had listeners, `false` otherwise.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEmitter = new EventEmitter();
-
-// First listener
-myEmitter.on('event', function firstListener() {
-  console.log('Helloooo! first listener');
-});
-// Second listener
-myEmitter.on('event', function secondListener(arg1, arg2) {
-  console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
-});
-// Third listener
-myEmitter.on('event', function thirdListener(...args) {
-  const parameters = args.join(', ');
-  console.log(`event with parameters ${parameters} in third listener`);
-});
-
-console.log(myEmitter.listeners('event'));
-
-myEmitter.emit('event', 1, 2, 3, 4, 5);
-
-// Prints:
-// [
-//   [Function: firstListener],
-//   [Function: secondListener],
-//   [Function: thirdListener]
-// ]
-// Helloooo! first listener
-// event with parameters 1, 2 in second listener
-// event with parameters 1, 2, 3, 4, 5 in third listener
-```
-
-##### Parameters
-
-###### event
-
-[`Signals`](../type-aliases/Signals.md)
-
-###### signal?
-
-[`Signals`](../type-aliases/Signals.md)
-
-##### Returns
-
-`boolean`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `type`, `promise`, `value`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1936
-
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
-to each.
-
-Returns `true` if the event had listeners, `false` otherwise.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEmitter = new EventEmitter();
-
-// First listener
-myEmitter.on('event', function firstListener() {
-  console.log('Helloooo! first listener');
-});
-// Second listener
-myEmitter.on('event', function secondListener(arg1, arg2) {
-  console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
-});
-// Third listener
-myEmitter.on('event', function thirdListener(...args) {
-  const parameters = args.join(', ');
-  console.log(`event with parameters ${parameters} in third listener`);
-});
-
-console.log(myEmitter.listeners('event'));
-
-myEmitter.emit('event', 1, 2, 3, 4, 5);
-
-// Prints:
-// [
-//   [Function: firstListener],
-//   [Function: secondListener],
-//   [Function: thirdListener]
-// ]
-// Helloooo! first listener
-// event with parameters 1, 2 in second listener
-// event with parameters 1, 2, 3, 4, 5 in third listener
-```
-
-##### Parameters
-
-###### event
-
-`"multipleResolves"`
-
-###### type
-
-[`MultipleResolveType`](../type-aliases/MultipleResolveType.md)
-
-###### promise
-
-`Promise`\<`unknown`\>
-
-###### value
-
-`unknown`
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.emit`
-
-#### Call Signature
-
-> **emit**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1942
-
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
-to each.
-
-Returns `true` if the event had listeners, `false` otherwise.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEmitter = new EventEmitter();
-
-// First listener
-myEmitter.on('event', function firstListener() {
-  console.log('Helloooo! first listener');
-});
-// Second listener
-myEmitter.on('event', function secondListener(arg1, arg2) {
-  console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
-});
-// Third listener
-myEmitter.on('event', function thirdListener(...args) {
-  const parameters = args.join(', ');
-  console.log(`event with parameters ${parameters} in third listener`);
-});
-
-console.log(myEmitter.listeners('event'));
-
-myEmitter.emit('event', 1, 2, 3, 4, 5);
-
-// Prints:
-// [
-//   [Function: firstListener],
-//   [Function: secondListener],
-//   [Function: thirdListener]
-// ]
-// Helloooo! first listener
-// event with parameters 1, 2 in second listener
-// event with parameters 1, 2, 3, 4, 5 in third listener
-```
-
-##### Parameters
-
-###### event
-
-`"worker"`
-
-###### listener
-
-[`WorkerListener`](../type-aliases/WorkerListener.md)
-
-##### Returns
-
-`this`
 
 ##### Since
 
@@ -2825,9 +1960,9 @@ v0.1.26
 
 #### Call Signature
 
-> **emitWarning**(`warning`, `ctor`?): `void`
+> **emitWarning**(`warning`, `ctor?`): `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:840
+Defined in: node\_modules/@types/node/process.d.ts:987
 
 The `process.emitWarning()` method can be used to emit custom or application
 specific process warnings. These can be listened for by adding a handler to the `'warning'` event.
@@ -2898,9 +2033,9 @@ The following additional handling is implemented if the warning `type` is `'Depr
 
 ###### warning
 
-The warning to emit.
+`string` \| `Error`
 
-`string` | `Error`
+The warning to emit.
 
 ###### ctor?
 
@@ -2916,15 +2051,15 @@ v8.0.0
 
 #### Call Signature
 
-> **emitWarning**(`warning`, `type`?, `ctor`?): `void`
+> **emitWarning**(`warning`, `type?`, `ctor?`): `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:841
+Defined in: node\_modules/@types/node/process.d.ts:988
 
 ##### Parameters
 
 ###### warning
 
-`string` | `Error`
+`string` \| `Error`
 
 ###### type?
 
@@ -2940,15 +2075,15 @@ Defined in: node\_modules/@types/node/process.d.ts:841
 
 #### Call Signature
 
-> **emitWarning**(`warning`, `type`?, `code`?, `ctor`?): `void`
+> **emitWarning**(`warning`, `type?`, `code?`, `ctor?`): `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:842
+Defined in: node\_modules/@types/node/process.d.ts:989
 
 ##### Parameters
 
 ###### warning
 
-`string` | `Error`
+`string` \| `Error`
 
 ###### type?
 
@@ -2968,15 +2103,15 @@ Defined in: node\_modules/@types/node/process.d.ts:842
 
 #### Call Signature
 
-> **emitWarning**(`warning`, `options`?): `void`
+> **emitWarning**(`warning`, `options?`): `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:843
+Defined in: node\_modules/@types/node/process.d.ts:990
 
 ##### Parameters
 
 ###### warning
 
-`string` | `Error`
+`string` \| `Error`
 
 ###### options?
 
@@ -2992,10 +2127,10 @@ Defined in: node\_modules/@types/node/process.d.ts:843
 
 > **eventNames**(): (`string` \| `symbol`)[]
 
-Defined in: node\_modules/@types/node/events.d.ts:922
+Defined in: node\_modules/@types/node/events.d.ts:154
 
 Returns an array listing the events for which the emitter has registered
-listeners. The values in the array are strings or `Symbol`s.
+listeners.
 
 ```js
 import { EventEmitter } from 'node:events';
@@ -3025,11 +2160,64 @@ v6.0.0
 
 ***
 
+### execve()?
+
+> `optional` **execve**(`file`, `args?`, `env?`): `never`
+
+Defined in: node\_modules/@types/node/process.d.ts:2146
+
+**`Experimental`**
+
+Replaces the current process with a new process.
+
+This is achieved by using the `execve` POSIX function and therefore no memory or other
+resources from the current process are preserved, except for the standard input,
+standard output and standard error file descriptor.
+
+All other resources are discarded by the system when the processes are swapped, without triggering
+any exit or close events and without running any cleanup handler.
+
+This function will never return, unless an error occurred.
+
+This function is not available on Windows or IBM i.
+
+#### Parameters
+
+##### file
+
+`string`
+
+The name or path of the executable file to run.
+
+##### args?
+
+readonly `string`[]
+
+List of string arguments. No argument can contain a null-byte (`\u0000`).
+
+##### env?
+
+[`ProcessEnv`](ProcessEnv.md)
+
+Environment key-value pairs.
+No key or value can contain a null-byte (`\u0000`).
+**Default:** `process.env`.
+
+#### Returns
+
+`never`
+
+#### Since
+
+v22.15.0
+
+***
+
 ### exit()
 
-> **exit**(`code`?): `never`
+> **exit**(`code?`): `never`
 
-Defined in: node\_modules/@types/node/process.d.ts:994
+Defined in: node\_modules/@types/node/process.d.ts:1141
 
 The `process.exit()` method instructs Node.js to terminate the process
 synchronously with an exit status of `code`. If `code` is omitted, exit uses
@@ -3097,9 +2285,9 @@ than the current process.
 
 ##### code?
 
-The exit code. For string type, only integer strings (e.g.,'1') are allowed.
+`string` \| `number` \| `null`
 
-`null` | `string` | `number`
+The exit code. For string type, only integer strings (e.g.,'1') are allowed.
 
 #### Returns
 
@@ -3115,7 +2303,7 @@ v0.1.13
 
 > **getActiveResourcesInfo**(): `string`[]
 
-Defined in: node\_modules/@types/node/process.d.ts:1057
+Defined in: node\_modules/@types/node/process.d.ts:1204
 
 The `process.getActiveResourcesInfo()` method returns an array of strings containing
 the types of the active resources that are currently keeping the event loop alive.
@@ -3148,13 +2336,15 @@ v17.3.0, v16.14.0
 
 > **getBuiltinModule**\<`ID`\>(`id`): `BuiltInModule`\[`ID`\]
 
-Defined in: node\_modules/@types/node/process.d.ts:1062
+Defined in: node\_modules/@types/node/process.d.ts:1209
 
 Provides a way to load built-in modules in a globally available function.
 
 ##### Type Parameters
 
-• **ID** *extends* keyof `BuiltInModule`
+###### ID
+
+`ID` *extends* keyof `BuiltInModule`
 
 ##### Parameters
 
@@ -3170,9 +2360,9 @@ ID of the built-in module being requested.
 
 #### Call Signature
 
-> **getBuiltinModule**(`id`): `undefined` \| `object`
+> **getBuiltinModule**(`id`): `object` \| `undefined`
 
-Defined in: node\_modules/@types/node/process.d.ts:1063
+Defined in: node\_modules/@types/node/process.d.ts:1210
 
 ##### Parameters
 
@@ -3182,7 +2372,7 @@ Defined in: node\_modules/@types/node/process.d.ts:1063
 
 ##### Returns
 
-`undefined` \| `object`
+`object` \| `undefined`
 
 ***
 
@@ -3190,10 +2380,11 @@ Defined in: node\_modules/@types/node/process.d.ts:1063
 
 > **getMaxListeners**(): `number`
 
-Defined in: node\_modules/@types/node/events.d.ts:774
+Defined in: node\_modules/@types/node/events.d.ts:161
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to EventEmitter.defaultMaxListeners.
+set by `emitter.setMaxListeners(n)` or defaults to
+`events.defaultMaxListeners`.
 
 #### Returns
 
@@ -3213,9 +2404,9 @@ v1.0.0
 
 > **hasUncaughtExceptionCaptureCallback**(): `boolean`
 
-Defined in: node\_modules/@types/node/process.d.ts:1306
+Defined in: node\_modules/@types/node/process.d.ts:1455
 
-Indicates whether a callback has been set using [setUncaughtExceptionCaptureCallback](Process.md#setuncaughtexceptioncapturecallback).
+Indicates whether a callback has been set using [setUncaughtExceptionCaptureCallback](#setuncaughtexceptioncapturecallback).
 
 #### Returns
 
@@ -3229,9 +2420,9 @@ v9.3.0
 
 ### kill()
 
-> **kill**(`pid`, `signal`?): `true`
+> **kill**(`pid`, `signal?`): `true`
 
-Defined in: node\_modules/@types/node/process.d.ts:1454
+Defined in: node\_modules/@types/node/process.d.ts:1608
 
 The `process.kill()` method sends the `signal` to the process identified by`pid`.
 
@@ -3274,9 +2465,9 @@ A process ID
 
 ##### signal?
 
-The signal to send, either as a string or number.
+`string` \| `number`
 
-`string` | `number`
+The signal to send, either as a string or number.
 
 #### Returns
 
@@ -3290,43 +2481,83 @@ v0.0.6
 
 ### listenerCount()
 
-> **listenerCount**\<`K`\>(`eventName`, `listener`?): `number`
+#### Call Signature
 
-Defined in: node\_modules/@types/node/events.d.ts:868
+> **listenerCount**\<`E`\>(`eventName`, `listener?`): `number`
+
+Defined in: node\_modules/@types/node/process.d.ts:2155
 
 Returns the number of listeners listening for the event named `eventName`.
 If `listener` is provided, it will return how many times the listener is found
 in the list of the listeners of the event.
 
-#### Type Parameters
+##### Type Parameters
 
-• **K**
+###### E
 
-#### Parameters
+`E` *extends* keyof `ProcessEventMap`
 
-##### eventName
+##### Parameters
+
+###### eventName
+
+`E`
 
 The name of the event being listened for
 
-`string` | `symbol`
+###### listener?
 
-##### listener?
-
-`Function`
+(...`args`) => `void`
 
 The event handler function
 
-#### Returns
+##### Returns
 
 `number`
 
-#### Since
+##### Since
 
 v3.2.0
 
-#### Inherited from
+##### Overrides
 
 [`EventEmitter`](EventEmitter.md).[`listenerCount`](EventEmitter.md#listenercount)
+
+#### Call Signature
+
+> **listenerCount**(`eventName`, `listener?`): `number`
+
+Defined in: node\_modules/@types/node/process.d.ts:2159
+
+Returns the number of listeners listening for the event named `eventName`.
+If `listener` is provided, it will return how many times the listener is found
+in the list of the listeners of the event.
+
+##### Parameters
+
+###### eventName
+
+`string` \| `symbol`
+
+The name of the event being listened for
+
+###### listener?
+
+(...`args`) => `void`
+
+The event handler function
+
+##### Returns
+
+`number`
+
+##### Since
+
+v3.2.0
+
+##### Overrides
+
+`EventEmitter.listenerCount`
 
 ***
 
@@ -3334,9 +2565,9 @@ v3.2.0
 
 #### Call Signature
 
-> **listeners**(`event`): [`BeforeExitListener`](../type-aliases/BeforeExitListener.md)[]
+> **listeners**\<`E`\>(`eventName`): ((...`args`) => `void`)[]
 
-Defined in: node\_modules/@types/node/process.d.ts:1993
+Defined in: node\_modules/@types/node/process.d.ts:2160
 
 Returns a copy of the array of listeners for the event named `eventName`.
 
@@ -3348,15 +2579,21 @@ console.log(util.inspect(server.listeners('connection')));
 // Prints: [ [Function] ]
 ```
 
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `ProcessEventMap`
+
 ##### Parameters
 
-###### event
+###### eventName
 
-`"beforeExit"`
+`E`
 
 ##### Returns
 
-[`BeforeExitListener`](../type-aliases/BeforeExitListener.md)[]
+((...`args`) => `void`)[]
 
 ##### Since
 
@@ -3368,43 +2605,9 @@ v0.1.26
 
 #### Call Signature
 
-> **listeners**(`event`): [`DisconnectListener`](../type-aliases/DisconnectListener.md)[]
+> **listeners**(`eventName`): ((...`args`) => `void`)[]
 
-Defined in: node\_modules/@types/node/process.d.ts:1994
-
-Returns a copy of the array of listeners for the event named `eventName`.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
-```
-
-##### Parameters
-
-###### event
-
-`"disconnect"`
-
-##### Returns
-
-[`DisconnectListener`](../type-aliases/DisconnectListener.md)[]
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.listeners`
-
-#### Call Signature
-
-> **listeners**(`event`): [`ExitListener`](../type-aliases/ExitListener.md)[]
-
-Defined in: node\_modules/@types/node/process.d.ts:1995
+Defined in: node\_modules/@types/node/process.d.ts:2161
 
 Returns a copy of the array of listeners for the event named `eventName`.
 
@@ -3418,319 +2621,13 @@ console.log(util.inspect(server.listeners('connection')));
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"exit"`
-
-##### Returns
-
-[`ExitListener`](../type-aliases/ExitListener.md)[]
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.listeners`
-
-#### Call Signature
-
-> **listeners**(`event`): [`RejectionHandledListener`](../type-aliases/RejectionHandledListener.md)[]
-
-Defined in: node\_modules/@types/node/process.d.ts:1996
-
-Returns a copy of the array of listeners for the event named `eventName`.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
-```
-
-##### Parameters
-
-###### event
-
-`"rejectionHandled"`
+`string` \| `symbol`
 
 ##### Returns
 
-[`RejectionHandledListener`](../type-aliases/RejectionHandledListener.md)[]
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.listeners`
-
-#### Call Signature
-
-> **listeners**(`event`): [`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)[]
-
-Defined in: node\_modules/@types/node/process.d.ts:1997
-
-Returns a copy of the array of listeners for the event named `eventName`.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
-```
-
-##### Parameters
-
-###### event
-
-`"uncaughtException"`
-
-##### Returns
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)[]
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.listeners`
-
-#### Call Signature
-
-> **listeners**(`event`): [`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)[]
-
-Defined in: node\_modules/@types/node/process.d.ts:1998
-
-Returns a copy of the array of listeners for the event named `eventName`.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
-```
-
-##### Parameters
-
-###### event
-
-`"uncaughtExceptionMonitor"`
-
-##### Returns
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)[]
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.listeners`
-
-#### Call Signature
-
-> **listeners**(`event`): [`UnhandledRejectionListener`](../type-aliases/UnhandledRejectionListener.md)[]
-
-Defined in: node\_modules/@types/node/process.d.ts:1999
-
-Returns a copy of the array of listeners for the event named `eventName`.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
-```
-
-##### Parameters
-
-###### event
-
-`"unhandledRejection"`
-
-##### Returns
-
-[`UnhandledRejectionListener`](../type-aliases/UnhandledRejectionListener.md)[]
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.listeners`
-
-#### Call Signature
-
-> **listeners**(`event`): [`WarningListener`](../type-aliases/WarningListener.md)[]
-
-Defined in: node\_modules/@types/node/process.d.ts:2000
-
-Returns a copy of the array of listeners for the event named `eventName`.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
-```
-
-##### Parameters
-
-###### event
-
-`"warning"`
-
-##### Returns
-
-[`WarningListener`](../type-aliases/WarningListener.md)[]
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.listeners`
-
-#### Call Signature
-
-> **listeners**(`event`): [`MessageListener`](../type-aliases/MessageListener.md)[]
-
-Defined in: node\_modules/@types/node/process.d.ts:2001
-
-Returns a copy of the array of listeners for the event named `eventName`.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
-```
-
-##### Parameters
-
-###### event
-
-`"message"`
-
-##### Returns
-
-[`MessageListener`](../type-aliases/MessageListener.md)[]
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.listeners`
-
-#### Call Signature
-
-> **listeners**(`event`): [`SignalsListener`](../type-aliases/SignalsListener.md)[]
-
-Defined in: node\_modules/@types/node/process.d.ts:2002
-
-Returns a copy of the array of listeners for the event named `eventName`.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
-```
-
-##### Parameters
-
-###### event
-
-[`Signals`](../type-aliases/Signals.md)
-
-##### Returns
-
-[`SignalsListener`](../type-aliases/SignalsListener.md)[]
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.listeners`
-
-#### Call Signature
-
-> **listeners**(`event`): [`MultipleResolveListener`](../type-aliases/MultipleResolveListener.md)[]
-
-Defined in: node\_modules/@types/node/process.d.ts:2003
-
-Returns a copy of the array of listeners for the event named `eventName`.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
-```
-
-##### Parameters
-
-###### event
-
-`"multipleResolves"`
-
-##### Returns
-
-[`MultipleResolveListener`](../type-aliases/MultipleResolveListener.md)[]
-
-##### Since
-
-v0.1.26
-
-##### Overrides
-
-`EventEmitter.listeners`
-
-#### Call Signature
-
-> **listeners**(`event`): [`WorkerListener`](../type-aliases/WorkerListener.md)[]
-
-Defined in: node\_modules/@types/node/process.d.ts:2004
-
-Returns a copy of the array of listeners for the event named `eventName`.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
-```
-
-##### Parameters
-
-###### event
-
-`"worker"`
-
-##### Returns
-
-[`WorkerListener`](../type-aliases/WorkerListener.md)[]
+((...`args`) => `void`)[]
 
 ##### Since
 
@@ -3744,9 +2641,9 @@ v0.1.26
 
 ### loadEnvFile()
 
-> **loadEnvFile**(`path`?): `void`
+> **loadEnvFile**(`path?`): `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:1469
+Defined in: node\_modules/@types/node/process.d.ts:1623
 
 Loads the environment configuration from a `.env` file into `process.env`. If
 the file is not found, error will be thrown.
@@ -3763,9 +2660,9 @@ loadEnvFile('./development.env')
 
 ##### path?
 
-The path to the .env file
+`PathLike`
 
-`string` | `Buffer` | `URL`
+The path to the .env file
 
 #### Returns
 
@@ -3781,7 +2678,7 @@ v20.12.0
 
 > **nextTick**(`callback`, ...`args`): `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:1694
+Defined in: node\_modules/@types/node/process.d.ts:1859
 
 `process.nextTick()` adds `callback` to the "next tick queue". This queue is
 fully drained after the current operation on the JavaScript stack runs to
@@ -3892,37 +2789,71 @@ v0.1.26
 
 ### off()
 
-> **off**\<`K`\>(`eventName`, `listener`): `this`
+#### Call Signature
 
-Defined in: node\_modules/@types/node/events.d.ts:747
+> **off**\<`E`\>(`eventName`, `listener`): `this`
+
+Defined in: node\_modules/@types/node/process.d.ts:2162
 
 Alias for `emitter.removeListener()`.
 
-#### Type Parameters
+##### Type Parameters
 
-• **K**
+###### E
 
-#### Parameters
+`E` *extends* keyof `ProcessEventMap`
 
-##### eventName
+##### Parameters
 
-`string` | `symbol`
+###### eventName
 
-##### listener
+`E`
+
+###### listener
 
 (...`args`) => `void`
 
-#### Returns
+##### Returns
 
 `this`
 
-#### Since
+##### Since
 
 v10.0.0
 
-#### Inherited from
+##### Overrides
 
 [`EventEmitter`](EventEmitter.md).[`off`](EventEmitter.md#off)
+
+#### Call Signature
+
+> **off**(`eventName`, `listener`): `this`
+
+Defined in: node\_modules/@types/node/process.d.ts:2166
+
+Alias for `emitter.removeListener()`.
+
+##### Parameters
+
+###### eventName
+
+`string` \| `symbol`
+
+###### listener
+
+(...`args`) => `void`
+
+##### Returns
+
+`this`
+
+##### Since
+
+v10.0.0
+
+##### Overrides
+
+`EventEmitter.off`
 
 ***
 
@@ -3930,14 +2861,15 @@ v10.0.0
 
 #### Call Signature
 
-> **on**(`event`, `listener`): `this`
+> **on**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/process.d.ts:1943
+Defined in: node\_modules/@types/node/process.d.ts:2167
 
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
+Adds the `listener` function to the end of the listeners array for the
+event named `eventName`. No checks are made to see if the `listener` has
+already been added. Multiple calls passing the same combination of `eventName`
+and `listener` will result in the `listener` being added, and called, multiple
+times.
 
 ```js
 server.on('connection', (stream) => {
@@ -3947,7 +2879,8 @@ server.on('connection', (stream) => {
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
+By default, event listeners are invoked in the order they are added. The
+`emitter.prependListener()` method can be used as an alternative to add the
 event listener to the beginning of the listeners array.
 
 ```js
@@ -3961,15 +2894,23 @@ myEE.emit('foo');
 //   a
 ```
 
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `ProcessEventMap`
+
 ##### Parameters
 
-###### event
+###### eventName
 
-`"beforeExit"`
+`E`
+
+The name of the event.
 
 ###### listener
 
-[`BeforeExitListener`](../type-aliases/BeforeExitListener.md)
+(...`args`) => `void`
 
 The callback function
 
@@ -3987,14 +2928,15 @@ v0.1.101
 
 #### Call Signature
 
-> **on**(`event`, `listener`): `this`
+> **on**(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/process.d.ts:1944
+Defined in: node\_modules/@types/node/process.d.ts:2171
 
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
+Adds the `listener` function to the end of the listeners array for the
+event named `eventName`. No checks are made to see if the `listener` has
+already been added. Multiple calls passing the same combination of `eventName`
+and `listener` will result in the `listener` being added, and called, multiple
+times.
 
 ```js
 server.on('connection', (stream) => {
@@ -4004,7 +2946,8 @@ server.on('connection', (stream) => {
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
+By default, event listeners are invoked in the order they are added. The
+`emitter.prependListener()` method can be used as an alternative to add the
 event listener to the beginning of the listeners array.
 
 ```js
@@ -4020,636 +2963,11 @@ myEE.emit('foo');
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"disconnect"`
+`string` \| `symbol`
 
-###### listener
-
-[`DisconnectListener`](../type-aliases/DisconnectListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.101
-
-##### Overrides
-
-`EventEmitter.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1945
-
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"exit"`
-
-###### listener
-
-[`ExitListener`](../type-aliases/ExitListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.101
-
-##### Overrides
-
-`EventEmitter.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1946
-
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"rejectionHandled"`
-
-###### listener
-
-[`RejectionHandledListener`](../type-aliases/RejectionHandledListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.101
-
-##### Overrides
-
-`EventEmitter.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1947
-
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"uncaughtException"`
-
-###### listener
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.101
-
-##### Overrides
-
-`EventEmitter.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1948
-
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"uncaughtExceptionMonitor"`
-
-###### listener
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.101
-
-##### Overrides
-
-`EventEmitter.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1949
-
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"unhandledRejection"`
-
-###### listener
-
-[`UnhandledRejectionListener`](../type-aliases/UnhandledRejectionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.101
-
-##### Overrides
-
-`EventEmitter.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1950
-
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"warning"`
-
-###### listener
-
-[`WarningListener`](../type-aliases/WarningListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.101
-
-##### Overrides
-
-`EventEmitter.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1951
-
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"message"`
-
-###### listener
-
-[`MessageListener`](../type-aliases/MessageListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.101
-
-##### Overrides
-
-`EventEmitter.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1952
-
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-[`Signals`](../type-aliases/Signals.md)
-
-###### listener
-
-[`SignalsListener`](../type-aliases/SignalsListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.101
-
-##### Overrides
-
-`EventEmitter.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1953
-
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"multipleResolves"`
-
-###### listener
-
-[`MultipleResolveListener`](../type-aliases/MultipleResolveListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.101
-
-##### Overrides
-
-`EventEmitter.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1954
-
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"worker"`
-
-###### listener
-
-[`WorkerListener`](../type-aliases/WorkerListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.1.101
-
-##### Overrides
-
-`EventEmitter.on`
-
-#### Call Signature
-
-> **on**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1955
-
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`string` | `symbol`
+The name of the event.
 
 ###### listener
 
@@ -4675,9 +2993,9 @@ v0.1.101
 
 #### Call Signature
 
-> **once**(`event`, `listener`): `this`
+> **once**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/process.d.ts:1956
+Defined in: node\_modules/@types/node/process.d.ts:2172
 
 Adds a **one-time** `listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -4690,7 +3008,8 @@ server.once('connection', (stream) => {
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
+By default, event listeners are invoked in the order they are added. The
+`emitter.prependOnceListener()` method can be used as an alternative to add the
 event listener to the beginning of the listeners array.
 
 ```js
@@ -4704,15 +3023,23 @@ myEE.emit('foo');
 //   a
 ```
 
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `ProcessEventMap`
+
 ##### Parameters
 
-###### event
+###### eventName
 
-`"beforeExit"`
+`E`
+
+The name of the event.
 
 ###### listener
 
-[`BeforeExitListener`](../type-aliases/BeforeExitListener.md)
+(...`args`) => `void`
 
 The callback function
 
@@ -4730,9 +3057,9 @@ v0.3.0
 
 #### Call Signature
 
-> **once**(`event`, `listener`): `this`
+> **once**(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/process.d.ts:1957
+Defined in: node\_modules/@types/node/process.d.ts:2176
 
 Adds a **one-time** `listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -4745,7 +3072,8 @@ server.once('connection', (stream) => {
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
+By default, event listeners are invoked in the order they are added. The
+`emitter.prependOnceListener()` method can be used as an alternative to add the
 event listener to the beginning of the listeners array.
 
 ```js
@@ -4761,614 +3089,11 @@ myEE.emit('foo');
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"disconnect"`
+`string` \| `symbol`
 
-###### listener
-
-[`DisconnectListener`](../type-aliases/DisconnectListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.3.0
-
-##### Overrides
-
-`EventEmitter.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1958
-
-Adds a **one-time** `listener` function for the event named `eventName`. The
-next time `eventName` is triggered, this listener is removed and then invoked.
-
-```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"exit"`
-
-###### listener
-
-[`ExitListener`](../type-aliases/ExitListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.3.0
-
-##### Overrides
-
-`EventEmitter.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1959
-
-Adds a **one-time** `listener` function for the event named `eventName`. The
-next time `eventName` is triggered, this listener is removed and then invoked.
-
-```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"rejectionHandled"`
-
-###### listener
-
-[`RejectionHandledListener`](../type-aliases/RejectionHandledListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.3.0
-
-##### Overrides
-
-`EventEmitter.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1960
-
-Adds a **one-time** `listener` function for the event named `eventName`. The
-next time `eventName` is triggered, this listener is removed and then invoked.
-
-```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"uncaughtException"`
-
-###### listener
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.3.0
-
-##### Overrides
-
-`EventEmitter.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1961
-
-Adds a **one-time** `listener` function for the event named `eventName`. The
-next time `eventName` is triggered, this listener is removed and then invoked.
-
-```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"uncaughtExceptionMonitor"`
-
-###### listener
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.3.0
-
-##### Overrides
-
-`EventEmitter.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1962
-
-Adds a **one-time** `listener` function for the event named `eventName`. The
-next time `eventName` is triggered, this listener is removed and then invoked.
-
-```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"unhandledRejection"`
-
-###### listener
-
-[`UnhandledRejectionListener`](../type-aliases/UnhandledRejectionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.3.0
-
-##### Overrides
-
-`EventEmitter.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1963
-
-Adds a **one-time** `listener` function for the event named `eventName`. The
-next time `eventName` is triggered, this listener is removed and then invoked.
-
-```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"warning"`
-
-###### listener
-
-[`WarningListener`](../type-aliases/WarningListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.3.0
-
-##### Overrides
-
-`EventEmitter.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1964
-
-Adds a **one-time** `listener` function for the event named `eventName`. The
-next time `eventName` is triggered, this listener is removed and then invoked.
-
-```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"message"`
-
-###### listener
-
-[`MessageListener`](../type-aliases/MessageListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.3.0
-
-##### Overrides
-
-`EventEmitter.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1965
-
-Adds a **one-time** `listener` function for the event named `eventName`. The
-next time `eventName` is triggered, this listener is removed and then invoked.
-
-```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-[`Signals`](../type-aliases/Signals.md)
-
-###### listener
-
-[`SignalsListener`](../type-aliases/SignalsListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.3.0
-
-##### Overrides
-
-`EventEmitter.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1966
-
-Adds a **one-time** `listener` function for the event named `eventName`. The
-next time `eventName` is triggered, this listener is removed and then invoked.
-
-```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"multipleResolves"`
-
-###### listener
-
-[`MultipleResolveListener`](../type-aliases/MultipleResolveListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.3.0
-
-##### Overrides
-
-`EventEmitter.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1967
-
-Adds a **one-time** `listener` function for the event named `eventName`. The
-next time `eventName` is triggered, this listener is removed and then invoked.
-
-```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`"worker"`
-
-###### listener
-
-[`WorkerListener`](../type-aliases/WorkerListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v0.3.0
-
-##### Overrides
-
-`EventEmitter.once`
-
-#### Call Signature
-
-> **once**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1968
-
-Adds a **one-time** `listener` function for the event named `eventName`. The
-next time `eventName` is triggered, this listener is removed and then invoked.
-
-```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
-event listener to the beginning of the listeners array.
-
-```js
-import { EventEmitter } from 'node:events';
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
-//   b
-//   a
-```
-
-##### Parameters
-
-###### event
-
-`string` | `symbol`
+The name of the event.
 
 ###### listener
 
@@ -5394,14 +3119,15 @@ v0.3.0
 
 #### Call Signature
 
-> **prependListener**(`event`, `listener`): `this`
+> **prependListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/process.d.ts:1969
+Defined in: node\_modules/@types/node/process.d.ts:2177
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
 already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
+and `listener` will result in the `listener` being added, and called, multiple
+times.
 
 ```js
 server.prependListener('connection', (stream) => {
@@ -5411,15 +3137,23 @@ server.prependListener('connection', (stream) => {
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `ProcessEventMap`
+
 ##### Parameters
 
-###### event
+###### eventName
 
-`"beforeExit"`
+`E`
+
+The name of the event.
 
 ###### listener
 
-[`BeforeExitListener`](../type-aliases/BeforeExitListener.md)
+(...`args`) => `void`
 
 The callback function
 
@@ -5437,14 +3171,15 @@ v6.0.0
 
 #### Call Signature
 
-> **prependListener**(`event`, `listener`): `this`
+> **prependListener**(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/process.d.ts:1970
+Defined in: node\_modules/@types/node/process.d.ts:2181
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
 already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
+and `listener` will result in the `listener` being added, and called, multiple
+times.
 
 ```js
 server.prependListener('connection', (stream) => {
@@ -5456,443 +3191,15 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"disconnect"`
+`string` \| `symbol`
 
-###### listener
-
-[`DisconnectListener`](../type-aliases/DisconnectListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1971
-
-Adds the `listener` function to the _beginning_ of the listeners array for the
-event named `eventName`. No checks are made to see if the `listener` has
-already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"exit"`
+The name of the event.
 
 ###### listener
 
-[`ExitListener`](../type-aliases/ExitListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1972
-
-Adds the `listener` function to the _beginning_ of the listeners array for the
-event named `eventName`. No checks are made to see if the `listener` has
-already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"rejectionHandled"`
-
-###### listener
-
-[`RejectionHandledListener`](../type-aliases/RejectionHandledListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1973
-
-Adds the `listener` function to the _beginning_ of the listeners array for the
-event named `eventName`. No checks are made to see if the `listener` has
-already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"uncaughtException"`
-
-###### listener
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1974
-
-Adds the `listener` function to the _beginning_ of the listeners array for the
-event named `eventName`. No checks are made to see if the `listener` has
-already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"uncaughtExceptionMonitor"`
-
-###### listener
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1975
-
-Adds the `listener` function to the _beginning_ of the listeners array for the
-event named `eventName`. No checks are made to see if the `listener` has
-already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"unhandledRejection"`
-
-###### listener
-
-[`UnhandledRejectionListener`](../type-aliases/UnhandledRejectionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1976
-
-Adds the `listener` function to the _beginning_ of the listeners array for the
-event named `eventName`. No checks are made to see if the `listener` has
-already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"warning"`
-
-###### listener
-
-[`WarningListener`](../type-aliases/WarningListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1977
-
-Adds the `listener` function to the _beginning_ of the listeners array for the
-event named `eventName`. No checks are made to see if the `listener` has
-already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"message"`
-
-###### listener
-
-[`MessageListener`](../type-aliases/MessageListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1978
-
-Adds the `listener` function to the _beginning_ of the listeners array for the
-event named `eventName`. No checks are made to see if the `listener` has
-already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-[`Signals`](../type-aliases/Signals.md)
-
-###### listener
-
-[`SignalsListener`](../type-aliases/SignalsListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1979
-
-Adds the `listener` function to the _beginning_ of the listeners array for the
-event named `eventName`. No checks are made to see if the `listener` has
-already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"multipleResolves"`
-
-###### listener
-
-[`MultipleResolveListener`](../type-aliases/MultipleResolveListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependListener`
-
-#### Call Signature
-
-> **prependListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1980
-
-Adds the `listener` function to the _beginning_ of the listeners array for the
-event named `eventName`. No checks are made to see if the `listener` has
-already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
-
-```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"worker"`
-
-###### listener
-
-[`WorkerListener`](../type-aliases/WorkerListener.md)
+(...`args`) => `void`
 
 The callback function
 
@@ -5914,11 +3221,12 @@ v6.0.0
 
 #### Call Signature
 
-> **prependOnceListener**(`event`, `listener`): `this`
+> **prependOnceListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/process.d.ts:1981
+Defined in: node\_modules/@types/node/process.d.ts:2182
 
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
+Adds a **one-time** `listener` function for the event named `eventName` to the
+_beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
 
 ```js
@@ -5929,15 +3237,23 @@ server.prependOnceListener('connection', (stream) => {
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
+##### Type Parameters
+
+###### E
+
+`E` *extends* keyof `ProcessEventMap`
+
 ##### Parameters
 
-###### event
+###### eventName
 
-`"beforeExit"`
+`E`
+
+The name of the event.
 
 ###### listener
 
-[`BeforeExitListener`](../type-aliases/BeforeExitListener.md)
+(...`args`) => `void`
 
 The callback function
 
@@ -5955,11 +3271,12 @@ v6.0.0
 
 #### Call Signature
 
-> **prependOnceListener**(`event`, `listener`): `this`
+> **prependOnceListener**(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/process.d.ts:1982
+Defined in: node\_modules/@types/node/process.d.ts:2186
 
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
+Adds a **one-time** `listener` function for the event named `eventName` to the
+_beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
 
 ```js
@@ -5972,423 +3289,15 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ##### Parameters
 
-###### event
+###### eventName
 
-`"disconnect"`
+`string` \| `symbol`
 
-###### listener
-
-[`DisconnectListener`](../type-aliases/DisconnectListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1983
-
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
-listener is removed, and then invoked.
-
-```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"exit"`
+The name of the event.
 
 ###### listener
 
-[`ExitListener`](../type-aliases/ExitListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1984
-
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
-listener is removed, and then invoked.
-
-```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"rejectionHandled"`
-
-###### listener
-
-[`RejectionHandledListener`](../type-aliases/RejectionHandledListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1985
-
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
-listener is removed, and then invoked.
-
-```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"uncaughtException"`
-
-###### listener
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1986
-
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
-listener is removed, and then invoked.
-
-```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"uncaughtExceptionMonitor"`
-
-###### listener
-
-[`UncaughtExceptionListener`](../type-aliases/UncaughtExceptionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1987
-
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
-listener is removed, and then invoked.
-
-```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"unhandledRejection"`
-
-###### listener
-
-[`UnhandledRejectionListener`](../type-aliases/UnhandledRejectionListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1988
-
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
-listener is removed, and then invoked.
-
-```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"warning"`
-
-###### listener
-
-[`WarningListener`](../type-aliases/WarningListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1989
-
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
-listener is removed, and then invoked.
-
-```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"message"`
-
-###### listener
-
-[`MessageListener`](../type-aliases/MessageListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1990
-
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
-listener is removed, and then invoked.
-
-```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-[`Signals`](../type-aliases/Signals.md)
-
-###### listener
-
-[`SignalsListener`](../type-aliases/SignalsListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1991
-
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
-listener is removed, and then invoked.
-
-```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"multipleResolves"`
-
-###### listener
-
-[`MultipleResolveListener`](../type-aliases/MultipleResolveListener.md)
-
-The callback function
-
-##### Returns
-
-`this`
-
-##### Since
-
-v6.0.0
-
-##### Overrides
-
-`EventEmitter.prependOnceListener`
-
-#### Call Signature
-
-> **prependOnceListener**(`event`, `listener`): `this`
-
-Defined in: node\_modules/@types/node/process.d.ts:1992
-
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
-listener is removed, and then invoked.
-
-```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
-});
-```
-
-Returns a reference to the `EventEmitter`, so that calls can be chained.
-
-##### Parameters
-
-###### event
-
-`"worker"`
-
-###### listener
-
-[`WorkerListener`](../type-aliases/WorkerListener.md)
+(...`args`) => `void`
 
 The callback function
 
@@ -6408,9 +3317,11 @@ v6.0.0
 
 ### rawListeners()
 
-> **rawListeners**\<`K`\>(`eventName`): `Function`[]
+#### Call Signature
 
-Defined in: node\_modules/@types/node/events.d.ts:818
+> **rawListeners**\<`E`\>(`eventName`): ((...`args`) => `void`)[]
+
+Defined in: node\_modules/@types/node/process.d.ts:2187
 
 Returns a copy of the array of listeners for the event named `eventName`,
 including any wrappers (such as those created by `.once()`).
@@ -6440,35 +3351,126 @@ newListeners[0]();
 emitter.emit('log');
 ```
 
-#### Type Parameters
+##### Type Parameters
 
-• **K**
+###### E
 
-#### Parameters
+`E` *extends* keyof `ProcessEventMap`
 
-##### eventName
+##### Parameters
 
-`string` | `symbol`
+###### eventName
 
-#### Returns
+`E`
 
-`Function`[]
+##### Returns
 
-#### Since
+((...`args`) => `void`)[]
+
+##### Since
 
 v9.4.0
 
-#### Inherited from
+##### Overrides
 
 [`EventEmitter`](EventEmitter.md).[`rawListeners`](EventEmitter.md#rawlisteners)
+
+#### Call Signature
+
+> **rawListeners**(`eventName`): ((...`args`) => `void`)[]
+
+Defined in: node\_modules/@types/node/process.d.ts:2188
+
+Returns a copy of the array of listeners for the event named `eventName`,
+including any wrappers (such as those created by `.once()`).
+
+```js
+import { EventEmitter } from 'node:events';
+const emitter = new EventEmitter();
+emitter.once('log', () => console.log('log once'));
+
+// Returns a new Array with a function `onceWrapper` which has a property
+// `listener` which contains the original listener bound above
+const listeners = emitter.rawListeners('log');
+const logFnWrapper = listeners[0];
+
+// Logs "log once" to the console and does not unbind the `once` event
+logFnWrapper.listener();
+
+// Logs "log once" to the console and removes the listener
+logFnWrapper();
+
+emitter.on('log', () => console.log('log persistently'));
+// Will return a new Array with a single function bound by `.on()` above
+const newListeners = emitter.rawListeners('log');
+
+// Logs "log persistently" twice
+newListeners[0]();
+emitter.emit('log');
+```
+
+##### Parameters
+
+###### eventName
+
+`string` \| `symbol`
+
+##### Returns
+
+((...`args`) => `void`)[]
+
+##### Since
+
+v9.4.0
+
+##### Overrides
+
+`EventEmitter.rawListeners`
+
+***
+
+### ref()
+
+> **ref**(`maybeRefable`): `void`
+
+Defined in: node\_modules/@types/node/process.d.ts:2110
+
+**`Experimental`**
+
+An object is "refable" if it implements the Node.js "Refable protocol".
+Specifically, this means that the object implements the `Symbol.for('nodejs.ref')`
+and `Symbol.for('nodejs.unref')` methods. "Ref'd" objects will keep the Node.js
+event loop alive, while "unref'd" objects will not. Historically, this was
+implemented by using `ref()` and `unref()` methods directly on the objects.
+This pattern, however, is being deprecated in favor of the "Refable protocol"
+in order to better support Web Platform API types whose APIs cannot be modified
+to add `ref()` and `unref()` methods but still need to support that behavior.
+
+#### Parameters
+
+##### maybeRefable
+
+`any`
+
+An object that may be "refable".
+
+#### Returns
+
+`void`
+
+#### Since
+
+v22.14.0
 
 ***
 
 ### removeAllListeners()
 
-> **removeAllListeners**(`eventName`?): `this`
+#### Call Signature
 
-Defined in: node\_modules/@types/node/events.d.ts:758
+> **removeAllListeners**\<`E`\>(`eventName?`): `this`
+
+Defined in: node\_modules/@types/node/process.d.ts:2190
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -6478,33 +3480,74 @@ component or module (e.g. sockets or file streams).
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-#### Parameters
+##### Type Parameters
 
-##### eventName?
+###### E
 
-`string` | `symbol`
+`E` *extends* keyof `ProcessEventMap`
 
-#### Returns
+##### Parameters
+
+###### eventName?
+
+`E`
+
+##### Returns
 
 `this`
 
-#### Since
+##### Since
 
 v0.1.26
 
-#### Inherited from
+##### Overrides
 
 [`EventEmitter`](EventEmitter.md).[`removeAllListeners`](EventEmitter.md#removealllisteners)
+
+#### Call Signature
+
+> **removeAllListeners**(`eventName?`): `this`
+
+Defined in: node\_modules/@types/node/process.d.ts:2191
+
+Removes all listeners, or those of the specified `eventName`.
+
+It is bad practice to remove listeners added elsewhere in the code,
+particularly when the `EventEmitter` instance was created by some other
+component or module (e.g. sockets or file streams).
+
+Returns a reference to the `EventEmitter`, so that calls can be chained.
+
+##### Parameters
+
+###### eventName?
+
+`string` \| `symbol`
+
+##### Returns
+
+`this`
+
+##### Since
+
+v0.1.26
+
+##### Overrides
+
+`EventEmitter.removeAllListeners`
 
 ***
 
 ### removeListener()
 
-> **removeListener**\<`K`\>(`eventName`, `listener`): `this`
+#### Call Signature
 
-Defined in: node\_modules/@types/node/events.d.ts:742
+> **removeListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Removes the specified `listener` from the listener array for the event named `eventName`.
+Defined in: node\_modules/@types/node/process.d.ts:2192
+
+Removes the specified `listener` from the listener array for the event named
+`eventName`.
 
 ```js
 const callback = (stream) => {
@@ -6521,8 +3564,10 @@ listener array for the specified `eventName`, then `removeListener()` must be
 called multiple times to remove each instance.
 
 Once an event is emitted, all listeners attached to it at the
-time of emitting are called in order. This implies that any `removeListener()` or `removeAllListeners()` calls _after_ emitting and _before_ the last listener finishes execution
-will not remove them from`emit()` in progress. Subsequent events behave as expected.
+time of emitting are called in order. This implies that any
+`removeListener()` or `removeAllListeners()` calls _after_ emitting and
+_before_ the last listener finishes execution will not remove them from
+`emit()` in progress. Subsequent events behave as expected.
 
 ```js
 import { EventEmitter } from 'node:events';
@@ -6557,14 +3602,15 @@ myEmitter.emit('event');
 ```
 
 Because listeners are managed using an internal array, calling this will
-change the position indices of any listener registered _after_ the listener
+change the position indexes of any listener registered _after_ the listener
 being removed. This will not impact the order in which listeners are called,
 but it means that any copies of the listener array as returned by
 the `emitter.listeners()` method will need to be recreated.
 
 When a single function has been added as a handler multiple times for a single
 event (as in the example below), `removeListener()` will remove the most
-recently added instance. In the example the `once('ping')` listener is removed:
+recently added instance. In the example the `once('ping')`
+listener is removed:
 
 ```js
 import { EventEmitter } from 'node:events';
@@ -6584,31 +3630,145 @@ ee.emit('ping');
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-#### Type Parameters
+##### Type Parameters
 
-• **K**
+###### E
 
-#### Parameters
+`E` *extends* keyof `ProcessEventMap`
 
-##### eventName
+##### Parameters
 
-`string` | `symbol`
+###### eventName
 
-##### listener
+`E`
+
+###### listener
 
 (...`args`) => `void`
 
-#### Returns
+##### Returns
 
 `this`
 
-#### Since
+##### Since
 
 v0.1.26
 
-#### Inherited from
+##### Overrides
 
 [`EventEmitter`](EventEmitter.md).[`removeListener`](EventEmitter.md#removelistener)
+
+#### Call Signature
+
+> **removeListener**(`eventName`, `listener`): `this`
+
+Defined in: node\_modules/@types/node/process.d.ts:2196
+
+Removes the specified `listener` from the listener array for the event named
+`eventName`.
+
+```js
+const callback = (stream) => {
+  console.log('someone connected!');
+};
+server.on('connection', callback);
+// ...
+server.removeListener('connection', callback);
+```
+
+`removeListener()` will remove, at most, one instance of a listener from the
+listener array. If any single listener has been added multiple times to the
+listener array for the specified `eventName`, then `removeListener()` must be
+called multiple times to remove each instance.
+
+Once an event is emitted, all listeners attached to it at the
+time of emitting are called in order. This implies that any
+`removeListener()` or `removeAllListeners()` calls _after_ emitting and
+_before_ the last listener finishes execution will not remove them from
+`emit()` in progress. Subsequent events behave as expected.
+
+```js
+import { EventEmitter } from 'node:events';
+class MyEmitter extends EventEmitter {}
+const myEmitter = new MyEmitter();
+
+const callbackA = () => {
+  console.log('A');
+  myEmitter.removeListener('event', callbackB);
+};
+
+const callbackB = () => {
+  console.log('B');
+};
+
+myEmitter.on('event', callbackA);
+
+myEmitter.on('event', callbackB);
+
+// callbackA removes listener callbackB but it will still be called.
+// Internal listener array at time of emit [callbackA, callbackB]
+myEmitter.emit('event');
+// Prints:
+//   A
+//   B
+
+// callbackB is now removed.
+// Internal listener array [callbackA]
+myEmitter.emit('event');
+// Prints:
+//   A
+```
+
+Because listeners are managed using an internal array, calling this will
+change the position indexes of any listener registered _after_ the listener
+being removed. This will not impact the order in which listeners are called,
+but it means that any copies of the listener array as returned by
+the `emitter.listeners()` method will need to be recreated.
+
+When a single function has been added as a handler multiple times for a single
+event (as in the example below), `removeListener()` will remove the most
+recently added instance. In the example the `once('ping')`
+listener is removed:
+
+```js
+import { EventEmitter } from 'node:events';
+const ee = new EventEmitter();
+
+function pong() {
+  console.log('pong');
+}
+
+ee.on('ping', pong);
+ee.once('ping', pong);
+ee.removeListener('ping', pong);
+
+ee.emit('ping');
+ee.emit('ping');
+```
+
+Returns a reference to the `EventEmitter`, so that calls can be chained.
+
+##### Parameters
+
+###### eventName
+
+`string` \| `symbol`
+
+###### listener
+
+(...`args`) => `void`
+
+##### Returns
+
+`this`
+
+##### Since
+
+v0.1.26
+
+##### Overrides
+
+`EventEmitter.removeListener`
 
 ***
 
@@ -6616,7 +3776,7 @@ v0.1.26
 
 > **resourceUsage**(): [`ResourceUsage`](ResourceUsage.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:1882
+Defined in: node\_modules/@types/node/process.d.ts:2066
 
 ```js
 import { resourceUsage } from 'node:process';
@@ -6659,9 +3819,11 @@ v12.6.0
 
 ### send()?
 
-> `optional` **send**(`message`, `sendHandle`?, `options`?, `callback`?): `boolean`
+#### Call Signature
 
-Defined in: node\_modules/@types/node/process.d.ts:1776
+> `optional` **send**(`message`, `sendHandle?`, `options?`, `callback?`): `boolean`
+
+Defined in: node\_modules/@types/node/process.d.ts:1953
 
 If Node.js is spawned with an IPC channel, the `process.send()` method can be
 used to send messages to the parent process. Messages will be received as a `'message'` event on the parent's `ChildProcess` object.
@@ -6671,35 +3833,77 @@ If Node.js was not spawned with an IPC channel, `process.send` will be `undefine
 The message goes through serialization and parsing. The resulting message might
 not be the same as what is originally sent.
 
-#### Parameters
+##### Parameters
 
-##### message
-
-`any`
-
-##### sendHandle?
+###### message
 
 `any`
 
-##### options?
+###### sendHandle?
+
+`SendHandle`
+
+###### options?
+
+`MessageOptions`
 
 used to parameterize the sending of certain types of handles. `options` supports the following properties:
 
-###### keepOpen
-
-`boolean`
-
-##### callback?
+###### callback?
 
 (`error`) => `void`
 
-#### Returns
+##### Returns
 
 `boolean`
 
-#### Since
+##### Since
 
 v0.5.9
+
+#### Call Signature
+
+> `optional` **send**(`message`, `sendHandle`, `callback?`): `boolean`
+
+Defined in: node\_modules/@types/node/process.d.ts:1959
+
+##### Parameters
+
+###### message
+
+`any`
+
+###### sendHandle
+
+`SendHandle`
+
+###### callback?
+
+(`error`) => `void`
+
+##### Returns
+
+`boolean`
+
+#### Call Signature
+
+> `optional` **send**(`message`, `callback`): `boolean`
+
+Defined in: node\_modules/@types/node/process.d.ts:1964
+
+##### Parameters
+
+###### message
+
+`any`
+
+###### callback
+
+(`error`) => `void`
+
+##### Returns
+
+`boolean`
 
 ***
 
@@ -6707,12 +3911,13 @@ v0.5.9
 
 > **setMaxListeners**(`n`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:768
+Defined in: node\_modules/@types/node/events.d.ts:436
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
 memory leaks. The `emitter.setMaxListeners()` method allows the limit to be
-modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
+modified for this specific `EventEmitter` instance. The value can be set to
+`Infinity` (or `0`) to indicate an unlimited number of listeners.
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
@@ -6740,7 +3945,7 @@ v0.3.5
 
 > **setSourceMapsEnabled**(`value`): `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:1324
+Defined in: node\_modules/@types/node/process.d.ts:1473
 
 **`Experimental`**
 
@@ -6772,7 +3977,7 @@ v16.6.0, v14.18.0
 
 > **setUncaughtExceptionCaptureCallback**(`cb`): `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:1301
+Defined in: node\_modules/@types/node/process.d.ts:1450
 
 The `process.setUncaughtExceptionCaptureCallback()` function sets a function
 that will be invoked when an uncaught exception occurs, which will receive the
@@ -6788,13 +3993,14 @@ To unset the capture function, `process.setUncaughtExceptionCaptureCallback(null
 method with a non-`null` argument while another capture function is set will
 throw an error.
 
-Using this function is mutually exclusive with using the deprecated `domain` built-in module.
+To register multiple callbacks that can coexist, use
+`process.addUncaughtExceptionCaptureCallback()` instead.
 
 #### Parameters
 
 ##### cb
 
-`null` | (`err`) => `void`
+((`err`) => `void`) \| `null`
 
 #### Returns
 
@@ -6806,13 +4012,45 @@ v9.3.0
 
 ***
 
+### threadCpuUsage()
+
+> **threadCpuUsage**(`previousValue?`): [`CpuUsage`](CpuUsage.md)
+
+Defined in: node\_modules/@types/node/process.d.ts:1658
+
+The `process.threadCpuUsage()` method returns the user and system CPU time usage of
+the current worker thread, in an object with properties `user` and `system`, whose
+values are microsecond values (millionth of a second).
+
+The result of a previous call to `process.threadCpuUsage()` can be passed as the
+argument to the function, to get a diff reading.
+
+#### Parameters
+
+##### previousValue?
+
+[`CpuUsage`](CpuUsage.md)
+
+A previous return value from calling
+`process.threadCpuUsage()`
+
+#### Returns
+
+[`CpuUsage`](CpuUsage.md)
+
+#### Since
+
+v23.9.0
+
+***
+
 ### umask()
 
 #### Call Signature
 
 > **umask**(): `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:1733
+Defined in: node\_modules/@types/node/process.d.ts:1921
 
 `process.umask()` returns the Node.js process's file mode creation mask. Child
 processes inherit the mask from the parent process.
@@ -6834,7 +4072,7 @@ security vulnerability. There is no safe, cross-platform alternative API.
 
 > **umask**(`mask`): `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:1737
+Defined in: node\_modules/@types/node/process.d.ts:1925
 
 Can only be set if not in worker thread.
 
@@ -6842,7 +4080,7 @@ Can only be set if not in worker thread.
 
 ###### mask
 
-`string` | `number`
+`string` \| `number`
 
 ##### Returns
 
@@ -6850,11 +4088,46 @@ Can only be set if not in worker thread.
 
 ***
 
+### unref()
+
+> **unref**(`maybeRefable`): `void`
+
+Defined in: node\_modules/@types/node/process.d.ts:2124
+
+**`Experimental`**
+
+An object is "unrefable" if it implements the Node.js "Refable protocol".
+Specifically, this means that the object implements the `Symbol.for('nodejs.ref')`
+and `Symbol.for('nodejs.unref')` methods. "Ref'd" objects will keep the Node.js
+event loop alive, while "unref'd" objects will not. Historically, this was
+implemented by using `ref()` and `unref()` methods directly on the objects.
+This pattern, however, is being deprecated in favor of the "Refable protocol"
+in order to better support Web Platform API types whose APIs cannot be modified
+to add `ref()` and `unref()` methods but still need to support that behavior.
+
+#### Parameters
+
+##### maybeRefable
+
+`any`
+
+An object that may be "unref'd".
+
+#### Returns
+
+`void`
+
+#### Since
+
+v22.14.0
+
+***
+
 ### uptime()
 
 > **uptime**(): `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:1746
+Defined in: node\_modules/@types/node/process.d.ts:1934
 
 The `process.uptime()` method returns the number of seconds the current Node.js
 process has been running.

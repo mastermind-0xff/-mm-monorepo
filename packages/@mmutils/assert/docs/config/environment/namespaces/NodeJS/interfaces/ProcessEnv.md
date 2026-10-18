@@ -6,7 +6,7 @@
 
 # Interface: ProcessEnv
 
-Defined in: [packages/@mmutils/assert/src/config/environment.ts:3](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/config/environment.ts#L3)
+Defined in: [src/config/environment.ts:3](https://github.com/mastermind-0xff/-mm-monorepo/blob/15c53393182e77c18f7ab63c27f8a96727021afe/packages/@mmutils/assert/src/config/environment.ts#L3)
 
 ## Extends
 
@@ -14,30 +14,20 @@ Defined in: [packages/@mmutils/assert/src/config/environment.ts:3](https://githu
 
 ## Indexable
 
-\[`key`: `string`\]: `undefined` \| `string`
+> \[`key`: `string`\]: `string` \| `undefined`
 
 ## Properties
 
 ### AP\_NUMBER\_EXCLUDE\_NAN?
 
-> `optional` **AP\_NUMBER\_EXCLUDE\_NAN**: `string`
+> `optional` **AP\_NUMBER\_EXCLUDE\_NAN?**: `string`
 
-Defined in: [packages/@mmutils/assert/src/config/environment.ts:5](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/config/environment.ts#L5)
+Defined in: [src/config/environment.ts:5](https://github.com/mastermind-0xff/-mm-monorepo/blob/15c53393182e77c18f7ab63c27f8a96727021afe/packages/@mmutils/assert/src/config/environment.ts#L5)
 
 ***
 
 ### AP\_OBJECT\_EXCLUDE\_NULL?
 
-> `optional` **AP\_OBJECT\_EXCLUDE\_NULL**: `string`
+> `optional` **AP\_OBJECT\_EXCLUDE\_NULL?**: `string`
 
-Defined in: [packages/@mmutils/assert/src/config/environment.ts:4](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/config/environment.ts#L4)
-
-***
-
-### TZ?
-
-> `optional` **TZ**: `string`
-
-Defined in: node\_modules/@types/node/process.d.ts:350
-
-Can be used to change the default timezone at runtime
+Defined in: [src/config/environment.ts:4](https://github.com/mastermind-0xff/-mm-monorepo/blob/15c53393182e77c18f7ab63c27f8a96727021afe/packages/@mmutils/assert/src/config/environment.ts#L4)

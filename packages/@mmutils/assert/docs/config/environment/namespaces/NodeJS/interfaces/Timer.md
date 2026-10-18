@@ -4,21 +4,29 @@
 
 [@mmutils/assert](../../../../../modules.md) / [config/environment](../../../README.md) / [NodeJS](../README.md) / Timer
 
-# Interface: Timer
+# ~~Interface: Timer~~
 
-Defined in: node\_modules/@types/node/timers.d.ts:35
+Defined in: node\_modules/@types/node/timers.d.ts:60
+
+## Deprecated
+
+Use `NodeJS.Timeout` instead.
 
 ## Extends
 
 - [`RefCounted`](RefCounted.md)
 
+## Extended by
+
+- [`Timeout`](Timeout.md)
+
 ## Methods
 
-### \[toPrimitive\]()
+### ~~\[toPrimitive\]()~~
 
 > **\[toPrimitive\]**(): `number`
 
-Defined in: node\_modules/@types/node/timers.d.ts:38
+Defined in: node\_modules/@types/node/timers.d.ts:63
 
 #### Returns
 
@@ -26,11 +34,11 @@ Defined in: node\_modules/@types/node/timers.d.ts:38
 
 ***
 
-### hasRef()
+### ~~hasRef()~~
 
 > **hasRef**(): `boolean`
 
-Defined in: node\_modules/@types/node/timers.d.ts:36
+Defined in: node\_modules/@types/node/timers.d.ts:61
 
 #### Returns
 
@@ -38,11 +46,11 @@ Defined in: node\_modules/@types/node/timers.d.ts:36
 
 ***
 
-### ref()
+### ~~ref()~~
 
 > **ref**(): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:425
+Defined in: node\_modules/@types/node/globals.d.ts:108
 
 #### Returns
 
@@ -54,11 +62,11 @@ Defined in: node\_modules/@types/node/globals.d.ts:425
 
 ***
 
-### refresh()
+### ~~refresh()~~
 
 > **refresh**(): `this`
 
-Defined in: node\_modules/@types/node/timers.d.ts:37
+Defined in: node\_modules/@types/node/timers.d.ts:62
 
 #### Returns
 
@@ -66,11 +74,11 @@ Defined in: node\_modules/@types/node/timers.d.ts:37
 
 ***
 
-### unref()
+### ~~unref()~~
 
 > **unref**(): `this`
 
-Defined in: node\_modules/@types/node/globals.d.ts:426
+Defined in: node\_modules/@types/node/globals.d.ts:109
 
 #### Returns
 

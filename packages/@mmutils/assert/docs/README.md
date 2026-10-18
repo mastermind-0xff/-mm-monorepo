@@ -274,6 +274,11 @@ const funcZ = (type: 'a' | 'b', x?: number) => {
 
 ## Changelog
 
+### v0.0.7
+
+- Types resolve under `moduleResolution: node16` / `nodenext`. The type declarations are bundled into a single file, and `require` gets its own `.d.cts`. Before, these setups saw no exports, and `require` was typed as ESM.
+- `main` points to the CommonJS build instead of the ES module one.
+
 ### v0.0.6
 
 - assertNever fixed return type.

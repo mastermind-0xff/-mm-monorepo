@@ -6,13 +6,13 @@
 
 # Interface: HRTime()
 
-Defined in: node\_modules/@types/node/process.d.ts:352
+Defined in: node\_modules/@types/node/process.d.ts:471
 
-> **HRTime**(`time`?): \[`number`, `number`\]
+> **HRTime**(`time?`): \[`number`, `number`\]
 
-Defined in: node\_modules/@types/node/process.d.ts:385
+Defined in: node\_modules/@types/node/process.d.ts:504
 
-This is the legacy version of [()](HRTime.md#bigint)
+This is the legacy version of [()](#bigint)
 before bigint was introduced in JavaScript.
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple `Array`,
@@ -58,7 +58,7 @@ The result of a previous call to `process.hrtime()`
 
 ## Legacy
 
-Use [()](HRTime.md#bigint) instead.
+Use [()](#bigint) instead.
 
 ## Methods
 
@@ -66,7 +66,7 @@ Use [()](HRTime.md#bigint) instead.
 
 > **bigint**(): `bigint`
 
-Defined in: node\_modules/@types/node/process.d.ts:406
+Defined in: node\_modules/@types/node/process.d.ts:525
 
 The `bigint` version of the [()](Process.md#hrtime) method returning the current high-resolution real time in nanoseconds as a `bigint`.
 

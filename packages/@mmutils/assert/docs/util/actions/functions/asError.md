@@ -8,22 +8,24 @@
 
 > **asError**\<`T`\>(`error`): `Error` \| `T`
 
-Defined in: [packages/@mmutils/assert/src/util/actions.ts:56](https://github.com/mastermind-0xff/-mm-monorepo/blob/3e4b2477717eab2e4a04b9b069db2113414b3f32/packages/@mmutils/assert/src/util/actions.ts#L56)
+Defined in: [src/util/actions.ts:56](https://github.com/mastermind-0xff/-mm-monorepo/blob/15c53393182e77c18f7ab63c27f8a96727021afe/packages/@mmutils/assert/src/util/actions.ts#L56)
 
 Convert string to an Error or use the provided error object and return the
 result.
 
 ## Type Parameters
 
-• **T** *extends* `Error`
+### T
+
+`T` *extends* `Error`
 
 ## Parameters
 
 ### error
 
-String or any instance of Error constructor.
+`string` \| `T`
 
-`string` | `T`
+String or any instance of Error constructor.
 
 ## Returns
 

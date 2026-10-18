@@ -6,11 +6,11 @@
 
 # Interface: MemoryUsageFn()
 
-Defined in: node\_modules/@types/node/process.d.ts:127
+Defined in: node\_modules/@types/node/process.d.ts:149
 
 > **MemoryUsageFn**(): [`MemoryUsage`](MemoryUsage.md)
 
-Defined in: node\_modules/@types/node/process.d.ts:132
+Defined in: node\_modules/@types/node/process.d.ts:154
 
 The `process.memoryUsage()` method iterate over each page to gather informations about memory
 usage which can be slow depending on the program memory allocations.
@@ -25,7 +25,7 @@ usage which can be slow depending on the program memory allocations.
 
 > **rss**(): `number`
 
-Defined in: node\_modules/@types/node/process.d.ts:136
+Defined in: node\_modules/@types/node/process.d.ts:158
 
 method returns an integer representing the Resident Set Size (RSS) in bytes.
 

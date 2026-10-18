@@ -4,25 +4,31 @@
 
 [@mmutils/assert](../../../../../modules.md) / [config/environment](../../../README.md) / [NodeJS](../README.md) / UnhandledRejectionListener
 
-# Type Alias: UnhandledRejectionListener()
+# ~~Type Alias: UnhandledRejectionListener~~
 
-> **UnhandledRejectionListener**: (`reason`, `promise`) => `void`
+> **UnhandledRejectionListener** = (...`args`) => `void`
 
-Defined in: node\_modules/@types/node/process.d.ts:332
-
-Most of the time the unhandledRejection will be an Error, but this should not be relied upon
-as *anything* can be thrown/rejected, it is therefore unsafe to assume that the value is an Error.
+Defined in: node\_modules/@types/node/process.d.ts:439
 
 ## Parameters
 
-### reason
+### args
 
-`unknown`
-
-### promise
-
-`Promise`\<`unknown`\>
+...`ProcessEventMap`\[`"unhandledRejection"`\]
 
 ## Returns
 
 `void`
+
+## Deprecated
+
+Global listener types will be removed in a future version.
+Callbacks passed directly to `process`'s EventEmitter methods
+have their parameter types inferred automatically.
+
+`process` event types are also available via `ProcessEventMap`:
+
+```ts
+import type { ProcessEventMap } from 'node:process';
+const listener = (...args: ProcessEventMap['unhandledRejection']) => { ... };
+```

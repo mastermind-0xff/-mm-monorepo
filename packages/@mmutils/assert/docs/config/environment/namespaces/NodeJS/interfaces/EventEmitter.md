@@ -6,29 +6,52 @@
 
 # Interface: EventEmitter\<T\>
 
-Defined in: node\_modules/@types/node/events.d.ts:591
+Defined in: node\_modules/@types/node/events.d.ts:59
 
 ## Extended by
 
+- [`Process`](Process.md)
 - [`ReadableStream`](ReadableStream.md)
 - [`WritableStream`](WritableStream.md)
-- [`Process`](Process.md)
 
 ## Type Parameters
 
-• **T** *extends* `EventMap`\<`T`\> = `DefaultEventMap`
+### T
+
+`T` *extends* `EventMap`\<`T`\> = `any`
 
 ## Methods
 
 ### \[captureRejectionSymbol\]()?
 
-> `optional` **\[captureRejectionSymbol\]**\<`K`\>(`error`, `event`, ...`args`): `void`
+> `optional` **\[captureRejectionSymbol\]**(`error`, `event`, ...`args`): `void`
 
-Defined in: node\_modules/@types/node/events.d.ts:592
+Defined in: node\_modules/@types/node/events.d.ts:87
 
-#### Type Parameters
+The `Symbol.for('nodejs.rejection')` method is called in case a
+promise rejection happens when emitting an event and
+`captureRejections` is enabled on the emitter.
+It is possible to use `events.captureRejectionSymbol` in
+place of `Symbol.for('nodejs.rejection')`.
 
-• **K**
+```js
+import { EventEmitter, captureRejectionSymbol } from 'node:events';
+
+class MyClass extends EventEmitter {
+  constructor() {
+    super({ captureRejections: true });
+  }
+
+  [captureRejectionSymbol](err, event, ...args) {
+    console.log('rejection happened for', event, 'with', err, ...args);
+    this.destroy(err);
+  }
+
+  destroy(err) {
+    // Tear the resource down here.
+  }
+}
+```
 
 #### Parameters
 
@@ -38,39 +61,45 @@ Defined in: node\_modules/@types/node/events.d.ts:592
 
 ##### event
 
-`Key`\<`K`, `T`\>
+`string` \| `symbol`
 
 ##### args
 
-...`Args`\<`K`, `T`\>
+...`any`[]
 
 #### Returns
 
 `void`
 
+#### Since
+
+v13.4.0, v12.16.0
+
 ***
 
 ### addListener()
 
-> **addListener**\<`K`\>(`eventName`, `listener`): `this`
+> **addListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:597
+Defined in: node\_modules/@types/node/events.d.ts:92
 
 Alias for `emitter.on(eventName, listener)`.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`Key`\<`K`, `T`\>
+`IfEventMap`\<`T`, `E` \| keyof EventEmitterEventMap \| keyof T & (string \| symbol)\>
 
 ##### listener
 
-`Listener`\<`K`, `T`, (...`args`) => `void`\>
+`IfEventMap`\<`T`, (...`args`) => `void`\>
 
 #### Returns
 
@@ -84,11 +113,12 @@ v0.1.26
 
 ### emit()
 
-> **emit**\<`K`\>(`eventName`, ...`args`): `boolean`
+> **emit**\<`E`\>(`eventName`, ...`args`): `boolean`
 
-Defined in: node\_modules/@types/node/events.d.ts:859
+Defined in: node\_modules/@types/node/events.d.ts:134
 
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
+Synchronously calls each of the listeners registered for the event named
+`eventName`, in the order they were registered, passing the supplied arguments
 to each.
 
 Returns `true` if the event had listeners, `false` otherwise.
@@ -128,17 +158,19 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`Key`\<`K`, `T`\>
+`IfEventMap`\<`T`, keyof EventEmitterEventMap \| keyof T & (string \| symbol) \| `E`\>
 
 ##### args
 
-...`Args`\<`K`, `T`\>
+...`IfEventMap`\<`T`, `E` *extends* keyof `T` ? `T`\[`E`\] : `E` *extends* keyof `EventEmitterEventMap` ? `EventEmitterEventMap`\[`E`\] : `any`[]\>
 
 #### Returns
 
@@ -152,12 +184,12 @@ v0.1.26
 
 ### eventNames()
 
-> **eventNames**(): `string` \| `symbol` & `Key2`\<`unknown`, `T`\>[]
+> **eventNames**(): (`string` \| `symbol`)[]
 
-Defined in: node\_modules/@types/node/events.d.ts:922
+Defined in: node\_modules/@types/node/events.d.ts:154
 
 Returns an array listing the events for which the emitter has registered
-listeners. The values in the array are strings or `Symbol`s.
+listeners.
 
 ```js
 import { EventEmitter } from 'node:events';
@@ -175,7 +207,7 @@ console.log(myEE.eventNames());
 
 #### Returns
 
-`string` \| `symbol` & `Key2`\<`unknown`, `T`\>[]
+(`string` \| `symbol`)[]
 
 #### Since
 
@@ -187,10 +219,11 @@ v6.0.0
 
 > **getMaxListeners**(): `number`
 
-Defined in: node\_modules/@types/node/events.d.ts:774
+Defined in: node\_modules/@types/node/events.d.ts:161
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to EventEmitter.defaultMaxListeners.
+set by `emitter.setMaxListeners(n)` or defaults to
+`events.defaultMaxListeners`.
 
 #### Returns
 
@@ -204,9 +237,9 @@ v1.0.0
 
 ### listenerCount()
 
-> **listenerCount**\<`K`\>(`eventName`, `listener`?): `number`
+> **listenerCount**\<`E`\>(`eventName`, `listener?`): `number`
 
-Defined in: node\_modules/@types/node/events.d.ts:868
+Defined in: node\_modules/@types/node/events.d.ts:170
 
 Returns the number of listeners listening for the event named `eventName`.
 If `listener` is provided, it will return how many times the listener is found
@@ -214,19 +247,21 @@ in the list of the listeners of the event.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`Key`\<`K`, `T`\>
+`IfEventMap`\<`T`, keyof EventEmitterEventMap \| keyof T & (string \| symbol) \| `E`\>
 
 The name of the event being listened for
 
 ##### listener?
 
-`Listener`\<`K`, `T`, `Function`\>
+`IfEventMap`\<`T`, (...`args`) => `void`, (...`args`) => `void`\>
 
 The event handler function
 
@@ -242,9 +277,9 @@ v3.2.0
 
 ### listeners()
 
-> **listeners**\<`K`\>(`eventName`): `Listener`\<`K`, `T`, `Function`\>[]
+> **listeners**\<`E`\>(`eventName`): `IfEventMap`\<`T`, (...`args`) => `void`, (...`args`) => `void`\>[]
 
-Defined in: node\_modules/@types/node/events.d.ts:787
+Defined in: node\_modules/@types/node/events.d.ts:186
 
 Returns a copy of the array of listeners for the event named `eventName`.
 
@@ -258,17 +293,19 @@ console.log(util.inspect(server.listeners('connection')));
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`Key`\<`K`, `T`\>
+`IfEventMap`\<`T`, keyof EventEmitterEventMap \| keyof T & (string \| symbol) \| `E`\>
 
 #### Returns
 
-`Listener`\<`K`, `T`, `Function`\>[]
+`IfEventMap`\<`T`, (...`args`) => `void`, (...`args`) => `void`\>[]
 
 #### Since
 
@@ -278,25 +315,27 @@ v0.1.26
 
 ### off()
 
-> **off**\<`K`\>(`eventName`, `listener`): `this`
+> **off**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:747
+Defined in: node\_modules/@types/node/events.d.ts:191
 
 Alias for `emitter.removeListener()`.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`Key`\<`K`, `T`\>
+`IfEventMap`\<`T`, keyof EventEmitterEventMap \| keyof T & (string \| symbol) \| `E`\>
 
 ##### listener
 
-`Listener`\<`K`, `T`, (...`args`) => `void`\>
+`IfEventMap`\<`T`, (...`args`) => `void`\>
 
 #### Returns
 
@@ -310,14 +349,15 @@ v10.0.0
 
 ### on()
 
-> **on**\<`K`\>(`eventName`, `listener`): `this`
+> **on**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:629
+Defined in: node\_modules/@types/node/events.d.ts:225
 
-Adds the `listener` function to the end of the listeners array for the event
-named `eventName`. No checks are made to see if the `listener` has already
-been added. Multiple calls passing the same combination of `eventName` and
-`listener` will result in the `listener` being added, and called, multiple times.
+Adds the `listener` function to the end of the listeners array for the
+event named `eventName`. No checks are made to see if the `listener` has
+already been added. Multiple calls passing the same combination of `eventName`
+and `listener` will result in the `listener` being added, and called, multiple
+times.
 
 ```js
 server.on('connection', (stream) => {
@@ -327,7 +367,8 @@ server.on('connection', (stream) => {
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the
+By default, event listeners are invoked in the order they are added. The
+`emitter.prependListener()` method can be used as an alternative to add the
 event listener to the beginning of the listeners array.
 
 ```js
@@ -343,19 +384,21 @@ myEE.emit('foo');
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`Key`\<`K`, `T`\>
+`IfEventMap`\<`T`, keyof EventEmitterEventMap \| keyof T & (string \| symbol) \| `E`\>
 
 The name of the event.
 
 ##### listener
 
-`Listener`\<`K`, `T`, (...`args`) => `void`\>
+`IfEventMap`\<`T`, (...`args`) => `void`\>
 
 The callback function
 
@@ -371,9 +414,9 @@ v0.1.101
 
 ### once()
 
-> **once**\<`K`\>(`eventName`, `listener`): `this`
+> **once**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:659
+Defined in: node\_modules/@types/node/events.d.ts:256
 
 Adds a **one-time** `listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -386,7 +429,8 @@ server.once('connection', (stream) => {
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the
+By default, event listeners are invoked in the order they are added. The
+`emitter.prependOnceListener()` method can be used as an alternative to add the
 event listener to the beginning of the listeners array.
 
 ```js
@@ -402,19 +446,21 @@ myEE.emit('foo');
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`Key`\<`K`, `T`\>
+`IfEventMap`\<`T`, keyof EventEmitterEventMap \| keyof T & (string \| symbol) \| `E`\>
 
 The name of the event.
 
 ##### listener
 
-`Listener`\<`K`, `T`, (...`args`) => `void`\>
+`IfEventMap`\<`T`, (...`args`) => `void`\>
 
 The callback function
 
@@ -430,14 +476,15 @@ v0.3.0
 
 ### prependListener()
 
-> **prependListener**\<`K`\>(`eventName`, `listener`): `this`
+> **prependListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:886
+Defined in: node\_modules/@types/node/events.d.ts:275
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
 already been added. Multiple calls passing the same combination of `eventName`
-and `listener` will result in the `listener` being added, and called, multiple times.
+and `listener` will result in the `listener` being added, and called, multiple
+times.
 
 ```js
 server.prependListener('connection', (stream) => {
@@ -449,19 +496,21 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`Key`\<`K`, `T`\>
+`IfEventMap`\<`T`, keyof EventEmitterEventMap \| keyof T & (string \| symbol) \| `E`\>
 
 The name of the event.
 
 ##### listener
 
-`Listener`\<`K`, `T`, (...`args`) => `void`\>
+`IfEventMap`\<`T`, (...`args`) => `void`\>
 
 The callback function
 
@@ -477,11 +526,12 @@ v6.0.0
 
 ### prependOnceListener()
 
-> **prependOnceListener**\<`K`\>(`eventName`, `listener`): `this`
+> **prependOnceListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:902
+Defined in: node\_modules/@types/node/events.d.ts:292
 
-Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
+Adds a **one-time** `listener` function for the event named `eventName` to the
+_beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
 
 ```js
@@ -494,19 +544,21 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`Key`\<`K`, `T`\>
+`IfEventMap`\<`T`, keyof EventEmitterEventMap \| keyof T & (string \| symbol) \| `E`\>
 
 The name of the event.
 
 ##### listener
 
-`Listener`\<`K`, `T`, (...`args`) => `void`\>
+`IfEventMap`\<`T`, (...`args`) => `void`\>
 
 The callback function
 
@@ -522,9 +574,9 @@ v6.0.0
 
 ### rawListeners()
 
-> **rawListeners**\<`K`\>(`eventName`): `Listener`\<`K`, `T`, `Function`\>[]
+> **rawListeners**\<`E`\>(`eventName`): `IfEventMap`\<`T`, (...`args`) => `void`, (...`args`) => `void`\>[]
 
-Defined in: node\_modules/@types/node/events.d.ts:818
+Defined in: node\_modules/@types/node/events.d.ts:326
 
 Returns a copy of the array of listeners for the event named `eventName`,
 including any wrappers (such as those created by `.once()`).
@@ -556,17 +608,19 @@ emitter.emit('log');
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`Key`\<`K`, `T`\>
+`IfEventMap`\<`T`, keyof EventEmitterEventMap \| keyof T & (string \| symbol) \| `E`\>
 
 #### Returns
 
-`Listener`\<`K`, `T`, `Function`\>[]
+`IfEventMap`\<`T`, (...`args`) => `void`, (...`args`) => `void`\>[]
 
 #### Since
 
@@ -576,9 +630,9 @@ v9.4.0
 
 ### removeAllListeners()
 
-> **removeAllListeners**(`eventName`?): `this`
+> **removeAllListeners**\<`E`\>(`eventName?`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:758
+Defined in: node\_modules/@types/node/events.d.ts:338
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -588,11 +642,17 @@ component or module (e.g. sockets or file streams).
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
+#### Type Parameters
+
+##### E
+
+`E` *extends* `string` \| `symbol`
+
 #### Parameters
 
 ##### eventName?
 
-`Key`\<`unknown`, `T`\>
+`IfEventMap`\<`T`, keyof EventEmitterEventMap \| keyof T & (string \| symbol) \| `E`, `string` \| `symbol`\>
 
 #### Returns
 
@@ -606,11 +666,12 @@ v0.1.26
 
 ### removeListener()
 
-> **removeListener**\<`K`\>(`eventName`, `listener`): `this`
+> **removeListener**\<`E`\>(`eventName`, `listener`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:742
+Defined in: node\_modules/@types/node/events.d.ts:425
 
-Removes the specified `listener` from the listener array for the event named `eventName`.
+Removes the specified `listener` from the listener array for the event named
+`eventName`.
 
 ```js
 const callback = (stream) => {
@@ -627,8 +688,10 @@ listener array for the specified `eventName`, then `removeListener()` must be
 called multiple times to remove each instance.
 
 Once an event is emitted, all listeners attached to it at the
-time of emitting are called in order. This implies that any `removeListener()` or `removeAllListeners()` calls _after_ emitting and _before_ the last listener finishes execution
-will not remove them from`emit()` in progress. Subsequent events behave as expected.
+time of emitting are called in order. This implies that any
+`removeListener()` or `removeAllListeners()` calls _after_ emitting and
+_before_ the last listener finishes execution will not remove them from
+`emit()` in progress. Subsequent events behave as expected.
 
 ```js
 import { EventEmitter } from 'node:events';
@@ -663,14 +726,15 @@ myEmitter.emit('event');
 ```
 
 Because listeners are managed using an internal array, calling this will
-change the position indices of any listener registered _after_ the listener
+change the position indexes of any listener registered _after_ the listener
 being removed. This will not impact the order in which listeners are called,
 but it means that any copies of the listener array as returned by
 the `emitter.listeners()` method will need to be recreated.
 
 When a single function has been added as a handler multiple times for a single
 event (as in the example below), `removeListener()` will remove the most
-recently added instance. In the example the `once('ping')` listener is removed:
+recently added instance. In the example the `once('ping')`
+listener is removed:
 
 ```js
 import { EventEmitter } from 'node:events';
@@ -692,17 +756,19 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Type Parameters
 
-• **K**
+##### E
+
+`E` *extends* `string` \| `symbol`
 
 #### Parameters
 
 ##### eventName
 
-`Key`\<`K`, `T`\>
+`IfEventMap`\<`T`, keyof EventEmitterEventMap \| keyof T & (string \| symbol) \| `E`\>
 
 ##### listener
 
-`Listener`\<`K`, `T`, (...`args`) => `void`\>
+`IfEventMap`\<`T`, (...`args`) => `void`\>
 
 #### Returns
 
@@ -718,12 +784,13 @@ v0.1.26
 
 > **setMaxListeners**(`n`): `this`
 
-Defined in: node\_modules/@types/node/events.d.ts:768
+Defined in: node\_modules/@types/node/events.d.ts:436
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
 memory leaks. The `emitter.setMaxListeners()` method allows the limit to be
-modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
+modified for this specific `EventEmitter` instance. The value can be set to
+`Infinity` (or `0`) to indicate an unlimited number of listeners.
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 

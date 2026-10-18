@@ -6,11 +6,11 @@
 
 # Interface: Require()
 
-Defined in: node\_modules/@types/node/module.d.ts:578
+Defined in: node\_modules/@types/node/module.d.ts:638
 
 > **Require**(`id`): `any`
 
-Defined in: node\_modules/@types/node/module.d.ts:583
+Defined in: node\_modules/@types/node/module.d.ts:643
 
 Used to import modules, `JSON`, and local files.
 
@@ -34,12 +34,12 @@ v0.1.13
 
 > **cache**: [`Dict`](Dict.md)\<[`Module`](Module.md)\>
 
-Defined in: node\_modules/@types/node/module.d.ts:592
+Defined in: node\_modules/@types/node/module.d.ts:652
 
 Modules are cached in this object when they are required. By deleting a key
 value from this object, the next `require` will reload the module.
 This does not apply to
-[native addons](https://nodejs.org/docs/latest-v22.x/api/addons.html),
+[native addons](https://nodejs.org/docs/latest-v25.x/api/addons.html),
 for which reloading will result in an error.
 
 #### Since
@@ -52,7 +52,7 @@ v0.3.0
 
 > **extensions**: [`RequireExtensions`](RequireExtensions.md)
 
-Defined in: node\_modules/@types/node/module.d.ts:598
+Defined in: node\_modules/@types/node/module.d.ts:658
 
 Instruct `require` on how to handle certain file extensions.
 
@@ -66,9 +66,9 @@ v0.3.0
 
 ### main
 
-> **main**: `undefined` \| [`Module`](Module.md)
+> **main**: [`Module`](Module.md) \| `undefined`
 
-Defined in: node\_modules/@types/node/module.d.ts:605
+Defined in: node\_modules/@types/node/module.d.ts:665
 
 The `Module` object representing the entry script loaded when the Node.js
 process launched, or `undefined` if the entry point of the program is not a
@@ -84,7 +84,7 @@ v0.1.17
 
 > **resolve**: [`RequireResolve`](RequireResolve.md)
 
-Defined in: node\_modules/@types/node/module.d.ts:609
+Defined in: node\_modules/@types/node/module.d.ts:669
 
 #### Since
 
