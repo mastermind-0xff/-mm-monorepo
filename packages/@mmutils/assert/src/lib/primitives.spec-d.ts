@@ -22,7 +22,7 @@ import {
   VoidType,
   UnknownType,
 } from '../util/unit-test';
-import { expectTypeOf } from 'vitest';
+import { describe, test, expectTypeOf } from 'vitest';
 
 describe('isNullish', () => {
   test('narrows to null or undefined', () => {

@@ -15,7 +15,7 @@ import {
   assertIsSymbol,
   assertIsUndefined,
   assertNever,
-} from './assertions.ts';
+} from './assertions';
 import {
   primitiveTestData,
   AllowedCategories,

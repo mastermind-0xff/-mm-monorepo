@@ -2,7 +2,7 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    globals: true,
+    typecheck: { enabled: true },
     coverage: {
       include: ['src/**/*'],
       reportsDirectory: './coverage',
