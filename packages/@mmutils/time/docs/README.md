@@ -42,6 +42,10 @@ const {
 
 ## Changelog
 
+### v0.0.3
+
+- Types resolve under `moduleResolution: node16` / `nodenext`. The type declarations are bundled into a single file, and `require` gets its own `.d.cts`. Before, these setups saw no exports, and `require` was typed as ESM.
+
 ### v0.0.2
 
 - `formatHighResTime` with a numeric `capTo` shows zero in the value's own unit: `formatHighResTime(0, 2, 'ms')` returns `'0ms'` instead of `'0ns'`. Values that round to zero behave the same.

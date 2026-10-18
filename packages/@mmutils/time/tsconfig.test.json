@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "module": "CommonJS",
-    "types": ["jest", "node"],
-    "rootDir": "."
-  },
-  "include": ["src", "__tests__", "test-utils"]
-}
