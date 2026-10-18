@@ -1,6 +1,6 @@
 {
   "name": "@mmutils/time",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Common reusable, typed, JavasScript time related utility functions built with TypeScript.",
   "keywords": [
     "time",
@@ -46,9 +46,8 @@
     "lint:debug:write:diff:stash:drop": "npm run lint:debug:prettier && npm run git:stash:drop || echo 'No differences or debug failed.'",
     "lint:debug": "(npm run git:commit-ok || npm run git:confirm-add-commit) && npm run lint:debug:write:diff:stash:drop || echo 'Debug failed'",
     "build:docs": "typedoc",
-    "build:types": "tsc -p tsconfig.build.json --declaration --emitDeclarationOnly --declarationDir dist/types",
     "build:rollup": "rollup -c",
-    "build:bundle": "npm run build:rollup && npm run build:types && npm run build:docs",
+    "build:bundle": "npm run build:rollup && npm run build:docs",
     "build:clean-bundle": "npm run clean:bundle && npm run build:bundle",
     "build": "npm run format && npm run build:clean-bundle",
     "/** [ Publish commands ]======================================= */": "exit 0",
@@ -68,9 +67,14 @@
   "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.cjs"
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
