@@ -1,6 +1,6 @@
 {
   "name": "@mmtypes/common",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Common reusable types for TypeScript.",
   "keywords": [
     "common typescript types, utility types, types library, object entries, Object.entries, ObjectEntries"
@@ -27,7 +27,7 @@
     "lint:debug:write:diff:stash:drop": "npm run lint:debug:prettier && npm run git:stash:drop || echo 'No differences or debug failed.'",
     "lint:debug": "(npm run git:commit-ok || npm run git:confirm-add-commit) && npm run lint:debug:write:diff:stash:drop || echo 'Debug failed'",
     "build:docs": "typedoc",
-    "build:types": "tsc  --declaration --emitDeclarationOnly --declarationDir dist/types",
+    "build:types": "rollup -c",
     "build:bundle": " npm run build:types && npm run build:docs",
     "build:clean-bundle": "npm run clean:bundle && npm run build:bundle",
     "build": "npm run format && npm run build:clean-bundle",
@@ -42,7 +42,15 @@
   "type": "module",
   "types": "./dist/types/index.d.ts",
   "exports": {
-    "types": "./dist/types/index.d.ts"
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts"
+      },
+      "require": {
+        "types": "./dist/types/index.d.cts"
+      }
+    },
+    "./package.json": "./package.json"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
@@ -50,6 +58,8 @@
     "globals": "^15.14.0",
     "prettier": "^3.4.2",
     "rimraf": "^6.0.1",
+    "rollup": "^4.30.1",
+    "rollup-plugin-dts": "^6.1.1",
     "tsx": "^4.19.2",
     "typedoc": "^0.27.6",
     "typedoc-plugin-markdown": "^4.4.1",
