@@ -30,6 +30,11 @@ const { parsePath, parsedPathAsDir } = require('@mmutils/common/cjs/');
 
 ## Changelog
 
+### v0.0.2
+
+- Types resolve under `moduleResolution: node16` / `nodenext`. The type declarations are bundled into a single file, and `require` gets its own `.d.cts`. Before, these setups saw no exports, and `require` was typed as ESM.
+- `main` points to the CommonJS build instead of the ES module one.
+
 ### v0.0.1
 
 Initial release.

@@ -2,6 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
+import { dts } from 'rollup-plugin-dts';
 
 // import packageJson from './package.json' assert { type: 'json' };
 
@@ -41,7 +42,13 @@ export default [
       json(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json' }),
+      // With allowJs and no outDir, @rollup/plugin-typescript >= 12.3 emits to
+      // a temp outDir outside `dir` and then fails its own path check. There
+      // are no JS sources, so turn it off for the bundle.
+      typescript({
+        tsconfig: './tsconfig.json',
+        compilerOptions: { allowJs: false },
+      }),
     ],
     // external: (id) => {
     //   if (String(id).indexOf('node_modules') !== -1) return true;
@@ -49,9 +56,16 @@ export default [
     // },
   },
 
-  // {
-  //   input: './dist/esm/types/index.d.ts',
-  //   output: [{ file: './dist/index.d.ts', format: 'esm' }],
-  //   plugins: [dts()],
-  // },
+  // Bundle the declarations into a single file, so there are no relative
+  // imports left to resolve. The same content is emitted as .d.cts so that
+  // `require` consumers get CJS-flavoured types under node16/nodenext.
+  {
+    input: './src/index.ts',
+    output: [
+      { file: './dist/types/index.d.ts', format: 'esm' },
+      { file: './dist/types/index.d.cts', format: 'esm' },
+    ],
+    external: [/^node:/],
+    plugins: [dts({ tsconfig: './tsconfig.json' })],
+  },
 ];

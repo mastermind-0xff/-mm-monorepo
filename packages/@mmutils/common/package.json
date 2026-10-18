@@ -1,6 +1,6 @@
 {
   "name": "@mmutils/common",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Common reusable, typed, JavasScript utility functions built with TypeScript.",
   "keywords": [
     "utility JavasScript functions, utility, typed utility functions, parsePath"
@@ -27,9 +27,8 @@
     "lint:debug:write:diff:stash:drop": "npm run lint:debug:prettier && npm run git:stash:drop || echo 'No differences or debug failed.'",
     "lint:debug": "(npm run git:commit-ok || npm run git:confirm-add-commit) && npm run lint:debug:write:diff:stash:drop || echo 'Debug failed'",
     "build:docs": "typedoc",
-    "build:types": "tsc  --declaration --emitDeclarationOnly --declarationDir dist/types",
     "build:rollup": "rollup -c",
-    "build:bundle": "npm run build:rollup && npm run build:types && npm run build:docs",
+    "build:bundle": "npm run build:rollup && npm run build:docs",
     "build:clean-bundle": "npm run clean:bundle && npm run build:bundle",
     "build": "npm run format && npm run build:clean-bundle",
     "/** [ Publish commands ]======================================= */": "exit 0",
@@ -40,7 +39,7 @@
     "test:specs": "jest src",
     "test": "jest"
   },
-  "main": "./dist/esm/index.js",
+  "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.js",
   "files": [
     "dist"
@@ -48,10 +47,17 @@
   "type": "module",
   "types": "./dist/types/index.d.ts",
   "exports": {
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.cjs",
-    "default": "./dist/esm/index.js",
-    "types": "./dist/types/index.d.ts"
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
